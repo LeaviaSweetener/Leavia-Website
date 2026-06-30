@@ -1,0 +1,395 @@
+/* ============================================================
+   FacilityShowcase – Shopify Supply-style cycling image hero
+   ============================================================ */
+
+.facility {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background: var(--green-deepest);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ===== BACKGROUND STRIPES ===== */
+.facility__stripes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.012) 0px,
+    rgba(255,255,255,0.012) 1px,
+    transparent 1px,
+    transparent 60px
+  );
+}
+
+/* ===== BACKGROUND IMAGE (cycling) ===== */
+.facility__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+  transform: scale(1.04);
+  transition: opacity 1s ease, transform 6s ease;
+  z-index: 1;
+}
+
+.facility__img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark overlay on image */
+.facility__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    135deg,
+    rgba(6,15,9,0.82) 0%,
+    rgba(6,15,9,0.55) 50%,
+    rgba(6,15,9,0.75) 100%
+  );
+}
+
+/* ===== CORNER LABELS ===== */
+.facility__label {
+  position: absolute;
+  z-index: 6;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,208,96,0.6);
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.facility__label--tl {
+  top: 2rem;
+  left: 2.5rem;
+  transform: translateY(-10px);
+}
+.facility__label--tr {
+  top: 2rem;
+  right: 2.5rem;
+  text-align: right;
+  transform: translateY(-10px);
+}
+.facility__label--bl {
+  bottom: 5rem;
+  left: 2.5rem;
+  max-width: 200px;
+  line-height: 1.7;
+  transform: translateY(10px);
+}
+
+.facility__label.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== GOLD ACCENT LINES ===== */
+.facility__line-h {
+  position: absolute;
+  height: 1px;
+  background: var(--gold-warm);
+  box-shadow: 0 0 6px 1px rgba(212,175,55,0.5);
+  z-index: 5;
+  pointer-events: none;
+  width: 0;
+  transition: width 1s cubic-bezier(0.16,1,0.3,1);
+}
+.facility__line-h.left {
+  top: 38%;
+  left: 0;
+}
+.facility__line-h.right {
+  top: 38%;
+  right: 0;
+}
+.facility__line-h.visible {
+  width: 22%;
+}
+
+.facility__line-v {
+  position: absolute;
+  width: 1px;
+  background: var(--gold-warm);
+  box-shadow: 0 0 6px 1px rgba(212,175,55,0.5);
+  z-index: 5;
+  pointer-events: none;
+  height: 0;
+  transition: height 1s cubic-bezier(0.16,1,0.3,1) 0.3s;
+}
+.facility__line-v.visible {
+  height: 30%;
+}
+
+/* ===== TITLE LAYER ===== */
+.facility__title-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.facility__title-overline {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.facility__title-overline::before,
+.facility__title-overline::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--gold-warm);
+  opacity: 0.5;
+}
+
+.facility__title-row {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(110%);
+  transition: opacity 0.01s, transform 1s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
+  display: block;
+}
+.facility__title-row--gold {
+  font-style: italic;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.facility__title-row:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+.facility__title-layer.revealed .facility__title-overline {
+  opacity: 1;
+  transform: translateY(0);
+}
+.facility__title-layer.revealed .facility__title-row {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CURRENT SLIDE INFO ===== */
+.facility__slide-info {
+  position: absolute;
+  bottom: 5.5rem;
+  right: 2.5rem;
+  z-index: 8;
+  text-align: right;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.facility__slide-info.show { opacity: 1; }
+
+.facility__slide-name {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.2rem;
+}
+
+.facility__slide-sub {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+/* ===== DOT NAVIGATION ===== */
+.facility__dots {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.facility__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+  padding: 0;
+}
+.facility__dot.active {
+  background: var(--gold-warm);
+  transform: scale(1.35);
+  width: 18px;
+  border-radius: 4px;
+}
+
+/* ===== PROGRESS BAR ===== */
+.facility__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--gold-warm);
+  box-shadow: 0 0 8px rgba(212,175,55,0.6);
+  z-index: 10;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+/* ===== SIDE TICKER ===== */
+.facility__ticker-wrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 52px;
+  height: 100%;
+  z-index: 8;
+  overflow: hidden;
+  background: rgba(201,168,76,0.06);
+  border-left: 1px solid rgba(201,168,76,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facility__ticker-inner {
+  width: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  white-space: nowrap;
+}
+
+.facility__ticker-text {
+  display: flex;
+  gap: 3rem;
+  animation: facilityTicker 20s linear infinite;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  opacity: 0.7;
+}
+
+.facility__ticker-sep {
+  color: rgba(212,175,55,0.4);
+}
+
+/* ===== SCROLL HINT ===== */
+.facility__scroll-hint {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 2.5rem;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: facilityFadeIn 1s ease 2.5s forwards;
+}
+.facility__scroll-hint span {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.facility__scroll-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(180deg, rgba(212,175,55,0.8), transparent);
+  animation: facilityScrollBounce 1.8s ease-in-out infinite;
+}
+
+/* ===== COUNTER ===== */
+.facility__counter {
+  position: absolute;
+  top: 2rem;
+  right: 4.5rem;
+  z-index: 8;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.facility__counter.show { opacity: 1; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes facilityTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes facilityFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes facilityScrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .facility__line-h.visible { width: 30%; }
+  .facility__ticker-wrap { width: 36px; }
+  .facility__label--tr { right: 3rem; }
+  .facility__slide-info { right: 3rem; }
+  .facility__counter { right: 3.5rem; }
+  .facility__title-row {
+    font-size: clamp(2.2rem, 9vw, 4rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .facility__label--tr { display: none; }
+  .facility__ticker-wrap { display: none; }
+  .facility__label--bl { bottom: 6.5rem; }
+}

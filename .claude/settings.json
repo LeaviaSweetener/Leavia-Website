@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips /tmp/box_stevia.png --cropToHeightWidth 750 580 -o /tmp/box_stevia_crop.png)",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)"
+    ]
+  }
+}

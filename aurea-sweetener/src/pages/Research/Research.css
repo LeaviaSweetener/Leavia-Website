@@ -1,0 +1,119 @@
+.research__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.research__card {
+  background: var(--white);
+  border: 1px solid rgba(45,122,79,0.1);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  transition: all var(--transition-smooth);
+}
+.research__card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(45,122,79,0.2);
+}
+
+.research__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.research__category {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.research__year {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gray-400);
+}
+
+.research__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.research__authors {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.research__journal {
+  font-size: 0.75rem;
+  color: var(--green-emerald);
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.research__divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(45,122,79,0.2), transparent);
+  margin: 1.25rem 0;
+}
+
+.research__summary {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--gray-600);
+  margin-bottom: 1.25rem;
+}
+
+.research__finding {
+  background: rgba(45,122,79,0.04);
+  border-left: 3px solid var(--green-emerald);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.75rem 1rem;
+}
+
+.research__finding-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.research__finding-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  line-height: 1.4;
+}
+
+.research__disclaimer {
+  background: rgba(45,122,79,0.05);
+  border: 1px solid rgba(45,122,79,0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+}
+
+.research__disclaimer p {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--gray-500);
+}
+
+@media (max-width: 900px) {
+  .research__grid { grid-template-columns: 1fr; }
+}

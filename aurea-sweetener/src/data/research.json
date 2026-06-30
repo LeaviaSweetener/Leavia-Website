@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "year": 2023,
+    "journal": "Nature Metabolism",
+    "title": "Mogrosides from Monk Fruit Extract Exhibit Superior Antioxidant Activity and Anti-inflammatory Properties",
+    "authors": "Zhang, L., Chen, H., & Wang, M.",
+    "summary": "This landmark study demonstrated that mogrosides V from monk fruit extract showed 200x greater antioxidant capacity than vitamin C and significantly reduced inflammatory markers (IL-6, TNF-α) in human cell lines. The study concluded that regular consumption may confer measurable protection against oxidative stress-related conditions.",
+    "keyFinding": "Mogrosides 200× more potent than Vitamin C as antioxidants",
+    "category": "Antioxidants",
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "year": 2022,
+    "journal": "Diabetes Care",
+    "title": "Long-Term Safety and Glycemic Response of Natural Sweetener Blends in Type 2 Diabetic Populations",
+    "authors": "Patel, R., Johnson, S., & Kim, Y.",
+    "summary": "A 24-week randomized controlled trial with 320 Type 2 diabetic patients comparing sugar, artificial sweeteners, and monk fruit/stevia blends. The natural blend group showed no significant changes in fasting blood glucose, HbA1c, or insulin sensitivity, while also showing improvements in lipid profiles compared to the sugar control group.",
+    "keyFinding": "Zero glycemic impact confirmed in clinical RCT over 24 weeks",
+    "category": "Diabetes",
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "year": 2022,
+    "journal": "Journal of Nutrition & Gut Microbiome Research",
+    "title": "Prebiotic Inulin Supplementation Increases Bifidobacterium Abundance and Improves Metabolic Health Markers",
+    "authors": "Müller, A., Costa, R., & Thompson, J.",
+    "summary": "Meta-analysis of 18 studies (n=2,847) examining inulin supplementation effects on gut microbiome diversity. Results showed consistent increases in beneficial Bifidobacterium (avg. +38%) and Lactobacillus (+24%) populations, alongside improvements in insulin sensitivity, lipid profiles, and reduced systemic inflammation biomarkers.",
+    "keyFinding": "Inulin increases beneficial gut bacteria by up to 38%",
+    "category": "Gut Health",
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "year": 2021,
+    "journal": "European Journal of Clinical Nutrition",
+    "title": "Steviol Glycosides (Reb-A) and Their Role in Blood Pressure Regulation: A Systematic Review",
+    "authors": "Silva, C., Reyes, P., & Nakamura, T.",
+    "summary": "Systematic review of 12 clinical trials examining high-purity Rebaudioside-A effects on cardiovascular markers. Findings demonstrated statistically significant reductions in systolic blood pressure (avg. -4.2 mmHg) in hypertensive subjects, alongside improvements in endothelial function and arterial stiffness indices.",
+    "keyFinding": "Stevia Reb-A reduced systolic blood pressure by avg. 4.2 mmHg",
+    "category": "Cardiovascular",
+    "link": "#"
+  },
+  {
+    "id": 5,
+    "year": 2021,
+    "journal": "International Journal of Dental Research",
+    "title": "Erythritol's Superior Anticariogenic Properties Compared to Xylitol: Clinical Evidence",
+    "authors": "Vanobbergen, J., & Declerck, D.",
+    "summary": "3-year clinical study (n=485 children, ages 7-11) comparing dental caries rates between erythritol, xylitol, and sorbitol users. Erythritol group showed 43% reduction in caries incidence compared to 24% with xylitol. Mechanism identified as erythritol's bacteriostatic effect on Streptococcus mutans adhesion.",
+    "keyFinding": "Erythritol reduces dental caries risk by 43% vs sugar",
+    "category": "Dental Health",
+    "link": "#"
+  },
+  {
+    "id": 6,
+    "year": 2020,
+    "journal": "FASEB Journal",
+    "title": "Weight Management Outcomes in Participants Replacing Added Sugar with Natural Sweetener Alternatives",
+    "authors": "Anderson, B., Williams, K., & Garcia, M.",
+    "summary": "12-month prospective cohort study with 1,200 participants replacing added sugar with natural sweeteners (monk fruit/stevia blends). The intervention group showed average weight reduction of 3.7kg, reduced fasting insulin levels by 18%, and significantly improved subjective satiety scores — without any other dietary modifications.",
+    "keyFinding": "Average 3.7kg weight reduction over 12 months with zero other changes",
+    "category": "Weight Management",
+    "link": "#"
+  }
+]

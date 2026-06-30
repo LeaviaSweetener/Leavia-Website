@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(ls -lt /tmp/*.jpg /tmp/*.png /tmp/*.jpeg /tmp/*.webp 2>/dev/null | head -10; ls -lt ~/Downloads/*.jpg ~/Downloads/*.png ~/Downloads/*.jpeg 2>/dev/null | head -10)",
+      "Read(//private/tmp/**)",
+      "Read(//Users/k/Downloads/**)",
+      "Bash(cp /Users/k/Downloads/04.jpeg /Users/k/Downloads/aurea-sweetener/public/product-box-en.jpg)",
+      "Bash(cp /Users/k/Downloads/02.jpeg /Users/k/Downloads/aurea-sweetener/public/product-box-ar.jpg)",
+      "Bash(cp /Users/k/Downloads/07.jpeg /Users/k/Downloads/aurea-sweetener/public/product-family.jpg)",
+      "Bash(cp /Users/k/Downloads/01.jpeg /Users/k/Downloads/aurea-sweetener/public/product-sachets.jpg)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(npx playwright *)",
+      "Bash(ffmpeg -i /tmp/box_wide.png -vf \"crop=680:820:760:40\" /tmp/box_closeup.png -y)",
+      "Bash(sips /tmp/box_wide.png --cropToHeightWidth 820 680 --padToHeightWidth 820 680 --padColor FFFFFF -o /tmp/box_closeup.png)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(curl -s http://localhost:5179)",
+      "Bash(which chromium-cli *)",
+      "Read(//usr/local/bin/**)",
+      "Bash(screencapture -x /tmp/leavia-logo-check.png)"
+    ]
+  }
+}

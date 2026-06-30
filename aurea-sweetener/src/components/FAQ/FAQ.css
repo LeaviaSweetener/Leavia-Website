@@ -1,0 +1,98 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq__item {
+  background: var(--white);
+  border: 1px solid rgba(29, 120, 59, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.faq__item--open {
+  border-color: rgba(201, 168, 76, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq__q-text {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  line-height: 1.4;
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  color: var(--green-emerald);
+  transition: transform var(--transition-base);
+}
+
+.faq__item--open .faq__icon {
+  transform: rotate(180deg);
+  color: var(--gold-warm);
+}
+
+.faq__answer {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.faq__answer-inner {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.faq__category {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.75rem;
+}
+
+.faq__answer-inner p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--gray-600);
+}
+
+/* ===== DARK VARIANT (for dark backgrounds) ===== */
+.section--dark .faq__item {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.07);
+}
+
+.section--dark .faq__item--open {
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(255,255,255,0.06);
+}
+
+.section--dark .faq__q-text {
+  color: rgba(255,255,255,0.85);
+}
+
+.section--dark .faq__answer-inner p {
+  color: rgba(255,255,255,0.6);
+}

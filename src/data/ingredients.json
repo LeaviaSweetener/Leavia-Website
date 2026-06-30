@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Organic Monk Fruit Extract",
+    "latin": "Siraitia grosvenorii",
+    "percentage": 35,
+    "origin": "Southern China",
+    "description": "The crown jewel of natural sweeteners. Monk fruit has been used in Traditional Chinese Medicine for centuries. Its natural sweetness comes from mogrosides — powerful antioxidants, not sugars — delivering 150–200x the sweetness of cane sugar with zero calories and zero glycemic impact.",
+    "benefits": ["Zero calories", "Potent antioxidants", "Anti-inflammatory", "Zero glycemic index"],
+    "icon": "🍈",
+    "color": "#f0d060",
+    "bgColor": "#14542A"
+  },
+  {
+    "id": 2,
+    "name": "Organic Stevia Leaf Extract",
+    "latin": "Stevia rebaudiana",
+    "percentage": 30,
+    "origin": "Paraguay & Brazil",
+    "description": "Derived from the leaves of the Stevia plant, native to South America. Indigenous peoples have used stevia for over 1,500 years. Our extraction process captures only the purest steviol glycosides — specifically Reb-A 99%, the cleanest, least bitter form — for perfect sweetness.",
+    "benefits": ["FDA GRAS status", "Blood sugar neutral", "Anti-bacterial properties", "Regulates blood pressure"],
+    "icon": "🌿",
+    "color": "#4caf50",
+    "bgColor": "#0b2e15"
+  },
+  {
+    "id": 3,
+    "name": "Organic Inulin",
+    "latin": "Chichorium intybus",
+    "percentage": 20,
+    "origin": "Belgium & Netherlands",
+    "description": "A naturally occurring prebiotic fiber extracted from chicory root. Inulin acts as the perfect carrier for our sweetener blend, providing a clean, sugar-like bulk and texture while actively feeding beneficial Bifidobacteria and Lactobacillus strains in your gut microbiome.",
+    "benefits": ["Prebiotic fiber", "Gut health support", "Enhances texture", "Mineral absorption"],
+    "icon": "🌾",
+    "color": "#c9a84c",
+    "bgColor": "#14542A"
+  },
+  {
+    "id": 4,
+    "name": "Organic Erythritol",
+    "latin": "Fermented glucose",
+    "percentage": 10,
+    "origin": "Japan",
+    "description": "A naturally fermented sugar alcohol found in grapes, pears, and melons. Erythritol provides 70% of sugar's sweetness with only 0.24 calories per gram and is almost entirely absorbed before reaching the colon — meaning no digestive discomfort, unlike other sugar alcohols.",
+    "benefits": ["Tooth-friendly", "Non-laxative", "High digestive tolerance", "Complements other sweeteners"],
+    "icon": "🍇",
+    "color": "#81c784",
+    "bgColor": "#14542A"
+  },
+  {
+    "id": 5,
+    "name": "Organic Vanilla Extract",
+    "latin": "Vanilla planifolia",
+    "percentage": 5,
+    "origin": "Madagascar",
+    "description": "Our secret finishing touch. Authentic Madagascar Bourbon vanilla extract rounds off the sweetness profile, adding warmth and depth that makes Leavia taste remarkably close to natural cane sugar. Vanilla also contains trace antioxidants and has natural calming properties.",
+    "benefits": ["Natural flavor enhancement", "Antioxidant properties", "Mood balancing", "Rounds sweetness profile"],
+    "icon": "🌸",
+    "color": "#f0c040",
+    "bgColor": "#0b2e15"
+  }
+]

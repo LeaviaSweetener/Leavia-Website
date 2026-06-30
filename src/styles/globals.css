@@ -1,0 +1,424 @@
+/* ============================================================
+   Leavia – Global Design System
+   Premium Natural Sweetener Brand
+   ============================================================ */
+
+/* Carlito — metric-compatible Calibri clone, loaded from Google Fonts */
+:root {
+  --font-display: 'Carlito', 'Calibri', 'Playfair Display', Georgia, serif;
+  --font-serif:   'Carlito', 'Calibri', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Carlito', 'Calibri', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-arabic:  'Carlito', 'Calibri', 'Cairo', 'Segoe UI', Arial, sans-serif;
+}
+
+:root {
+  /* Core Brand Colors */
+  --green-deepest: #060f09;
+  --green-deep: #0b2e15;
+  --green-forest: #14542A;
+  --green-rich: #14542A;
+  --green-emerald: #1D783B;
+  --green-mid: #27a04d;
+  --green-bright: #4caf50;
+  --green-light: #81c784;
+  --green-pale: #c8e6c9;
+  --green-mist: #e8f5e9;
+
+  /* Gold Palette */
+  --gold-dark: #8b6914;
+  --gold-luxury: #c9a84c;
+  --gold-warm: #d4af37;
+  --gold-bright: #e8c44a;
+  --gold-light: #f0d060;
+  --gold-pale: #fef9e7;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --cream: #fafaf5;
+  --ivory: #f5f0e8;
+  --pearl: #f0ede5;
+  --gray-100: #f7f7f5;
+  --gray-200: #ebebeb;
+  --gray-300: #d4d4d4;
+  --gray-400: #a8a8a8;
+  --gray-500: #717171;
+  --gray-600: #4a4a4a;
+  --gray-700: #333333;
+  --gray-800: #1a1a1a;
+  --black: #060606;
+
+  /* Glassmorphism */
+  --glass-white: rgba(255, 255, 255, 0.08);
+  --glass-white-hover: rgba(255, 255, 255, 0.14);
+  --glass-white-strong: rgba(255, 255, 255, 0.18);
+  --glass-dark: rgba(20, 84, 42, 0.7);
+  --glass-dark-strong: rgba(20, 84, 42, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-gold: rgba(201, 168, 76, 0.3);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #060f09 0%, #0b2e15 40%, #14542A 70%, #14542A 100%);
+  --gradient-green: linear-gradient(135deg, #14542A, #1D783B);
+  --gradient-emerald: linear-gradient(135deg, #1D783B, #4caf50);
+  --gradient-gold: linear-gradient(135deg, #c9a84c, #f0d060, #c9a84c);
+  --gradient-gold-vertical: linear-gradient(180deg, #f0d060 0%, #c9a84c 50%, #8b6914 100%);
+  --gradient-section-light: linear-gradient(180deg, #fafaf5 0%, #e8f5e9 100%);
+  --gradient-section-dark: linear-gradient(180deg, #0b2e15 0%, #14542A 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(20, 84, 42, 0.08);
+  --shadow-md: 0 8px 32px rgba(20, 84, 42, 0.12);
+  --shadow-lg: 0 16px 64px rgba(20, 84, 42, 0.18);
+  --shadow-xl: 0 32px 128px rgba(20, 84, 42, 0.25);
+  --shadow-gold: 0 8px 32px rgba(201, 168, 76, 0.25);
+  --shadow-gold-glow: 0 0 60px rgba(201, 168, 76, 0.35), 0 0 120px rgba(201, 168, 76, 0.15);
+  --shadow-green-glow: 0 0 60px rgba(29, 120, 59, 0.4);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.1);
+
+  /* Font Sizes (fluid) */
+  --text-xs: clamp(0.7rem, 1vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 1.2vw, 0.875rem);
+  --text-base: clamp(0.9rem, 1.5vw, 1rem);
+  --text-lg: clamp(1rem, 1.8vw, 1.125rem);
+  --text-xl: clamp(1.1rem, 2vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 3vw, 1.875rem);
+  --text-4xl: clamp(1.875rem, 4vw, 2.25rem);
+  --text-5xl: clamp(2.25rem, 5vw, 3rem);
+  --text-6xl: clamp(2.5rem, 6vw, 3.75rem);
+  --text-7xl: clamp(3rem, 7vw, 4.5rem);
+  --text-8xl: clamp(3.5rem, 9vw, 6rem);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-2xl: 48px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s ease;
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-wide: 1400px;
+  --nav-height: 80px;
+  --section-padding: clamp(4rem, 10vw, 8rem);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  font-family: 'Carlito', 'Calibri', var(--font-sans);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--gray-700);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arabic / RTL support */
+:lang(ar) body,
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] .nav__logo-leavia {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .nav__logo-sub {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .nav__link,
+[dir="rtl"] .nav__cta {
+  letter-spacing: 0;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  color: var(--green-deep);
+  font-weight: 700;
+}
+
+h1 { font-size: var(--text-7xl); }
+h2 { font-size: var(--text-5xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+h6 { font-size: var(--text-lg); }
+
+p {
+  line-height: 1.75;
+  color: var(--gray-600);
+}
+
+.text-serif {
+  font-family: var(--font-serif);
+}
+
+.text-display {
+  font-family: var(--font-display);
+}
+
+/* ===== LAYOUT UTILITIES ===== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+.section {
+  padding: var(--section-padding) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section--dark {
+  background: var(--gradient-section-dark);
+  color: var(--white);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--white);
+}
+
+.section--light {
+  background: var(--cream);
+}
+
+.section--cream {
+  background: var(--gradient-section-light);
+}
+
+/* ===== FLEX & GRID HELPERS ===== */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+.text-center { text-align: center; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+
+/* ===== GOLD TEXT ===== */
+.text-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold-solid {
+  color: var(--gold-warm);
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-card--dark {
+  background: rgba(20, 84, 42, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+/* ===== GRADIENT BORDERS ===== */
+.gold-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.gold-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--gradient-gold);
+  z-index: -1;
+}
+
+/* ===== SECTION DIVIDER ===== */
+.divider-gold {
+  width: 60px;
+  height: 2px;
+  background: var(--gradient-gold);
+  margin: var(--space-6) auto;
+  border-radius: 2px;
+}
+
+.divider-gold--left {
+  margin-left: 0;
+}
+
+/* ===== OVERLINE TAG ===== */
+.overline {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+}
+
+.overline--dark {
+  color: var(--green-emerald);
+}
+
+/* ===== SCROLL REVEAL BASE ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== PAGE TRANSITION ===== */
+.page-wrapper {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--green-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: var(--green-deep);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 70px;
+    --section-padding: clamp(3rem, 8vw, 5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 3rem;
+  }
+}

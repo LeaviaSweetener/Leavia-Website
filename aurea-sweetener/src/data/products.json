@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "name": "Leavia Trial Jar",
+    "size": "150g",
+    "servings": "~75 servings",
+    "price": 18.99,
+    "pricePerServing": 0.25,
+    "badge": null,
+    "description": "Perfect introduction to Leavia. Discover how nature's golden sweetener transforms your daily rituals.",
+    "features": ["75 servings", "Premium glass jar", "Free recipe booklet", "30-day happiness guarantee"],
+    "recommended": false,
+    "color": "#1D783B"
+  },
+  {
+    "id": 2,
+    "name": "Leavia Standard Jar",
+    "size": "300g",
+    "servings": "~150 servings",
+    "price": 32.99,
+    "pricePerServing": 0.22,
+    "badge": "Most Popular",
+    "description": "Our most beloved size. Six months of everyday sweetening for the committed wellness enthusiast.",
+    "features": ["150 servings", "Premium glass jar", "Digital recipe collection", "30-day happiness guarantee", "Priority customer support"],
+    "recommended": true,
+    "color": "#c9a84c"
+  },
+  {
+    "id": 3,
+    "name": "Leavia Family Jar",
+    "size": "600g",
+    "servings": "~300 servings",
+    "price": 54.99,
+    "pricePerServing": 0.18,
+    "badge": "Best Value",
+    "description": "Share the golden secret with your whole family. A full year of healthier sweetening in one premium jar.",
+    "features": ["300 servings", "Premium glass jar", "Full recipe digital book", "30-day happiness guarantee", "Priority customer support", "Free wellness consultation"],
+    "recommended": false,
+    "color": "#14542A"
+  },
+  {
+    "id": 4,
+    "name": "Leavia Wellness Bundle",
+    "size": "3 × 300g",
+    "servings": "~450 servings",
+    "price": 84.99,
+    "originalPrice": 98.97,
+    "pricePerServing": 0.19,
+    "badge": "Save 15%",
+    "description": "The ultimate Leavia collection. Three premium jars — gift one, share one, keep one for yourself.",
+    "features": ["450 servings", "3 premium glass jars", "Full recipe digital book", "30-day happiness guarantee", "Priority customer support", "Free wellness consultation", "Exclusive member community access", "Free shipping always"],
+    "recommended": false,
+    "color": "#d4af37"
+  }
+]
