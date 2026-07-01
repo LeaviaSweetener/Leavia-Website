@@ -40,12 +40,37 @@ function getIcon2() {
   return (
     <svg viewBox="0 0 48 48" fill="none">
       <circle cx="24" cy="24" r="22" stroke="url(#vp3)" strokeWidth="1.5"/>
-      <path d="M16 24 A8 8 0 0 1 32 24" stroke="url(#vp3)" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      <path d="M14 30 Q24 38 34 30" stroke="url(#vp3)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-      <circle cx="24" cy="18" r="4" fill="url(#vp3)" opacity="0.7"/>
+      {/* steam */}
+      <path d="M19 13 Q20 11 19 9" stroke="url(#vp3)" strokeWidth="1.3" strokeLinecap="round" fill="none"/>
+      <path d="M24 13 Q25 11 24 9" stroke="url(#vp3)" strokeWidth="1.3" strokeLinecap="round" fill="none"/>
+      <path d="M29 13 Q30 11 29 9" stroke="url(#vp3)" strokeWidth="1.3" strokeLinecap="round" fill="none"/>
+      {/* cup body */}
+      <path d="M14 16 L16 34 Q16 36 18 36 L30 36 Q32 36 32 34 L34 16 Z" fill="url(#vp3g)" opacity="0.25" stroke="url(#vp3)" strokeWidth="1.3" strokeLinejoin="round"/>
+      {/* handle */}
+      <path d="M34 20 Q40 20 40 26 Q40 32 34 32" stroke="url(#vp3)" strokeWidth="1.3" fill="none" strokeLinecap="round"/>
+      {/* saucer */}
+      <path d="M11 37 L37 37" stroke="url(#vp3)" strokeWidth="1.3" strokeLinecap="round"/>
       <defs>
-        <linearGradient id="vp3" x1="14" y1="14" x2="34" y2="38">
+        <linearGradient id="vp3" x1="14" y1="9" x2="34" y2="38">
           <stop stopColor="#1D783B"/><stop offset="1" stopColor="#c9a84c"/>
+        </linearGradient>
+        <linearGradient id="vp3g" x1="14" y1="16" x2="34" y2="36">
+          <stop stopColor="#1D783B"/><stop offset="1" stopColor="#c9a84c"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
+function getIcon3() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" stroke="url(#vp4)" strokeWidth="1.5"/>
+      <path d="M24 14 L26 20 L32 20 L27 24 L29 30 L24 27 L19 30 L21 24 L16 20 L22 20 Z" fill="url(#vp4)" opacity="0.85"/>
+      <path d="M18 36 L30 36" stroke="url(#vp4)" strokeWidth="1.5" strokeLinecap="round"/>
+      <defs>
+        <linearGradient id="vp4" x1="16" y1="14" x2="32" y2="36">
+          <stop stopColor="#c9a84c"/><stop offset="1" stopColor="#1D783B"/>
         </linearGradient>
       </defs>
     </svg>
@@ -73,6 +98,12 @@ export default function ValueProp() {
       titleKey: 'vp_prop_2_title',
       descKey: 'vp_prop_2_desc',
       highlightKey: 'vp_prop_2_highlight',
+    },
+    {
+      icon: getIcon3(),
+      titleKey: 'vp_prop_3_title',
+      descKey: 'vp_prop_3_desc',
+      highlightKey: 'vp_prop_3_highlight',
     },
   ]
 
@@ -109,17 +140,6 @@ export default function ValueProp() {
           ))}
         </div>
 
-        {/* Bottom feature strip */}
-        <ScrollReveal delay={0.4}>
-          <div className="valueprop__strip">
-            {STRIP.map((item, i) => (
-              <div key={i} className="valueprop__strip-item">
-                <span className="valueprop__strip-num">{item.num}</span>
-                <span className="valueprop__strip-label">{t(item.labelKey)}</span>
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   )

@@ -25,33 +25,7 @@ export default function CTA() {
 
             <p className="cta__subtitle">{t('cta_subtitle')}</p>
 
-            <div className="cta__offer">
-              <div className="cta__offer-item">
-                <span className="cta__offer-icon">🚚</span>
-                <span>{t('cta_offer_shipping')}</span>
-              </div>
-              <div className="cta__offer-item">
-                <span className="cta__offer-icon">✅</span>
-                <span>{t('cta_offer_guarantee')}</span>
-              </div>
-              <div className="cta__offer-item">
-                <span className="cta__offer-icon">🌿</span>
-                <span>{t('cta_offer_natural')}</span>
-              </div>
-              <div className="cta__offer-item">
-                <span className="cta__offer-icon">♻️</span>
-                <span>{t('cta_offer_eco')}</span>
-              </div>
-            </div>
-
             <div className="cta__actions">
-              <Link to="/purchase" className="cta__btn cta__btn--primary">
-                <span>{t('cta_btn_shop')}</span>
-                <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
-                  <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <span className="cta__btn-shine" />
-              </Link>
               <Link to="/product" className="cta__btn cta__btn--ghost">
                 {t('cta_btn_learn')}
               </Link>

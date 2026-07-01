@@ -1,6 +1,7 @@
 import { useLanguage } from '../../context/LanguageContext'
 import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
+import CertCarousel from '../../components/CertCarousel/CertCarousel'
 import CTA from '../../components/CTA/CTA'
 import './Research.css'
 
@@ -27,6 +28,8 @@ export default function Research() {
 
   return (
     <div className="research page-wrapper">
+
+      {/* ── Hero ── */}
       <section className="section section--dark" style={{ paddingTop: '8rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden', background: 'var(--gradient-hero)' }}>
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <ScrollReveal>
@@ -41,6 +44,21 @@ export default function Research() {
         </div>
       </section>
 
+      {/* ── Certifications Carousel ── */}
+      <section className="section section--dark" style={{ background: 'var(--gradient-hero)', paddingTop: '5rem', paddingBottom: '2rem' }}>
+        <div className="container">
+          <ScrollReveal>
+            <SectionTitle
+              overline={t('cert_carousel_overline')}
+              title={t('cert_carousel_title')}
+              subtitle={t('cert_carousel_subtitle')}
+            />
+          </ScrollReveal>
+          <CertCarousel />
+        </div>
+      </section>
+
+      {/* ── Research Cards ── */}
       <section className="section section--cream">
         <div className="container">
           <SectionTitle

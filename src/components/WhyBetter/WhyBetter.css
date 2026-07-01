@@ -184,3 +184,69 @@
     text-align: left;
   }
 }
+
+/* ===== DIFF TABLE ===== */
+.why-better__diff-wrap {
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.why-better__diff-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: white;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.why-better__diff-scroll {
+  overflow-x: auto;
+}
+
+.why-better__diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.why-better__diff-table thead tr {
+  border-bottom: 2px solid rgba(201, 168, 76, 0.4);
+}
+
+.why-better__diff-table th {
+  padding: 0.75rem 1.1rem;
+  text-align: start;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+
+.why-better__diff-th--leavia {
+  color: var(--gold-warm) !important;
+}
+
+.why-better__diff-table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.75);
+  vertical-align: middle;
+}
+
+.why-better__diff-criteria {
+  font-weight: 600;
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.why-better__diff-leavia {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
+
+.why-better__diff-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}

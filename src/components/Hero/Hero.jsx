@@ -95,23 +95,6 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Trust badges */}
-          <div className="hero__trust">
-            {[
-              'hero_badge_usda',
-              'hero_badge_nongmo',
-              'hero_badge_vegan',
-              'hero_badge_keto',
-              'hero_badge_diabetic',
-            ].map((key) => (
-              <span key={key} className="hero__badge">
-                <svg viewBox="0 0 12 12" fill="none" width="10" height="10">
-                  <path d="M2 6l3 3 5-5" stroke="#4caf50" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                {t(key)}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Right — 3D Product */}

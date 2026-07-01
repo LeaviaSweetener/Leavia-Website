@@ -13,31 +13,35 @@ export default function BrandSection() {
 
           {/* Leaf — falls from top on load */}
           <span className="brand__leaf" aria-hidden="true">
-            <svg viewBox="0 0 24 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Broad rounded leaf body matching the logo leaf shape */}
-              <path d="M12 2 C16.5 3.5 21 10 21 19.5 C21 29.5 17 38.5 12 41 C7 38.5 3 29.5 3 19.5 C3 10 7.5 3.5 12 2Z" fill="currentColor"/>
-              {/* Stem */}
-              <line x1="12" y1="41" x2="12" y2="44.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <svg viewBox="0 0 28 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Leaf body — narrower, elongated, outline only */}
+              <path
+                d="M14 3 C18 5 22 12.5 22 22 C22 33 18 42 14 45 C10 42 6 33 6 22 C6 12.5 10 5 14 3Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.3"
+                strokeLinejoin="round"
+              />
               {/* Central midrib */}
-              <line x1="12" y1="3" x2="12" y2="40.5" stroke="white" strokeWidth="0.9" strokeOpacity="0.4" strokeLinecap="round"/>
-              {/* Lateral veins — right side */}
-              <path d="M12 7 Q16 6.5 18.5 8.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 11 Q17 10.5 20 13" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 15.5 Q17.5 15 20.5 17.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 20 Q17.5 19.5 20.5 21.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 24.5 Q17 24 19.5 26" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 28.5 Q16 28 18.5 30" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 32.5 Q15 32 16.5 33.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 36 Q14 35.5 15 37" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              {/* Lateral veins — left side */}
-              <path d="M12 7 Q8 6.5 5.5 8.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 11 Q7 10.5 4 13" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 15.5 Q6.5 15 3.5 17.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 20 Q6.5 19.5 3.5 21.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 24.5 Q7 24 4.5 26" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 28.5 Q8 28 5.5 30" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 32.5 Q9 32 7.5 33.5" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
-              <path d="M12 36 Q10 35.5 9 37" stroke="white" strokeWidth="0.65" strokeOpacity="0.3" strokeLinecap="round" fill="none"/>
+              <line x1="14" y1="3.5" x2="14" y2="45" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+              {/* Lateral veins — right */}
+              <path d="M14 8   Q17.5 8.5  20 11"   stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 13  Q18.5 14   21.5 17"  stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 18  Q19   19   21.5 22"  stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 23  Q19   24   21.5 27"  stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 28  Q18   29   20.5 32"  stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 33  Q17   34   19.5 37"  stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 38  Q16   39   17.5 41.5" stroke="currentColor" strokeWidth="0.55" strokeLinecap="round"/>
+              {/* Lateral veins — left */}
+              <path d="M14 8   Q10.5 8.5  8 11"    stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 13  Q9.5  14   6.5 17"   stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 18  Q9    19   6.5 22"   stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 23  Q9    24   6.5 27"   stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 28  Q10   29   7.5 32"   stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 33  Q11   34   8.5 37"   stroke="currentColor" strokeWidth="0.62" strokeLinecap="round"/>
+              <path d="M14 38  Q12   39   10.5 41.5" stroke="currentColor" strokeWidth="0.55" strokeLinecap="round"/>
+              {/* Stem */}
+              <line x1="14" y1="45" x2="14" y2="50" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
           </span>
 

@@ -75,13 +75,6 @@ export default function Navigation() {
 
           {/* CTA + Language toggle */}
           <div className="nav__actions">
-            <Link to="/purchase" className="nav__cta">
-              <span>{t('nav_shop_now')}</span>
-              <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
-
             {/* Language toggle button */}
             <button
               className="nav__lang-btn"

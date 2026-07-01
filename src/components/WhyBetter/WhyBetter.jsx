@@ -114,6 +114,35 @@ export default function WhyBetter() {
           </div>
         )}
 
+        {/* Diff Table — always visible below tabs */}
+        <ScrollReveal>
+          <div className="why-better__diff-wrap">
+            <h3 className="why-better__diff-title">{t('wb_diff_title')}</h3>
+            <div className="why-better__diff-scroll">
+              <table className="why-better__diff-table">
+                <thead>
+                  <tr>
+                    <th>{t('wb_diff_th_criteria')}</th>
+                    <th className="why-better__diff-th--leavia">{t('wb_diff_th_leavia')}</th>
+                    <th>{t('wb_diff_th_sugar')}</th>
+                    <th>{t('wb_diff_th_artificial')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[1,2,3,4,5,6].map(n => (
+                    <tr key={n}>
+                      <td className="why-better__diff-criteria">{t(`wb_diff_r${n}_criteria`)}</td>
+                      <td className="why-better__diff-leavia">{t(`wb_diff_r${n}_leavia`)}</td>
+                      <td>{t(`wb_diff_r${n}_sugar`)}</td>
+                      <td>{t(`wb_diff_r${n}_art`)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </ScrollReveal>
+
         {/* Comparison Table Panel */}
         {activeTab === 'table' && (
           <ScrollReveal>

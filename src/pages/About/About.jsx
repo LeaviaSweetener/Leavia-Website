@@ -22,7 +22,7 @@ export default function About() {
           <ScrollReveal>
             <span className="overline">{t('about_overline')}</span>
             <h1 style={{ color: 'white', marginTop: '1rem', marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
-              {t('about_title')} <em style={{ fontStyle: 'italic', background: 'var(--gradient-gold)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{t('about_title_em')}</em>
+              {t('about_title')} <em style={{ fontStyle: 'normal', background: 'var(--gradient-gold)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{t('about_title_em')}</em>
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'var(--text-lg)', maxWidth: '640px', margin: '0 auto', fontFamily: 'var(--font-serif)', lineHeight: '1.8' }}>
               {t('about_subtitle')}
@@ -48,7 +48,11 @@ export default function About() {
                 <h2 style={{ margin: '1rem 0 1.5rem' }}>{t('about_mission_title')}</h2>
                 <p style={{ marginBottom: '1.25rem' }}>{t('about_mission_p1')}</p>
                 <p style={{ marginBottom: '1.25rem' }}>{t('about_mission_p2')}</p>
-                <p>{t('about_mission_p3')}</p>
+                <p style={{ marginBottom: '2.5rem' }}>{t('about_mission_p3')}</p>
+
+                <span className="overline--dark" style={{ fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--green-emerald)' }}>{t('about_vision_overline')}</span>
+                <h2 style={{ margin: '1rem 0 1.5rem' }}>{t('about_vision_title')}</h2>
+                <p>{t('about_vision_p1')}</p>
               </div>
             </ScrollReveal>
           </div>
@@ -66,6 +70,7 @@ export default function About() {
                   <div className="about__timeline-year">
                     {item.year}
                     {item.label && <span className="about__timeline-label">{item.label}</span>}
+                    {item.desc && <p className="about__timeline-year-desc">{item.desc}</p>}
                   </div>
                   <div className="about__timeline-content">
                     {item.image ? (
@@ -98,29 +103,6 @@ export default function About() {
                   <h3>{member.name}</h3>
                   <span className="about__team-role">{member.role}</span>
                   <p>{member.bio}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sustainability */}
-      <section id="sustainability" className="section">
-        <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-          <SectionTitle
-            overline={t('about_sust_overline')}
-            title={t('about_sust_title')}
-            theme="light"
-            subtitle={t('about_sust_subtitle')}
-          />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem', marginTop: '1rem' }}>
-            {SUST_STATS.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.1} direction="scale">
-                <div className="glass-card--dark" style={{ padding: '1.75rem 1.25rem', borderRadius: '20px', textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{item.icon}</div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 800, background: 'var(--gradient-gold)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{item.stat}</div>
-                  <div style={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginTop: '0.25rem' }}>{t(item.labelKey)}</div>
                 </div>
               </ScrollReveal>
             ))}

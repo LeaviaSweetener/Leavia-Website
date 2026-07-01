@@ -33,9 +33,6 @@ export default function Purchase() {
             <h1 style={{ color: 'white', marginTop: '1rem', marginBottom: '1rem', fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}>
               {t('pur_title')}
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-serif)', fontSize: '1.05rem' }}>
-              {t('pur_subtitle')}
-            </p>
           </ScrollReveal>
         </div>
       </section>

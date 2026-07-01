@@ -1,0 +1,157 @@
+.cert-carousel {
+  position: relative;
+  user-select: none;
+  cursor: grab;
+  padding: 2rem 0 4rem;
+  touch-action: none;
+}
+
+.cert-carousel:active {
+  cursor: grabbing;
+}
+
+/* ── Hint ── */
+.cert-carousel__hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 2.5rem;
+  pointer-events: none;
+}
+
+/* ── 3D Scene ── */
+.cert-carousel__scene {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.cert-carousel__stage {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── Cards ── */
+.cert-carousel__card {
+  position: absolute;
+  left: -115px;
+  top: -160px;
+  width: 230px;
+  height: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: #f5f0e8;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+  cursor: pointer;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cert-carousel__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  padding: 6px;
+}
+
+.cert-carousel__placeholder {
+  display: none; /* shown via JS onError */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  background: rgba(20,84,42,0.25);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.cert-carousel__placeholder span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(201,168,76,0.7);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+.cert-carousel__card--active {
+  border-color: rgba(201,168,76,0.5);
+  box-shadow:
+    0 0 0 1px rgba(201,168,76,0.2),
+    0 8px 32px rgba(0,0,0,0.35),
+    0 0 60px rgba(201,168,76,0.08);
+}
+
+/* ── Footer (label + dots) ── */
+.cert-carousel__footer {
+  text-align: center;
+  margin-top: 3rem;
+  pointer-events: none;
+}
+
+.cert-carousel__label {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+  min-height: 1.4em;
+  transition: opacity 0.3s ease;
+}
+
+.cert-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  pointer-events: all;
+}
+
+.cert-carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.cert-carousel__dot--active {
+  width: 22px;
+  border-radius: 3px;
+  background: var(--gold-warm);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .cert-carousel__scene {
+    height: 340px;
+  }
+  .cert-carousel__card {
+    width: 185px;
+    height: 260px;
+    left: -92px;
+    top: -130px;
+  }
+}

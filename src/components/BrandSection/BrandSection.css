@@ -54,6 +54,8 @@
 .brand__leaf svg {
   width: 100%;
   height: 100%;
+  transform: rotate(-14deg);
+  transform-origin: 50% 88%;
 }
 
 /* ── Brand name ─────────────────────────────────── */
@@ -81,7 +83,7 @@
 }
 
 .brand__name:hover {
-  color: #fff5a0;
+  color: #1D783B;
   text-shadow:
     0 0 2px  #ffffff,
     0 0 8px  rgba(255, 245, 140, 1),

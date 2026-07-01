@@ -379,31 +379,57 @@ function createFrontTexture() {
   drawStevia(ctx, 790, 1170, 280)
 
   // ── NUTRITION TABLE ───────────────────────────────────────
-  ctx.fillStyle = 'rgba(255,255,255,0.88)'
-  ctx.fillRect(50, 910, 480, 350)
-  ctx.strokeStyle = '#b8d8b8'; ctx.lineWidth = 1; ctx.strokeRect(50, 910, 480, 350)
-
-  ctx.fillStyle = TXT; ctx.font = 'bold 19px Arial, sans-serif'; ctx.textAlign = 'center'
-  ctx.fillText('Nutrition Facts - Per 100g', 290, 938)
-  ctx.strokeStyle = TXT; ctx.lineWidth = 1
-  ctx.beginPath(); ctx.moveTo(50, 948); ctx.lineTo(530, 948); ctx.stroke()
-
-  const rows = [
-    ['Energy',        '0 kcal'], ['Total Fat',    '0 g'],
-    ['Carbohydrates', '100 g'],  ['of which Sugar','0 g'],
-    ['Protein',       '0 g'],   ['Salt',          '0 g'],
-    ['Fibre',         '0 g'],
+  const nutRows = [
+    ['Calories',        '0 Kcal', '0.0%'],
+    ['Total Fat',       '0 g',    '0.0%'],
+    ['Saturated Fat',   '0 g',    '0.0%'],
+    ['Trans Fat',       '0 g',    '0.0%'],
+    ['Monounsaturated', '0 g',    '0.0%'],
+    ['Polyunsaturated', '0 g',    '0.0%'],
+    ['Cholesterol',     '0 mg',   '0.0%'],
+    ['Sodium',          '0 mg',   '0.0%'],
+    ['Carbohydrate',    '7 g',    '3%'  ],
+    ['Sugars',          '0 g',    '0.0%'],
+    ['Added Sugar',     '0 g',    '0.0%'],
+    ['Protein',         '0 g',    '0.0%'],
   ]
-  ctx.font = '400 18px Arial, sans-serif'
-  rows.forEach(([k, v], i) => {
-    const ry = 958 + i * 40
-    ctx.fillStyle = i % 2 === 0 ? 'rgba(200,235,205,0.45)' : 'transparent'
-    ctx.fillRect(51, ry, 478, 38)
-    ctx.fillStyle = '#1a3a22'; ctx.textAlign = 'left';  ctx.fillText(k, 68,  ry + 25)
-    ctx.fillStyle = TXT;       ctx.textAlign = 'right'; ctx.fillText(v, 522, ry + 25)
+  const NUT_X = 50, NUT_Y = 910, NUT_W = 480, ROW_H = 32
+  const NUT_H = 58 + nutRows.length * ROW_H
+  const DIV_X = NUT_X + NUT_W / 2
+
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'
+  ctx.fillRect(NUT_X, NUT_Y, NUT_W, NUT_H)
+  ctx.strokeStyle = '#b8d8b8'; ctx.lineWidth = 1
+  ctx.strokeRect(NUT_X, NUT_Y, NUT_W, NUT_H)
+
+  ctx.fillStyle = TXT; ctx.font = 'bold 20px Arial, sans-serif'; ctx.textAlign = 'center'
+  ctx.fillText('Nutrition Facts', NUT_X + NUT_W / 2, NUT_Y + 24)
+  ctx.fillStyle = '#556655'; ctx.font = '400 14px Arial, sans-serif'
+  ctx.fillText('Per Serving  /  لكل حصة', NUT_X + NUT_W / 2, NUT_Y + 44)
+
+  ctx.strokeStyle = TXT; ctx.lineWidth = 1.5
+  ctx.beginPath(); ctx.moveTo(NUT_X, NUT_Y + 58); ctx.lineTo(NUT_X + NUT_W, NUT_Y + 58); ctx.stroke()
+
+  ctx.fillStyle = '#1a3a22'; ctx.font = 'bold 13px Arial, sans-serif'; ctx.textAlign = 'center'
+  ctx.fillText('Daily Value', DIV_X + (NUT_X + NUT_W - DIV_X) / 2, NUT_Y + 53)
+
+  ctx.font = '400 15px Arial, sans-serif'
+  nutRows.forEach(([label, val, dv], i) => {
+    const ry = NUT_Y + 58 + i * ROW_H
+    ctx.fillStyle = i % 2 === 0 ? 'rgba(200,235,205,0.40)' : 'rgba(255,255,255,0)'
+    ctx.fillRect(NUT_X + 1, ry, NUT_W - 2, ROW_H)
+    ctx.fillStyle = '#1a3a22'; ctx.textAlign = 'left'
+    ctx.fillText(label, NUT_X + 10, ry + ROW_H * 0.68)
+    ctx.fillStyle = TXT; ctx.textAlign = 'right'
+    ctx.fillText(val, DIV_X - 8, ry + ROW_H * 0.68)
+    ctx.fillStyle = TXT; ctx.textAlign = 'center'
+    ctx.fillText(dv, DIV_X + (NUT_X + NUT_W - DIV_X) / 2, ry + ROW_H * 0.68)
     ctx.strokeStyle = '#cde8cd'; ctx.lineWidth = 0.5
-    ctx.beginPath(); ctx.moveTo(51, ry + 38); ctx.lineTo(529, ry + 38); ctx.stroke()
+    ctx.beginPath(); ctx.moveTo(NUT_X + 1, ry + ROW_H); ctx.lineTo(NUT_X + NUT_W - 1, ry + ROW_H); ctx.stroke()
   })
+
+  ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth = 1
+  ctx.beginPath(); ctx.moveTo(DIV_X, NUT_Y + 58); ctx.lineTo(DIV_X, NUT_Y + NUT_H); ctx.stroke()
 
   // ── BOTTOM DARK GREEN BAND ────────────────────────────────
   ctx.fillStyle = G_DARK
@@ -781,15 +807,21 @@ const EN_DATA = {
     { label: 'Beverages', sub: 'Hot & Cold' },
   ],
   nutrition: [
-    { label: 'Energy',          value: '0 kcal' },
-    { label: 'Total Fat',       value: '0 g' },
-    { label: 'Carbohydrates',   value: '100 g' },
-    { label: '↳ of which Sugar',value: '0 g' },
-    { label: 'Protein',         value: '0 g' },
-    { label: 'Salt',            value: '0 g' },
-    { label: 'Fibre',           value: '0 g' },
+    { label: 'Calories',        value: '0 Kcal', dv: '0.0%' },
+    { label: 'Total Fat',       value: '0 g',    dv: '0.0%' },
+    { label: 'Saturated Fat',   value: '0 g',    dv: '0.0%' },
+    { label: 'Trans Fat',       value: '0 g',    dv: '0.0%' },
+    { label: 'Monounsaturated', value: '0 g',    dv: '0.0%' },
+    { label: 'Polyunsaturated', value: '0 g',    dv: '0.0%' },
+    { label: 'Cholesterol',     value: '0 mg',   dv: '0.0%' },
+    { label: 'Sodium',          value: '0 mg',   dv: '0.0%' },
+    { label: 'Carbohydrate',    value: '7 g',    dv: '3%'   },
+    { label: 'Sugars',          value: '0 g',    dv: '0.0%' },
+    { label: 'Added Sugar',     value: '0 g',    dv: '0.0%' },
+    { label: 'Protein',         value: '0 g',    dv: '0.0%' },
   ],
-  perLabel: 'Per 100g',
+  perLabel: 'Per Serving',
+  dvLabel: 'Daily Value',
   ingredientsLabel: 'Ingredients',
   weightLabel: 'Net Weight',
   madeInLabel: 'Made in',
@@ -813,15 +845,21 @@ const AR_DATA = {
     { label: 'المشروبات',sub: 'ساخن وبارد' },
   ],
   nutrition: [
-    { label: 'الطاقة',           value: '٠ سعرة' },
-    { label: 'الدهون الكلية',    value: '٠ جم' },
-    { label: 'الكربوهيدرات',     value: '١٠٠ جم' },
-    { label: '↳ منها السكريات',  value: '٠ جم' },
-    { label: 'البروتين',         value: '٠ جم' },
-    { label: 'الملح',            value: '٠ جم' },
-    { label: 'الألياف',          value: '٠ جم' },
+    { label: 'السعرات الحرارية', value: '٠ كيلوكالوري', dv: '0.0%' },
+    { label: 'الدهون الكلية',    value: '٠ جم',         dv: '0.0%' },
+    { label: 'الدهون المشبعة',   value: '٠ جم',         dv: '0.0%' },
+    { label: 'الدهون المتحولة',  value: '٠ جم',         dv: '0.0%' },
+    { label: 'أحادية غير مشبعة', value: '٠ جم',         dv: '0.0%' },
+    { label: 'متعددة غير مشبعة', value: '٠ جم',         dv: '0.0%' },
+    { label: 'الكوليسترول',      value: '٠ ملجم',       dv: '0.0%' },
+    { label: 'الصوديوم',         value: '٠ ملجم',       dv: '0.0%' },
+    { label: 'الكربوهيدرات',     value: '٧ جم',         dv: '3%'   },
+    { label: 'السكريات',         value: '٠ جم',         dv: '0.0%' },
+    { label: 'سكر مضاف',         value: '٠ جم',         dv: '0.0%' },
+    { label: 'البروتين',         value: '٠ جم',         dv: '0.0%' },
   ],
-  perLabel: 'لكل ١٠٠ جم',
+  perLabel: 'لكل حصة',
+  dvLabel: 'القيمة اليومية',
   ingredientsLabel: 'المكونات',
   weightLabel: 'الوزن الصافي',
   madeInLabel: 'بلد المنشأ',
@@ -921,10 +959,19 @@ export default function Product3D({ className = '' }) {
                 <h3 className="product3d__section-title">{d.nutritionLabel}</h3>
                 <p className="product3d__per">{d.perLabel}</p>
                 <div className="product3d__nutrition-table">
+                  <div className="product3d__nutrition-dv-header">
+                    <span className="product3d__nutrition-col-spacer" />
+                    <div className="product3d__nutrition-vline" />
+                    <span className="product3d__nutrition-dv-title">{d.dvLabel}</span>
+                  </div>
                   {d.nutrition.map((row, i) => (
                     <div key={i} className={`product3d__nutrition-row ${i % 2 === 0 ? 'product3d__nutrition-row--alt' : ''}`}>
-                      <span>{row.label}</span>
-                      <span className="product3d__nutrition-val">{row.value}</span>
+                      <div className="product3d__nutrition-left">
+                        <span className="product3d__nutrition-name">{row.label}</span>
+                        <span className="product3d__nutrition-val">{row.value}</span>
+                      </div>
+                      <div className="product3d__nutrition-vline" />
+                      <span className="product3d__nutrition-dv">{row.dv}</span>
                     </div>
                   ))}
                 </div>
