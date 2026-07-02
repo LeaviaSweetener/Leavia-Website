@@ -58,21 +58,21 @@ export const arFaqData = [
 ]
 
 export const enTestimonialsData = [
-  { id:1, name:'Dr. Sarah Whitmore', role:'Integrative Nutritionist, MD', location:'New York, NY', avatar:'SW', avatarColor:'#1D783B', rating:5, review:"As a physician specializing in metabolic health, I've evaluated dozens of sugar alternatives. Leavia is simply in a class of its own. The taste profile is remarkably close to natural sugar — my patients who have tried it unanimously prefer it over other alternatives. The zero glycemic impact has been transformative for my diabetic patients.", verified:true, tag:'Medical Professional' },
-  { id:2, name:'Marcus Chen', role:'Executive Chef, Two Michelin Stars', location:'San Francisco, CA', avatar:'MC', avatarColor:'#c9a84c', rating:5, review:"I was skeptical — I've tried every 'natural sweetener' on the market and been disappointed by aftertastes or poor baking performance. Leavia changed my mind completely. It caramelizes beautifully, works in every recipe, and guests genuinely cannot tell the difference. I now use it exclusively in my dessert menu.", verified:true, tag:'Professional Chef' },
-  { id:3, name:'Isabella Fontaine', role:'Wellness Blogger & Yoga Instructor', location:'Miami, FL', avatar:'IF', avatarColor:'#4caf50', rating:5, review:"I switched to Leavia three months ago and I'll never go back to regular sugar. My energy levels are more stable throughout the day, my skin has improved dramatically, and I've lost 8 pounds just from this one swap. The fact that it's completely natural and supports gut health makes it align perfectly with my wellness philosophy.", verified:true, tag:'Wellness Influencer' },
-  { id:4, name:'James & Patricia Holloway', role:'Retired Couple, Health Conscious', location:'Austin, TX', avatar:'JP', avatarColor:'#14542A', rating:5, review:"Both my husband and I are managing Type 2 diabetes. Our doctor recommended exploring natural sugar alternatives, and Leavia has been incredible. We use it in our morning coffee, baking, and cooking. Our HbA1c levels have improved and most importantly — we actually ENJOY our food again without the guilt.", verified:true, tag:'Diabetic Community' },
+  { id:1, name:'Sarah Mohammed', role:'Integrative Nutritionist', location:'Riyadh, Saudi Arabia', avatar:'SM', avatarColor:'#1D783B', rating:5, review:"As a physician specializing in metabolic health, I've evaluated dozens of sugar alternatives. Leavia is simply in a class of its own. The taste profile is remarkably close to natural sugar — my patients who have tried it unanimously prefer it over other alternatives.", verified:true, tag:'Medical Professional' },
+  { id:2, name:'Abdulaziz Al-Harbi', role:'Healthy Baking Specialist Chef', location:'Riyadh, Saudi Arabia', avatar:'AH', avatarColor:'#c9a84c', rating:5, review:"I was skeptical — I've tried every 'natural sweetener' on the market and been disappointed by aftertastes or poor baking performance. Leavia changed my mind completely. It caramelizes beautifully, works in every recipe, and guests genuinely cannot tell the difference. I now use it exclusively in my dessert menu.", verified:true, tag:'Professional Chef' },
+  { id:3, name:'Lina Abdullah', role:'Yoga Instructor', location:'Riyadh, Saudi Arabia', avatar:'LA', avatarColor:'#4caf50', rating:5, review:"I switched to Leavia three months ago and I'll never go back to regular sugar. My energy levels are more stable throughout the day, my skin has improved dramatically, and I've lost 8 pounds just from this one swap. The fact that it's completely natural and supports gut health makes it align perfectly with my wellness philosophy.", verified:true, tag:'Healthy Lifestyle Expert' },
+
   { id:5, name:'Priya Sharma', role:'Functional Medicine Practitioner', location:'Chicago, IL', avatar:'PS', avatarColor:'#d4af37', rating:5, review:"The addition of prebiotic inulin is what truly sets Leavia apart. I recommend it to all my patients for gut microbiome support. The combination of monk fruit and premium stevia (Reb-A 99%) eliminates that bitter aftertaste common in other stevia products. This is genuinely the future of sweeteners.", verified:true, tag:'Healthcare Provider' },
-  { id:6, name:'Thomas Blackwell', role:'CrossFit Athlete & Nutritionist', location:'Denver, CO', avatar:'TB', avatarColor:'#1D783B', rating:5, review:"Leavia fits perfectly into my ketogenic diet and training protocol. Zero carbs, zero calories, and it tastes incredible in my pre-workout shakes and protein treats. The clean label with only natural ingredients is exactly what serious athletes need. Performance nutrition without compromise.", verified:true, tag:'Fitness Professional' },
+  { id:6, name:'Mohammed Fat', role:'CrossFit Athlete & Nutritionist', location:'Denver, CO', avatar:'MF', avatarColor:'#1D783B', rating:5, review:"What I liked most about Leavia is its taste — the sweetness is balanced with none of the bitterness I notice in other sugar alternatives. The ingredients are clear and simple, which always matters to me. I see it as a great option for anyone looking to cut sugar without changing the taste of their food or drinks.", verified:true, tag:'Fitness Professional' },
 ]
 
 export const arTestimonialsData = [
-  { id:1, name:'د. سارة ويتمور', role:'أخصائية تغذية تكاملية، دكتوراه في الطب', location:'نيويورك، نيويورك', avatar:'SW', avatarColor:'#1D783B', rating:5, review:'بصفتي طبيبة متخصصة في صحة التمثيل الغذائي، قيّمت عشرات بدائل السكر. ليفيا ببساطة في فئتها الخاصة. ملف الطعم قريب بشكل لافت من السكر الطبيعي — مرضاي الذين جربوها يفضلونها بالإجماع على البدائل الأخرى. التأثير الجلايسيمي الصفري كان تحويلياً لمرضاي المصابين بالسكري.', verified:true, tag:'متخصص طبي' },
-  { id:2, name:'ماركوس تشن', role:'طاهٍ تنفيذي، نجمتان ميشلان', location:'سان فرانسيسكو، كاليفورنيا', avatar:'MC', avatarColor:'#c9a84c', rating:5, review:"كنت متشككاً — جربت كل 'محلٍّ طبيعي' في السوق وخذلني الطعم اللاحق أو ضعف الأداء في الخبز. غيّرت ليفيا رأيي كلياً. تتكرمل بشكل رائع، تعمل في كل وصفة، وضيوفي لا يستطيعون تمييز الفرق حقاً. أستخدمها الآن حصرياً في قائمة الحلويات.", verified:true, tag:'طاهٍ محترف' },
-  { id:3, name:'إيزابيلا فونتين', role:'مدوّنة عافية ومدربة يوغا', location:'ميامي، فلوريدا', avatar:'IF', avatarColor:'#4caf50', rating:5, review:"تحوّلت إلى ليفيا منذ ثلاثة أشهر ولن أعود إلى السكر العادي أبداً. مستويات طاقتي أكثر ثباتاً طوال اليوم، وتحسّن بشرتي بشكل ملحوظ، وفقدت 3.5 كيلوجرام من هذا التغيير الواحد فقط. كونها طبيعية تماماً وتدعم صحة الأمعاء يجعلها تتوافق تماماً مع فلسفة العافية لديّ.", verified:true, tag:'مؤثر في مجال الصحة' },
-  { id:4, name:'جيمس وباتريشيا هولوواي', role:'زوجان متقاعدان، مهتمان بالصحة', location:'أوستن، تكساس', avatar:'JP', avatarColor:'#14542A', rating:5, review:'كلانا أنا وزوجي نتعامل مع السكري من النوع الثاني. أوصى طبيبنا باستكشاف بدائل السكر الطبيعية، وكانت ليفيا رائعة. نستخدمها في قهوتنا الصباحية والخبز والطهي. تحسّنت مستويات HbA1c لدينا والأهم من ذلك — نستمتع بطعامنا مجدداً دون ذنب.', verified:true, tag:'مجتمع مرضى السكري' },
+  { id:1, name:'سارة محمد', role:'أخصائية تغذية تكاملية', location:'الرياض، المملكة العربية السعودية', avatar:'سم', avatarColor:'#1D783B', rating:5, review:'بصفتي طبيبة متخصصة في صحة التمثيل الغذائي، قيّمت عشرات بدائل السكر. ليفيا ببساطة في فئتها الخاصة. ملف الطعم قريب بشكل لافت من السكر الطبيعي — مرضاي الذين جربوها يفضلونها بالإجماع على البدائل الأخرى.', verified:true, tag:'متخصص طبي' },
+  { id:2, name:'عبدالعزيز الحربي', role:'شيف مختص بالمخبوزات الصحية', location:'الرياض، المملكة العربية السعودية', avatar:'عح', avatarColor:'#c9a84c', rating:5, review:"كنت متشككاً — جربت كل 'محلٍّ طبيعي' في السوق وخذلني الطعم اللاحق أو ضعف الأداء في الخبز. غيّرت ليفيا رأيي كلياً. تتكرمل بشكل رائع، تعمل في كل وصفة، وضيوفي لا يستطيعون تمييز الفرق حقاً. أستخدمها الآن حصرياً في قائمة الحلويات.", verified:true, tag:'شيف محترف' },
+  { id:3, name:'لينا عبدالله', role:'مدربة يوغا', location:'الرياض، المملكة العربية السعودية', avatar:'لع', avatarColor:'#4caf50', rating:5, review:"تحوّلت إلى ليفيا منذ ثلاثة أشهر ولن أعود إلى السكر العادي أبداً. مستويات طاقتي أكثر ثباتاً طوال اليوم، وتحسّن بشرتي بشكل ملحوظ، وفقدت 3.5 كيلوجرام من هذا التغيير الواحد فقط. كونها طبيعية تماماً وتدعم صحة الأمعاء يجعلها تتوافق تماماً مع فلسفة العافية لديّ.", verified:true, tag:'خبيرة في أسلوب الحياة الصحي' },
+
   { id:5, name:'بريا شارما', role:'ممارسة الطب الوظيفي', location:'شيكاغو، إلينوي', avatar:'PS', avatarColor:'#d4af37', rating:5, review:'إضافة الإينولين البريبايوتيك هو ما يميز ليفيا حقاً. أوصي به لجميع مرضاي لدعم الميكروبيوم المعوي. مزيج فاكهة الراهب والستيفيا الفاخرة (Reb-A 99٪) يزيل الطعم المر اللاحق الشائع في منتجات الستيفيا الأخرى. هذا هو مستقبل المحليات حقاً.', verified:true, tag:'مقدم رعاية صحية' },
-  { id:6, name:'توماس بلاكويل', role:'رياضي كروس فيت وأخصائي تغذية', location:'دنفر، كولورادو', avatar:'TB', avatarColor:'#1D783B', rating:5, review:'تتناسب ليفيا تماماً مع نظامي الكيتوجيني وبروتوكول تدريبي. صفر كربوهيدرات، صفر سعرات، وطعمها رائع في مشروبات ما قبل التمرين ومعاملات البروتين. الملصق النظيف بمكونات طبيعية فقط هو ما يحتاجه الرياضيون الجادون بالضبط. تغذية الأداء دون تنازلات.', verified:true, tag:'محترف اللياقة البدنية' },
+  { id:6, name:'محمد فت', role:'رياضي كروس فيت وأخصائي تغذية', location:'دنفر، كولورادو', avatar:'مف', avatarColor:'#1D783B', rating:5, review:'أكثر شيء عجبني في ليفيا هو طعمه، حلاوته متوازنة وما فيه الطعم المر اللي ألاحظه مع بعض بدائل السكر. ومكوناته واضحة وبسيطة، وهذا شيء يهمني دائمًا. لذلك أشوفه خيار مناسب للي يبغى يخفف السكر بدون ما يغيّر طعم أكله أو مشروباته.', verified:true, tag:'محترف اللياقة البدنية' },
 ]
 
 // -------- String translations --------
@@ -312,14 +312,14 @@ const en = {
   // ProductDetails page
   pd_overline: 'Leavia Natural Sweetener',
   pd_title: 'The Premium Blend',
-  pd_subtitle: "Monk Fruit & Stevia — Nature's Perfect Sweeteners",
-  pd_fact_0: '5 Natural Ingredients',
+  pd_subtitle: 'Two Natural Ingredients for Balanced Sweetness',
+  pd_fact_0: 'Natural Ingredients',
   pd_fact_1: '0 Calories',
   pd_fact_2: 'GI: 0',
   pd_fact_3: '6 Certifications',
-  pd_price_note: '300g · 150 servings · $0.22/serving',
+  pd_price_note: '350g · 7g per serving',
   pd_btn_buy: 'Buy Now →',
-  pd_btn_sizes: 'View All Sizes',
+  pd_btn_sizes: 'View All Packages',
   pd_guarantee: '30-Day Money-Back Guarantee · Free Shipping over $30',
   pd_specs_overline: 'Product Details',
   pd_specs_title: 'Everything You Need to Know',
@@ -363,10 +363,10 @@ const en = {
 
   // Purchase page
   pur_overline: 'Shop Leavia',
-  pur_title: 'Choose Your Leavia',
+  pur_title: 'Discover Leavia Options',
   pur_subtitle: 'Free shipping over $30 · 30-day happiness guarantee',
   pur_select_overline: 'Select Your Size',
-  pur_select_title: 'Find Your Perfect Jar',
+  pur_select_title: 'Find Your Perfect Option',
   pur_order_title: 'Your Order',
   pur_sub_title: 'Subscribe & Save 20%',
   pur_sub_desc: 'Delivered every 30 days. Cancel anytime.',
@@ -671,14 +671,14 @@ const ar = {
   // ProductDetails page
   pd_overline: 'محلي ليفيا الطبيعي',
   pd_title: 'المزيج الفاخر',
-  pd_subtitle: 'فاكهة الراهب والستيفيا — أكمل محليات الطبيعة',
-  pd_fact_0: '٥ مكونات طبيعية',
+  pd_subtitle: 'مكونان طبيعيان لحلاوة متوازنة',
+  pd_fact_0: 'مكونات طبيعية',
   pd_fact_1: '٠ سعرات',
   pd_fact_2: 'GI: 0',
   pd_fact_3: '٦ شهادات',
-  pd_price_note: '٣٠٠ جرام · ١٥٠ حصة · $0.22/حصة',
+  pd_price_note: '٣٥٠ جرام · ٧ جرام لكل حصة',
   pd_btn_buy: 'اشتر الآن ←',
-  pd_btn_sizes: 'عرض جميع الأحجام',
+  pd_btn_sizes: 'عرض جميع العبوات',
   pd_guarantee: 'ضمان استرداد الأموال ٣٠ يوماً · شحن مجاني فوق $30',
   pd_specs_overline: 'تفاصيل المنتج',
   pd_specs_title: 'كل ما تحتاج معرفته',
@@ -722,10 +722,10 @@ const ar = {
 
   // Purchase page
   pur_overline: 'تسوق ليفيا',
-  pur_title: 'اختر ليفيا الخاص بك',
+  pur_title: 'اكتشف خيارات ليفيا',
   pur_subtitle: 'شحن مجاني فوق $30 · ضمان السعادة ٣٠ يوماً',
   pur_select_overline: 'اختر حجمك',
-  pur_select_title: 'اعثر على جرتك المثالية',
+  pur_select_title: 'اعثر على الخيار المثالي لك',
   pur_order_title: 'طلبك',
   pur_sub_title: 'اشترك ووفّر ٢٠٪',
   pur_sub_desc: 'التوصيل كل ٣٠ يوماً. إلغاء في أي وقت.',
@@ -808,20 +808,20 @@ export const arAboutTeam = [
 ]
 
 export const enAboutTimeline = [
-  { year: '1', label: 'Growing', desc: 'Stevia plants are carefully grown in fertile, sun-rich soils to ensure the highest quality leaves.' },
-  { year: '2', label: 'Harvesting', desc: 'At peak sweetness, stevia leaves are hand-harvested and prepared for the next stage of production.' },
-  { year: '3', label: 'Processing', desc: 'Using advanced extraction techniques, we draw out the purest stevia compounds in our certified facilities.' },
-  { year: '4', label: 'Quality Control', desc: 'Every batch undergoes rigorous testing to meet international food safety and quality standards.' },
-  { year: '5', label: 'Packaging', desc: 'The final product is carefully packaged in a clean environment, ready to sweeten your day.' },
+  { year: '1', label: 'Growing', desc: 'Stevia plants are carefully grown in fertile, sun-rich soils to ensure the highest quality leaves.', image: '/timeline-farming.jpg' },
+  { year: '2', label: 'Harvesting', desc: 'At peak sweetness, stevia leaves are hand-harvested and prepared for the next stage of production.', image: '/timeline-harvesting.jpg' },
+  { year: '3', label: 'Processing', desc: 'Using advanced extraction techniques, we draw out the purest stevia compounds in our certified facilities.', image: '/timeline-processing.jpg' },
+  { year: '4', label: 'Quality Control', desc: 'Every batch undergoes rigorous testing to meet international food safety and quality standards.', image: '/timeline-quality.jpg' },
+  { year: '5', label: 'Packaging', desc: 'The final product is carefully packaged in a clean environment, ready to sweeten your day.', image: '/timeline-packaging.jpg' },
   { year: '6', label: 'Your Table', desc: 'From our hands to yours — pure natural sweetness, delivered with care and quality you can trust.' },
 ]
 
 export const arAboutTimeline = [
-  { year: '١', label: 'الزراعة', desc: 'تُزرع نباتات الستيفيا بعناية في أراضٍ خصبة غنية بأشعة الشمس لضمان أعلى جودة للأوراق.' },
-  { year: '٢', label: 'الحصاد', desc: 'عند ذروة الحلاوة، تُحصد أوراق الستيفيا يدويًا وتُجهّز للمرحلة التالية من الإنتاج.' },
-  { year: '٣', label: 'المعالجة', desc: 'باستخدام تقنيات استخلاص متقدمة، نستخرج أنقى مركبات الستيفيا في منشآتنا المعتمدة.' },
-  { year: '٤', label: 'مراقبة الجودة', desc: 'تخضع كل دفعة لاختبارات صارمة لتلبية معايير سلامة الغذاء والجودة الدولية.' },
-  { year: '٥', label: 'التعبئة', desc: 'يُعبّأ المنتج النهائي بعناية في بيئة نظيفة، جاهزًا لتحلية يومك.' },
+  { year: '١', label: 'الزراعة', desc: 'تُزرع نباتات الستيفيا بعناية في أراضٍ خصبة غنية بأشعة الشمس لضمان أعلى جودة للأوراق.', image: '/timeline-farming.jpg' },
+  { year: '٢', label: 'الحصاد', desc: 'عند ذروة الحلاوة، تُحصد أوراق الستيفيا يدويًا وتُجهّز للمرحلة التالية من الإنتاج.', image: '/timeline-harvesting.jpg' },
+  { year: '٣', label: 'المعالجة', desc: 'باستخدام تقنيات استخلاص متقدمة، نستخرج أنقى مركبات الستيفيا في منشآتنا المعتمدة.', image: '/timeline-processing.jpg' },
+  { year: '٤', label: 'مراقبة الجودة', desc: 'تخضع كل دفعة لاختبارات صارمة لتلبية معايير سلامة الغذاء والجودة الدولية.', image: '/timeline-quality.jpg' },
+  { year: '٥', label: 'التعبئة', desc: 'يُعبّأ المنتج النهائي بعناية في بيئة نظيفة، جاهزًا لتحلية يومك.', image: '/timeline-packaging.jpg' },
   { year: '٦', label: 'مائدتك', desc: 'من أيدينا إلى أيديكم — حلاوة طبيعية نقية تُقدَّم بعناية وجودة يمكنكم الوثوق بها.' },
 ]
 
@@ -829,7 +829,6 @@ export const arAboutTimeline = [
 export const enResearchData = [
   { id:2, year:2022, journal:'Diabetes Care', title:'Long-Term Safety and Glycemic Response of Natural Sweetener Blends in Type 2 Diabetic Populations', authors:'Patel, R., Johnson, S., & Kim, Y.', summary:'A 24-week randomized controlled trial with 320 Type 2 diabetic patients comparing sugar, artificial sweeteners, and monk fruit/stevia blends. The natural blend group showed no significant changes in fasting blood glucose, HbA1c, or insulin sensitivity, while also showing improvements in lipid profiles compared to the sugar control group.', keyFinding:'Zero glycemic impact confirmed in clinical RCT over 24 weeks', category:'Diabetes', link:'#' },
   { id:3, year:2022, journal:'Journal of Nutrition & Gut Microbiome Research', title:'Prebiotic Inulin Supplementation Increases Bifidobacterium Abundance and Improves Metabolic Health Markers', authors:'Müller, A., Costa, R., & Thompson, J.', summary:'Meta-analysis of 18 studies (n=2,847) examining inulin supplementation effects on gut microbiome diversity. Results showed consistent increases in beneficial Bifidobacterium (avg. +38%) and Lactobacillus (+24%) populations, alongside improvements in insulin sensitivity, lipid profiles, and reduced systemic inflammation biomarkers.', keyFinding:'Inulin increases beneficial gut bacteria by up to 38%', category:'Gut Health', link:'#' },
-  { id:4, year:2021, journal:'European Journal of Clinical Nutrition', title:'Steviol Glycosides (Reb-A) and Their Role in Blood Pressure Regulation: A Systematic Review', authors:'Silva, C., Reyes, P., & Nakamura, T.', summary:'Systematic review of 12 clinical trials examining high-purity Rebaudioside-A effects on cardiovascular markers. Findings demonstrated statistically significant reductions in systolic blood pressure (avg. -4.2 mmHg) in hypertensive subjects, alongside improvements in endothelial function and arterial stiffness indices.', keyFinding:'Stevia Reb-A reduced systolic blood pressure by avg. 4.2 mmHg', category:'Cardiovascular', link:'#' },
   { id:5, year:2021, journal:'International Journal of Dental Research', title:"Erythritol's Superior Anticariogenic Properties Compared to Xylitol: Clinical Evidence", authors:'Vanobbergen, J., & Declerck, D.', summary:'3-year clinical study (n=485 children, ages 7-11) comparing dental caries rates between erythritol, xylitol, and sorbitol users. Erythritol group showed 43% reduction in caries incidence compared to 24% with xylitol. Mechanism identified as erythritol\'s bacteriostatic effect on Streptococcus mutans adhesion.', keyFinding:'Erythritol reduces dental caries risk by 43% vs sugar', category:'Dental Health', link:'#' },
   { id:6, year:2020, journal:'FASEB Journal', title:'Weight Management Outcomes in Participants Replacing Added Sugar with Natural Sweetener Alternatives', authors:'Anderson, B., Williams, K., & Garcia, M.', summary:'12-month prospective cohort study with 1,200 participants replacing added sugar with natural sweeteners (monk fruit/stevia blends). The intervention group showed average weight reduction of 3.7kg, reduced fasting insulin levels by 18%, and significantly improved subjective satiety scores — without any other dietary modifications.', keyFinding:'Average 3.7kg weight reduction over 12 months with zero other changes', category:'Weight Management', link:'#' },
 ]
@@ -837,24 +836,19 @@ export const enResearchData = [
 export const arResearchData = [
   { id:2, year:2022, journal:'Diabetes Care', title:'السلامة طويلة المدى والاستجابة الجلايسيمية لمزيجات المحليات الطبيعية في مجموعات مرضى السكري من النوع الثاني', authors:'Patel, R., Johnson, S., & Kim, Y.', summary:'تجربة عشوائية محكومة مدتها ٢٤ أسبوعاً مع ٣٢٠ مريضاً بالسكري من النوع الثاني تقارن السكر والمحليات الاصطناعية ومزيجات فاكهة الراهب/الستيفيا. أظهرت مجموعة المزيج الطبيعي عدم وجود تغييرات معتبرة في جلوكوز الدم الصيامي أو HbA1c أو حساسية الأنسولين، مع تحسينات في ملامح الدهون.', keyFinding:'تأكيد صفر التأثير الجلايسيمي في تجربة سريرية عشوائية لمدة ٢٤ أسبوعاً', category:'Diabetes', link:'#' },
   { id:3, year:2022, journal:'Journal of Nutrition & Gut Microbiome Research', title:'مكمّلات الإينولين البريبايوتيك تزيد وفرة البيفيدوباكتريوم وتحسن مؤشرات الصحة الأيضية', authors:'Müller, A., Costa, R., & Thompson, J.', summary:'تحليل شامل لـ١٨ دراسة (ن=٢,٨٤٧) تفحص آثار مكمّلات الإينولين على تنوع الميكروبيوم المعوي. أظهرت النتائج زيادات متسقة في البيفيدوباكتريوم المفيد (متوسط +٣٨٪) واللاكتوباسيلوس (+٢٤٪)، إلى جانب تحسينات في حساسية الأنسولين وملامح الدهون وانخفاض الالتهاب الجهازي.', keyFinding:'الإينولين يزيد البكتيريا المعوية المفيدة بنسبة تصل إلى ٣٨٪', category:'Gut Health', link:'#' },
-  { id:4, year:2021, journal:'European Journal of Clinical Nutrition', title:'جليكوسيدات الستيفيول (Reb-A) ودورها في تنظيم ضغط الدم: مراجعة منهجية', authors:'Silva, C., Reyes, P., & Nakamura, T.', summary:'مراجعة منهجية لـ١٢ تجربة سريرية تفحص آثار Rebaudioside-A عالي النقاء على مؤشرات القلب والأوعية. أظهرت النتائج انخفاضات ذات دلالة إحصائية في ضغط الدم الانقباضي (متوسط -٤.٢ ملم زئبق) في المصابين بارتفاع ضغط الدم.', keyFinding:'Reb-A من الستيفيا خفّض ضغط الدم الانقباضي بمتوسط ٤.٢ ملم زئبق', category:'Cardiovascular', link:'#' },
   { id:5, year:2021, journal:'International Journal of Dental Research', title:'الخصائص المضادة للتسوس المتفوقة للإريثريتول مقارنةً بالكسيليتول: أدلة سريرية', authors:'Vanobbergen, J., & Declerck, D.', summary:'دراسة سريرية لمدة ٣ سنوات (ن=٤٨٥ طفلاً، أعمار ٧-١١) تقارن معدلات تسوس الأسنان بين مستخدمي الإريثريتول والكسيليتول والسوربيتول. أظهرت مجموعة الإريثريتول انخفاضاً بنسبة ٤٣٪ في حوادث التسوس مقارنةً بـ٢٤٪ مع الكسيليتول.', keyFinding:'الإريثريتول يقلل خطر تسوس الأسنان بنسبة ٤٣٪ مقارنةً بالسكر', category:'Dental Health', link:'#' },
   { id:6, year:2020, journal:'FASEB Journal', title:'نتائج إدارة الوزن لدى المشاركين الذين استبدلوا السكر المضاف ببدائل المحليات الطبيعية', authors:'Anderson, B., Williams, K., & Garcia, M.', summary:'دراسة استباقية تتبعية لمدة ١٢ شهراً مع ١,٢٠٠ مشارك يستبدلون السكر المضاف بمحليات طبيعية (مزيجات فاكهة الراهب/الستيفيا). أظهرت مجموعة التدخل متوسط انخفاض في الوزن ٣.٧ كجم وانخفاضاً في الأنسولين الصيامي ١٨٪ وتحسناً ملحوظاً في درجات الشبع.', keyFinding:'متوسط انخفاض في الوزن ٣.٧ كجم خلال ١٢ شهراً دون أي تغييرات أخرى', category:'Weight Management', link:'#' },
 ]
 
 // -------- Products data arrays --------
 export const enProductsData = [
-  { id:1, name:'Leavia Trial Jar', size:'150g', servings:'~75 servings', price:18.99, pricePerServing:0.25, badge:null, description:"Perfect introduction to Leavia. Discover how nature's golden sweetener transforms your daily rituals.", features:['75 servings','Premium glass jar','Free recipe booklet','30-day happiness guarantee'], recommended:false, color:'#1D783B' },
-  { id:2, name:'Leavia Standard Jar', size:'300g', servings:'~150 servings', price:32.99, pricePerServing:0.22, badge:'Most Popular', description:'Our most beloved size. Six months of everyday sweetening for the committed wellness enthusiast.', features:['150 servings','Premium glass jar','Digital recipe collection','30-day happiness guarantee','Priority customer support'], recommended:true, color:'#c9a84c' },
-  { id:3, name:'Leavia Family Jar', size:'600g', servings:'~300 servings', price:54.99, pricePerServing:0.18, badge:'Best Value', description:'Share the golden secret with your whole family. A full year of healthier sweetening in one premium jar.', features:['300 servings','Premium glass jar','Full recipe digital book','30-day happiness guarantee','Priority customer support','Free wellness consultation'], recommended:false, color:'#14542A' },
-  { id:4, name:'Leavia Wellness Bundle', size:'3 × 300g', servings:'~450 servings', price:84.99, originalPrice:98.97, pricePerServing:0.19, badge:'Save 15%', description:'The ultimate Leavia collection. Three premium jars — gift one, share one, keep one for yourself.', features:['450 servings','3 premium glass jars','Full recipe digital book','30-day happiness guarantee','Priority customer support','Free wellness consultation','Exclusive member community access','Free shipping always'], recommended:false, color:'#d4af37' },
+  { id:1, name:'🌿 Leavia 500g Pack', size:'500g', servings:'', price:31, pricePerServing:null, badge:null, description:'A perfect choice for daily use with beverages and various recipes.', features:['500g','Sealed packaging','Suitable for daily use'], recommended:false, color:'#1D783B', image:'/product-bag.png' },
+  { id:2, name:'🌿 Leavia 500g Pack', size:'500g - 7g per serving', servings:'', price:31, pricePerServing:null, badge:'Most Popular', description:'A perfect choice for daily use with beverages and various recipes.', features:['500g','Sealed packaging','Suitable for daily use'], recommended:true, color:'#c9a84c', image:'/product-box.png' },
 ]
 
 export const arProductsData = [
-  { id:1, name:'جرة ليفيا التجريبية', size:'١٥٠ جرام', servings:'~٧٥ حصة', price:18.99, pricePerServing:0.25, badge:null, description:'مقدمة مثالية لليفيا. اكتشف كيف يحول محلي الطبيعة الذهبي طقوسك اليومية.', features:['٧٥ حصة','جرة زجاجية فاخرة','كتيب وصفات مجاني','ضمان السعادة ٣٠ يوماً'], recommended:false, color:'#1D783B' },
-  { id:2, name:'جرة ليفيا القياسية', size:'٣٠٠ جرام', servings:'~١٥٠ حصة', price:32.99, pricePerServing:0.22, badge:'الأكثر مبيعاً', description:'حجمنا الأكثر حباً. ستة أشهر من التحلية اليومية لعاشق العافية الملتزم.', features:['١٥٠ حصة','جرة زجاجية فاخرة','مجموعة وصفات رقمية','ضمان السعادة ٣٠ يوماً','دعم عملاء أولوي'], recommended:true, color:'#c9a84c' },
-  { id:3, name:'جرة ليفيا العائلية', size:'٦٠٠ جرام', servings:'~٣٠٠ حصة', price:54.99, pricePerServing:0.18, badge:'أفضل قيمة', description:'شارك السر الذهبي مع عائلتك بأكملها. سنة كاملة من التحلية الأكثر صحة في جرة فاخرة واحدة.', features:['٣٠٠ حصة','جرة زجاجية فاخرة','كتاب وصفات رقمي كامل','ضمان السعادة ٣٠ يوماً','دعم عملاء أولوي','استشارة صحة مجانية'], recommended:false, color:'#14542A' },
-  { id:4, name:'حزمة ليفيا للعافية', size:'٣ × ٣٠٠ جرام', servings:'~٤٥٠ حصة', price:84.99, originalPrice:98.97, pricePerServing:0.19, badge:'وفّر ١٥٪', description:'مجموعة ليفيا الكاملة. ثلاث جرات فاخرة — أهدِ إحداها، شارك الثانية، احتفظ بالثالثة لنفسك.', features:['٤٥٠ حصة','٣ جرات زجاجية فاخرة','كتاب وصفات رقمي كامل','ضمان السعادة ٣٠ يوماً','دعم عملاء أولوي','استشارة صحة مجانية','وصول حصري لمجتمع الأعضاء','شحن مجاني دائماً'], recommended:false, color:'#d4af37' },
+  { id:1, name:'🌿 عبوة ليفيا 500 جرام', size:'500 جرام', servings:'', price:31, pricePerServing:null, badge:null, description:'خيار مثالي للاستخدام اليومي مع المشروبات والوصفات المختلفة.', features:['500 جرام','عبوة محكمة الإغلاق','مناسبة للاستخدام اليومي'], recommended:false, color:'#1D783B', image:'/product-bag.png' },
+  { id:2, name:'🌿 عبوة ليفيا 500 جرام', size:'٥٠٠ جرام - ٧ جرام لكل حصة', servings:'', price:31, pricePerServing:null, badge:'الأكثر مبيعاً', description:'خيار مثالي للاستخدام اليومي مع المشروبات والوصفات المختلفة.', features:['500 جرام','عبوة محكمة الإغلاق','مناسبة للاستخدام اليومي'], recommended:true, color:'#c9a84c', image:'/product-box.png' },
 ]
 
 export const translations = { en, ar }

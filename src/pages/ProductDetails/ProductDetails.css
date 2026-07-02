@@ -107,83 +107,239 @@
 
 /* ===== NUTRITION PANEL ===== */
 .product-details__nutrition-panel {
-  border: 2px solid var(--gray-700);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
   font-family: var(--font-sans);
-  margin-bottom: 2rem;
+  font-size: 0.82rem;
+  color: var(--gray-800);
 }
 
-.product-details__nutrition-header {
-  border-bottom: 1px solid var(--gray-700);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.product-details__nutrition-title {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 900;
-}
-
-.product-details__nutrition-servings {
-  font-size: 0.75rem;
-  color: var(--gray-600);
-}
-
-.product-details__nutrition-row {
+/* Per Serving / Daily Value header */
+.product-details__nutrition-dv-header {
   display: flex;
   justify-content: space-between;
-  font-size: 0.82rem;
-  padding: 0.25rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  align-items: center;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 6px solid var(--gray-800);
 }
 
-.product-details__nutrition-row--main {
+.product-details__nutrition-per {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gray-800);
+}
+
+.product-details__nutrition-dv-label {
+  font-size: 0.68rem;
   font-weight: 700;
-  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-500);
+}
+
+/* Nutrition rows — 3 columns */
+.product-details__nutrition-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.22rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
 }
 
 .product-details__nutrition-row--indent {
-  padding-left: 1rem;
-  font-size: 0.78rem;
+  padding-inline-start: 1rem;
+  font-size: 0.76rem;
+  color: var(--gray-600);
 }
 
-.product-details__nutrition-row em {
-  font-style: normal;
-  color: var(--gray-500);
+.product-details__nutrition-name {
+  font-weight: 500;
+}
+
+.product-details__nutrition-val {
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: end;
+}
+
+.product-details__nutrition-dv {
   font-size: 0.72rem;
+  color: var(--gray-500);
+  min-width: 38px;
+  text-align: end;
 }
 
-.product-details__nutrition-calories {
+/* Divider */
+.product-details__nutrition-divider {
+  height: 1px;
+  background: var(--gray-200);
+  margin: 0.75rem 0;
+}
+
+/* Info rows (ingredients / weight / origin) */
+.product-details__nutrition-info-row {
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
-  font-weight: 900;
-  padding: 0.25rem 0;
-  border-bottom: 4px solid var(--gray-700);
+  gap: 0.5rem;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.product-details__nutrition-info-label {
+  font-weight: 700;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+.product-details__nutrition-info-val {
+  color: var(--gray-600);
+  text-align: end;
+}
+
+/* Section label (certifications / suitable for) */
+.product-details__nutrition-section-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+}
+
+/* Certification tags */
+.product-details__nutrition-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
   margin-bottom: 0.25rem;
 }
 
-/* ===== CERTIFICATIONS ===== */
-.product-details__cert-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.product-details__nutrition-tag {
+  background: rgba(29,120,59,0.08);
+  border: 1px solid rgba(29,120,59,0.2);
+  color: var(--green-deep);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 99px;
 }
 
-.product-details__cert {
+/* Suitable For grid */
+.product-details__suitable-grid {
   display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.product-details__suitable-item {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  background: rgba(45,122,79,0.06);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  min-width: 70px;
+  text-align: center;
+}
+
+.product-details__suitable-name {
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--green-deep);
+}
+
+.product-details__suitable-sub {
+  font-size: 0.65rem;
+  color: var(--gray-500);
+  margin-top: 0.15rem;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.pd-compare__title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-family: var(--font-display);
+  color: var(--green-deep);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pd-compare__wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(29,120,59,0.08);
+}
+
+.pd-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.pd-compare__table thead tr {
+  background: var(--green-deep);
+  color: white;
+}
+
+.pd-compare__table th {
+  padding: 0.9rem 1.25rem;
+  font-weight: 700;
+  text-align: start;
   font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+.pd-compare__th--leavia {
+  background: var(--gradient-gold);
+  color: var(--green-deep) !important;
+}
+
+.pd-compare__table tbody tr {
+  border-bottom: 1px solid rgba(29,120,59,0.08);
+  transition: background 0.18s;
+}
+
+.pd-compare__table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.pd-compare__table tbody tr:hover {
+  background: rgba(29,120,59,0.04);
+}
+
+.pd-compare__table td {
+  padding: 0.85rem 1.25rem;
   color: var(--gray-700);
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(45,122,79,0.08);
+  vertical-align: middle;
+}
+
+.pd-compare__criterion {
+  font-weight: 700;
+  color: var(--gray-800) !important;
+  white-space: nowrap;
+}
+
+.pd-compare__leavia {
+  font-weight: 700;
+  color: var(--green-deep) !important;
+  background: rgba(29,120,59,0.06);
 }
 
 @media (max-width: 1024px) {
   .product-details__hero-layout { grid-template-columns: 1fr; }
   .product-details__3d { height: 400px; }
   .product-details__specs-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .pd-compare__table th,
+  .pd-compare__table td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.8rem;
+  }
 }

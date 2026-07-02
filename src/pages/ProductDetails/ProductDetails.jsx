@@ -6,6 +6,98 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
 import './ProductDetails.css'
 
+const EN_PANEL = {
+  perLabel: 'Per Serving',
+  dvLabel: 'Daily Value',
+  nutrition: [
+    { label: 'Calories',         value: '0 Kcal', dv: '0.0%' },
+    { label: 'Total Fat',        value: '0 g',    dv: '0.0%' },
+    { label: 'Saturated Fat',    value: '0 g',    dv: '0.0%', indent: true },
+    { label: 'Trans Fat',        value: '0 g',    dv: '0.0%', indent: true },
+    { label: 'Monounsaturated',  value: '0 g',    dv: '0.0%', indent: true },
+    { label: 'Polyunsaturated',  value: '0 g',    dv: '0.0%', indent: true },
+    { label: 'Cholesterol',      value: '0 mg',   dv: '0.0%' },
+    { label: 'Sodium',           value: '0 mg',   dv: '0.0%' },
+    { label: 'Carbohydrate',     value: '7 g',    dv: '3%'   },
+    { label: 'Sugars',           value: '0 g',    dv: '0.0%', indent: true },
+    { label: 'Added Sugar',      value: '0 g',    dv: '0.0%', indent: true },
+    { label: 'Protein',          value: '0 g',    dv: '0.0%' },
+  ],
+  ingredientsLabel: 'Ingredients',
+  ingredients: 'Erythritol & Steviol Glycosides',
+  weightLabel: 'Net Weight',
+  weight: '500 g',
+  madeInLabel: 'Made in',
+  madeIn: 'China',
+  certLabel: 'Certifications',
+  certifications: ['Halal', 'Zero Calorie', '100% Natural'],
+  suitableLabel: 'Suitable For',
+  suitableFor: [
+    { label: 'Cooking',   sub: 'Heat Resistant' },
+    { label: 'Baking',    sub: 'Heat Resistant' },
+    { label: 'Beverages', sub: 'Hot & Cold' },
+  ],
+}
+
+const EN_COMPARE = {
+  title: 'Why is Leavia Different?',
+  headers: ['Criterion', 'Leavia', 'White Sugar', 'Artificial Sweeteners'],
+  rows: [
+    { label: 'Source',                   leavia: '100% Natural', sugar: 'Refined',         artificial: 'Artificial'      },
+    { label: 'Calories',                 leavia: 'Zero',         sugar: 'High',            artificial: 'Variable'        },
+    { label: 'Taste',                    leavia: 'Sweet, no bitterness', sugar: 'Sweet',   artificial: 'Sweet with bitterness' },
+    { label: 'Chemicals',                leavia: 'None',         sugar: 'Processed',       artificial: 'Present'         },
+    { label: 'Suitable for Diabetics',   leavia: '✅',           sugar: '❌',              artificial: 'Depends on type' },
+    { label: 'Natural',                  leavia: '✅',           sugar: '❌',              artificial: '❌'              },
+  ],
+}
+
+const AR_COMPARE = {
+  title: 'لماذا ليفيا مختلف؟',
+  headers: ['المعيار', 'ليفيا', 'السكر الأبيض', 'المحليات الصناعية'],
+  rows: [
+    { label: 'المصدر',                   leavia: 'طبيعي 100%',         sugar: 'مكرر',     artificial: 'صناعي'         },
+    { label: 'السعرات الحرارية',         leavia: 'صفر',                sugar: 'عالية',    artificial: 'متفاوتة'       },
+    { label: 'الطعم',                    leavia: 'حلو بدون مرارة',    sugar: 'حلو',      artificial: 'حلو مع مرارة'  },
+    { label: 'المواد الكيميائية',        leavia: 'لا يوجد',            sugar: 'معالج',    artificial: 'يوجد'          },
+    { label: 'مناسب لمرضى السكري',       leavia: '✅',                 sugar: '❌',       artificial: 'حسب النوع'     },
+    { label: 'طبيعي',                    leavia: '✅',                 sugar: '❌',       artificial: '❌'            },
+  ],
+}
+
+const AR_PANEL = {
+  perLabel: 'لكل حصة',
+  dvLabel: 'القيمة اليومية',
+  nutrition: [
+    { label: 'السعرات الحرارية',  value: '٠ كيلوكالوري', dv: '0.0%' },
+    { label: 'الدهون الكلية',     value: '٠ جم',         dv: '0.0%' },
+    { label: 'الدهون المشبعة',    value: '٠ جم',         dv: '0.0%', indent: true },
+    { label: 'الدهون المتحولة',   value: '٠ جم',         dv: '0.0%', indent: true },
+    { label: 'أحادية غير مشبعة',  value: '٠ جم',         dv: '0.0%', indent: true },
+    { label: 'متعددة غير مشبعة',  value: '٠ جم',         dv: '0.0%', indent: true },
+    { label: 'الكوليسترول',       value: '٠ ملجم',       dv: '0.0%' },
+    { label: 'الصوديوم',          value: '٠ ملجم',       dv: '0.0%' },
+    { label: 'الكربوهيدرات',      value: '٧ جم',         dv: '3%'   },
+    { label: 'السكريات',          value: '٠ جم',         dv: '0.0%', indent: true },
+    { label: 'سكر مضاف',          value: '٠ جم',         dv: '0.0%', indent: true },
+    { label: 'البروتين',          value: '٠ جم',         dv: '0.0%' },
+  ],
+  ingredientsLabel: 'المكونات',
+  ingredients: 'إريثريتول وجليكوسيدات الستيفيول',
+  weightLabel: 'الوزن الصافي',
+  weight: '٥٠٠ جم',
+  madeInLabel: 'بلد المنشأ',
+  madeIn: 'الصين',
+  certLabel: 'الاعتمادات',
+  certifications: ['حلال', 'صفر سعرات', '١٠٠٪ طبيعي'],
+  suitableLabel: 'مناسب لـ',
+  suitableFor: [
+    { label: 'الطبخ',     sub: 'مقاوم للحرارة' },
+    { label: 'الخبز',     sub: 'مقاوم للحرارة' },
+    { label: 'المشروبات', sub: 'ساخن وبارد' },
+  ],
+}
+
 const SPEC_KEYS = [
   ['pd_spec_0_label', 'pd_spec_0_value'],
   ['pd_spec_1_label', 'pd_spec_1_value'],
@@ -29,7 +121,9 @@ const QUICK_FACTS = [
 ]
 
 export default function ProductDetails() {
-  const { t } = useLanguage()
+  const { t, isAr } = useLanguage()
+  const panel   = isAr ? AR_PANEL   : EN_PANEL
+  const compare = isAr ? AR_COMPARE : EN_COMPARE
 
   return (
     <div className="product-details page-wrapper">
@@ -63,25 +157,16 @@ export default function ProductDetails() {
                 </div>
 
                 <div className="product-details__price-block">
-                  <span className="product-details__price">$32.99</span>
+                  <span className="product-details__price">31 ر.س</span>
                   <span className="product-details__price-note">{t('pd_price_note')}</span>
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <Link to="/purchase" className="btn btn--gold btn--lg">
-                    {t('pd_btn_buy')}
-                  </Link>
                   <Link to="/purchase" className="btn btn--ghost btn--lg">
                     {t('pd_btn_sizes')}
                   </Link>
                 </div>
 
-                <div className="product-details__guarantee">
-                  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
-                    <path d="M10 1l2.5 5 5.5.8-4 3.9.9 5.5L10 13.5 5.1 16.2l.9-5.5L2 6.8l5.5-.8z" fill="#4caf50"/>
-                  </svg>
-                  <span>{t('pd_guarantee')}</span>
-                </div>
               </ScrollReveal>
             </div>
           </div>
@@ -112,54 +197,101 @@ export default function ProductDetails() {
             <div>
               <ScrollReveal direction="right">
                 <div className="product-details__nutrition">
-                  <h3>{t('pd_nutrition_heading')}</h3>
                   <div className="product-details__nutrition-panel">
-                    <div className="product-details__nutrition-header">
-                      <span className="product-details__nutrition-title">{t('pd_nutrition_heading')}</span>
-                      <span className="product-details__nutrition-servings">{t('pd_nutrition_servings')}</span>
-                    </div>
-                    <div className="product-details__nutrition-row product-details__nutrition-row--main">
-                      <span>{t('pd_nutrition_serving_size')}</span>
-                      <span>2g (1 tsp)</span>
-                    </div>
-                    <div className="product-details__nutrition-calories">
-                      <span>{t('pd_nutrition_calories')}</span>
-                      <span>0</span>
-                    </div>
-                    {[
-                      { nameKey: 'pd_nutrition_fat', value: '0g', dv: '0%' },
-                      { nameKey: 'pd_nutrition_carb', value: '2g', dv: '1%' },
-                      { nameKey: 'pd_nutrition_fiber', value: '1g', dv: '4%', indent: true },
-                      { nameKey: 'pd_nutrition_sugars', value: '0g', dv: '', indent: true },
-                      { nameKey: 'pd_nutrition_protein', value: '0g', dv: '' },
-                      { name: 'Erythritol', value: '0.5g', dv: '†' },
-                    ].map((item, i) => (
-                      <div key={i} className={`product-details__nutrition-row ${item.indent ? 'product-details__nutrition-row--indent' : ''}`}>
-                        <span>{item.nameKey ? t(item.nameKey) : item.name}</span>
-                        <span>{item.value} {item.dv && <em>{item.dv}</em>}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
 
-              <ScrollReveal direction="right" delay={0.2}>
-                <div className="product-details__certifications">
-                  <h3>{t('pd_certs_heading')}</h3>
-                  <div className="product-details__cert-grid">
-                    {CERT_KEYS.map((key, i) => (
-                      <div key={i} className="product-details__cert">
-                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-                          <path d="M3 8l4 4 6-6" stroke="#1D783B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        {t(key)}
+                    {/* Per Serving / Daily Value header */}
+                    <div className="product-details__nutrition-dv-header">
+                      <span className="product-details__nutrition-per">{panel.perLabel}</span>
+                      <span className="product-details__nutrition-dv-label">{panel.dvLabel}</span>
+                    </div>
+
+                    {/* Nutrition rows */}
+                    {panel.nutrition.map((row, i) => (
+                      <div key={i} className={`product-details__nutrition-row${row.indent ? ' product-details__nutrition-row--indent' : ''}`}>
+                        <span className="product-details__nutrition-name">{row.label}</span>
+                        <span className="product-details__nutrition-val">{row.value}</span>
+                        <span className="product-details__nutrition-dv">{row.dv}</span>
                       </div>
                     ))}
+
+                    <div className="product-details__nutrition-divider" />
+
+                    {/* Ingredients */}
+                    <div className="product-details__nutrition-info-row">
+                      <span className="product-details__nutrition-info-label">{panel.ingredientsLabel}</span>
+                      <span className="product-details__nutrition-info-val">{panel.ingredients}</span>
+                    </div>
+
+                    {/* Weight & Origin */}
+                    <div className="product-details__nutrition-info-row">
+                      <span className="product-details__nutrition-info-label">{panel.weightLabel}</span>
+                      <span className="product-details__nutrition-info-val">{panel.weight}</span>
+                    </div>
+                    <div className="product-details__nutrition-info-row">
+                      <span className="product-details__nutrition-info-label">{panel.madeInLabel}</span>
+                      <span className="product-details__nutrition-info-val">{panel.madeIn}</span>
+                    </div>
+
+                    <div className="product-details__nutrition-divider" />
+
+                    {/* Certifications */}
+                    <p className="product-details__nutrition-section-label">{panel.certLabel}</p>
+                    <div className="product-details__nutrition-tags">
+                      {panel.certifications.map((c, i) => (
+                        <span key={i} className="product-details__nutrition-tag">{c}</span>
+                      ))}
+                    </div>
+
+                    <div className="product-details__nutrition-divider" />
+
+                    {/* Suitable For */}
+                    <p className="product-details__nutrition-section-label">{panel.suitableLabel}</p>
+                    <div className="product-details__suitable-grid">
+                      {panel.suitableFor.map((s, i) => (
+                        <div key={i} className="product-details__suitable-item">
+                          <span className="product-details__suitable-name">{s.label}</span>
+                          <span className="product-details__suitable-sub">{s.sub}</span>
+                        </div>
+                      ))}
+                    </div>
+
                   </div>
                 </div>
               </ScrollReveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Comparison Table */}
+      <section className="section section--cream">
+        <div className="container">
+          <ScrollReveal>
+            <h2 className="pd-compare__title">{compare.title}</h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="pd-compare__wrap">
+              <table className="pd-compare__table">
+                <thead>
+                  <tr>
+                    {compare.headers.map((h, i) => (
+                      <th key={i} className={i === 1 ? 'pd-compare__th--leavia' : ''}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {compare.rows.map((row, i) => (
+                    <tr key={i}>
+                      <td className="pd-compare__criterion">{row.label}</td>
+                      <td className="pd-compare__leavia">{row.leavia}</td>
+                      <td>{row.sugar}</td>
+                      <td>{row.artificial}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
