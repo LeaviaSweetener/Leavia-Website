@@ -3,7 +3,7 @@
     "id": 1,
     "category": "Product",
     "question": "What exactly is Leavia and what makes it different from other sweeteners?",
-    "answer": "Leavia is a premium natural sweetener blend combining Organic Monk Fruit Extract, Organic Stevia Leaf (Reb-A 99%), Organic Inulin, Organic Erythritol, and Madagascar Vanilla. Unlike single-ingredient alternatives, our proprietary blend eliminates the aftertaste associated with stevia alone and the cooling sensation of erythritol alone, resulting in a taste profile that is remarkably close to real cane sugar. Every ingredient is certified organic, non-GMO, and sustainably sourced."
+    "answer": "Leavia is a premium natural sweetener blend combining Organic Stevia Leaf (Reb-A 99%), Organic Inulin, Organic Erythritol, and Madagascar Vanilla. Unlike single-ingredient alternatives, our proprietary blend eliminates the aftertaste associated with stevia alone and the cooling sensation of erythritol alone, resulting in a taste profile that is remarkably close to real cane sugar. Every ingredient is certified organic, non-GMO, and sustainably sourced."
   },
   {
     "id": 2,
@@ -15,13 +15,13 @@
     "id": 3,
     "category": "Health",
     "question": "Is Leavia safe for diabetics?",
-    "answer": "Yes, Leavia is completely safe for people with diabetes. All ingredients have a glycemic index of 0 — meaning they do not raise blood glucose or insulin levels. Clinical studies on monk fruit extract and stevia consistently show no glycemic impact. However, as with any dietary change, we recommend consulting your healthcare provider, especially if you are managing medications alongside dietary modifications. Thousands of our customers with Type 1 and Type 2 diabetes use Leavia daily."
+    "answer": "Yes, Leavia is completely safe for people with diabetes. All ingredients have a glycemic index of 0 — meaning they do not raise blood glucose or insulin levels. Clinical studies on stevia extract consistently show no glycemic impact. However, as with any dietary change, we recommend consulting your healthcare provider, especially if you are managing medications alongside dietary modifications. Thousands of our customers with Type 1 and Type 2 diabetes use Leavia daily."
   },
   {
     "id": 4,
     "category": "Health",
     "question": "How many calories does Leavia have?",
-    "answer": "Leavia contains effectively 0 calories per serving. While erythritol contains 0.24 kcal/gram (compared to sugar's 4 kcal/gram), the serving sizes are so small that the caloric contribution rounds to zero under FDA labeling guidelines. Monk fruit and stevia contribute 0 calories inherently. You can enjoy full sweetness with zero caloric impact — making Leavia ideal for weight management and calorie-conscious lifestyles."
+    "answer": "Leavia contains effectively 0 calories per serving. While erythritol contains 0.24 kcal/gram (compared to sugar's 4 kcal/gram), the serving sizes are so small that the caloric contribution rounds to zero under FDA labeling guidelines. Stevia contributes 0 calories inherently. You can enjoy full sweetness with zero caloric impact — making Leavia ideal for weight management and calorie-conscious lifestyles."
   },
   {
     "id": 5,
@@ -33,13 +33,13 @@
     "id": 6,
     "category": "Usage",
     "question": "How much Leavia should I use? Is it possible to use too much?",
-    "answer": "The recommended daily usage is 2–4 teaspoons (8–16g) per day, though most people naturally use less than this. Leavia is generally well-tolerated in larger amounts due to erythritol's high digestive tolerance (unlike other sugar alcohols). Monk fruit and stevia have no established upper limits and have been used safely in very large amounts in studies. If you're new to natural sweeteners, start with smaller amounts and increase gradually as your palate adjusts."
+    "answer": "The recommended daily usage is 2–4 teaspoons (8–16g) per day, though most people naturally use less than this. Leavia is generally well-tolerated in larger amounts due to erythritol's high digestive tolerance (unlike other sugar alcohols). Stevia has no established upper limits and has been used safely in very large amounts in studies. If you're new to natural sweeteners, start with smaller amounts and increase gradually as your palate adjusts."
   },
   {
     "id": 7,
     "category": "Product",
     "question": "Is Leavia certified organic and non-GMO?",
-    "answer": "Yes. Every ingredient in Leavia carries USDA Certified Organic certification. We are also Non-GMO Project Verified, Vegan Society Certified, Kosher, and Halal certified. Our monk fruit is sourced exclusively from certified organic farms in Guilin, China. Our stevia comes from family-owned farms in Paraguay. All certifications are third-party audited annually and available for review on request."
+    "answer": "Yes. Every ingredient in Leavia carries USDA Certified Organic certification. We are also Non-GMO Project Verified, Vegan Society Certified, Kosher, and Halal certified. Our stevia is sourced exclusively from certified organic, family-owned farms. All certifications are third-party audited annually and available for review on request."
   },
   {
     "id": 8,
@@ -51,7 +51,7 @@
     "id": 9,
     "category": "Sustainability",
     "question": "Is Leavia environmentally sustainable?",
-    "answer": "Sustainability is core to Leavia's mission. Our monk fruit requires 95% less land than sugarcane for equivalent sweetness. Stevia uses 99% less land than sugar. Our packaging uses 100% recycled and recyclable materials. We offset 120% of our carbon emissions through verified reforestation projects in the Amazon and Southeast Asia. Our supply chain partners must meet strict ethical farming standards, including fair wages and no deforestation. By choosing Leavia, you're actively supporting a more sustainable food system."
+    "answer": "Sustainability is core to Leavia's mission. Our stevia uses up to 99% less land than sugar for equivalent sweetness. Our packaging uses 100% recycled and recyclable materials. We offset 120% of our carbon emissions through verified reforestation projects in the Amazon and Southeast Asia. Our supply chain partners must meet strict ethical farming standards, including fair wages and no deforestation. By choosing Leavia, you're actively supporting a more sustainable food system."
   },
   {
     "id": 10,

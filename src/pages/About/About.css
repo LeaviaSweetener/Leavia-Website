@@ -1,3 +1,17 @@
+/* "Leavia by the Numbers" stats section.
+   .about__stats.section--dark = higher specificity than the shared
+   .section--dark rule in globals.css, so this photo background wins.
+   Dark section (white text), so a dark green overlay keeps it readable. */
+.about__stats.section--dark {
+  background:
+    linear-gradient(135deg, rgba(6, 15, 9, 0.86) 0%, rgba(11, 46, 21, 0.80) 45%, rgba(20, 84, 42, 0.76) 100%),
+    url('/bg-pics/Home-BG.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .about__mission {
   display: grid;
   grid-template-columns: 1fr 2fr;

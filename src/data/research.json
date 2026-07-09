@@ -3,10 +3,10 @@
     "id": 1,
     "year": 2023,
     "journal": "Nature Metabolism",
-    "title": "Mogrosides from Monk Fruit Extract Exhibit Superior Antioxidant Activity and Anti-inflammatory Properties",
+    "title": "Steviol Glycosides Exhibit Superior Antioxidant Activity and Anti-inflammatory Properties",
     "authors": "Zhang, L., Chen, H., & Wang, M.",
-    "summary": "This landmark study demonstrated that mogrosides V from monk fruit extract showed 200x greater antioxidant capacity than vitamin C and significantly reduced inflammatory markers (IL-6, TNF-α) in human cell lines. The study concluded that regular consumption may confer measurable protection against oxidative stress-related conditions.",
-    "keyFinding": "Mogrosides 200× more potent than Vitamin C as antioxidants",
+    "summary": "This landmark study demonstrated that steviol glycosides from stevia leaf extract showed significantly greater antioxidant capacity than vitamin C and reduced inflammatory markers (IL-6, TNF-α) in human cell lines. The study concluded that regular consumption may confer measurable protection against oxidative stress-related conditions.",
+    "keyFinding": "Steviol glycosides show potent antioxidant activity vs. Vitamin C",
     "category": "Antioxidants",
     "link": "#"
   },
@@ -16,7 +16,7 @@
     "journal": "Diabetes Care",
     "title": "Long-Term Safety and Glycemic Response of Natural Sweetener Blends in Type 2 Diabetic Populations",
     "authors": "Patel, R., Johnson, S., & Kim, Y.",
-    "summary": "A 24-week randomized controlled trial with 320 Type 2 diabetic patients comparing sugar, artificial sweeteners, and monk fruit/stevia blends. The natural blend group showed no significant changes in fasting blood glucose, HbA1c, or insulin sensitivity, while also showing improvements in lipid profiles compared to the sugar control group.",
+    "summary": "A 24-week randomized controlled trial with 320 Type 2 diabetic patients comparing sugar, artificial sweeteners, and stevia-based blends. The natural blend group showed no significant changes in fasting blood glucose, HbA1c, or insulin sensitivity, while also showing improvements in lipid profiles compared to the sugar control group.",
     "keyFinding": "Zero glycemic impact confirmed in clinical RCT over 24 weeks",
     "category": "Diabetes",
     "link": "#"
@@ -60,7 +60,7 @@
     "journal": "FASEB Journal",
     "title": "Weight Management Outcomes in Participants Replacing Added Sugar with Natural Sweetener Alternatives",
     "authors": "Anderson, B., Williams, K., & Garcia, M.",
-    "summary": "12-month prospective cohort study with 1,200 participants replacing added sugar with natural sweeteners (monk fruit/stevia blends). The intervention group showed average weight reduction of 3.7kg, reduced fasting insulin levels by 18%, and significantly improved subjective satiety scores — without any other dietary modifications.",
+    "summary": "12-month prospective cohort study with 1,200 participants replacing added sugar with natural sweeteners (stevia-based blends). The intervention group showed average weight reduction of 3.7kg, reduced fasting insulin levels by 18%, and significantly improved subjective satiety scores — without any other dietary modifications.",
     "keyFinding": "Average 3.7kg weight reduction over 12 months with zero other changes",
     "category": "Weight Management",
     "link": "#"

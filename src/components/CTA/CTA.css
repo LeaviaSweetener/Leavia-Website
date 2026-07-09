@@ -1,7 +1,22 @@
-.cta {
+/* .cta.section--dark = higher specificity than the shared .section--dark rule
+   in globals.css, so this photo background wins the cascade. */
+.cta.section--dark {
   position: relative;
   overflow: hidden;
-  background: var(--gradient-hero);
+  /* Lifestyle photo backdrop with a dark green gradient overlay on top,
+     so the white CTA text stays readable. Overlay is listed first =
+     rendered above the image. */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(6, 15, 9, 0.88) 0%,
+      rgba(11, 46, 21, 0.82) 45%,
+      rgba(20, 84, 42, 0.78) 100%
+    ),
+    url("/bg-pics/Home.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 .cta__orb {
@@ -15,7 +30,11 @@
   height: 500px;
   top: -150px;
   right: -100px;
-  background: radial-gradient(circle, rgba(29, 120, 59, 0.2) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(29, 120, 59, 0.2) 0%,
+    transparent 70%
+  );
   animation: orb1 20s ease-in-out infinite;
 }
 .cta__orb--2 {
@@ -23,7 +42,11 @@
   height: 350px;
   bottom: -100px;
   left: -50px;
-  background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(201, 168, 76, 0.15) 0%,
+    transparent 70%
+  );
   animation: orb2 18s ease-in-out infinite;
 }
 
@@ -169,7 +192,12 @@
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
   transform: skewX(-20deg);
   transition: left 0.7s ease;
 }

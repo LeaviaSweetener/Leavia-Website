@@ -8,8 +8,6 @@ export default function Footer() {
   const LINKS = {
     [t('footer_col_product')]: [
       { labelKey: 'footer_link_product_details', path: '/product' },
-      { labelKey: 'footer_link_ingredients', path: '/ingredients' },
-      { labelKey: 'footer_link_benefits', path: '/benefits' },
       { labelKey: 'footer_link_research', path: '/research' },
       { labelKey: 'footer_link_shop', path: '/purchase' },
     ],
@@ -20,9 +18,7 @@ export default function Footer() {
       { labelKey: 'footer_link_press', path: '/contact' },
     ],
     [t('footer_col_support')]: [
-      { labelKey: 'footer_link_faq', path: '/faq' },
       { labelKey: 'footer_link_contact', path: '/contact' },
-      { labelKey: 'footer_link_testimonials', path: '/testimonials' },
       { labelKey: 'footer_link_track', path: '/contact' },
     ],
   }
@@ -37,13 +33,6 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      {/* Top wave */}
-      <div className="footer__wave">
-        <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none">
-          <path d="M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="#0b2e15"/>
-        </svg>
-      </div>
-
       <div className="footer__main">
         <div className="container">
           <div className="footer__grid">

@@ -8,7 +8,7 @@
   --font-display: 'Carlito', 'Calibri', 'Playfair Display', Georgia, serif;
   --font-serif:   'Carlito', 'Calibri', 'Cormorant Garamond', Georgia, serif;
   --font-sans:    'Carlito', 'Calibri', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-arabic:  'Carlito', 'Calibri', 'Cairo', 'Segoe UI', Arial, sans-serif;
+  --font-arabic:  'IBM Plex Sans Arabic', 'Cairo', 'Segoe UI', Arial, sans-serif;
 }
 
 :root {
@@ -139,6 +139,13 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   font-family: 'Carlito', 'Calibri', var(--font-sans);
+}
+
+/* Arabic text runs slightly small at a given size, so bump the root by 2px
+   (16px -> 18px) when the document is RTL. All rem-based sizes scale up,
+   affecting only the Arabic layout. */
+html[dir="rtl"] {
+  font-size: 18px;
 }
 
 body {
@@ -421,4 +428,16 @@ p {
   :root {
     --section-padding: 3rem;
   }
+}
+
+/* ===== RTL DIRECTIONAL ARROWS =====
+   In Arabic (RTL) the reading flow is right-to-left, so any "forward / next"
+   arrow that points right in LTR must point left. Mirror these arrow icons
+   horizontally whenever the document direction is RTL. Checkmarks and
+   vertical (up/down) chevrons are intentionally excluded. */
+[dir="rtl"] .hero__btn--primary svg,
+[dir="rtl"] .contact__submit svg,
+[dir="rtl"] .testimonials__nav-btn svg,
+[dir="rtl"] .footer__form-btn {
+  transform: scaleX(-1);
 }

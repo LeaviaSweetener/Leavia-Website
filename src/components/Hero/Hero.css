@@ -161,6 +161,40 @@
   color: var(--gold-light);
 }
 
+/* ===== ARABIC (RTL) HERO FIXES =====
+   Arabic script is taller than Latin (ascenders/descenders on letters like
+   ط ل ي), so the tight Latin line-height (1.05) makes the title lines collide.
+   Loosen line-height and drop the faux-italic (which looks off in Arabic). */
+[dir="rtl"] .hero__title {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+[dir="rtl"] .hero__title-row {
+  padding-block: 0.05em;
+}
+[dir="rtl"] .hero__title-row--italic {
+  font-style: normal;
+}
+[dir="rtl"] .hero__subtitle {
+  line-height: 2;
+}
+/* The dynamic-word line has a fixed height + overflow:hidden (for the swap
+   animation). Arabic script is taller, so at the +2px scale it gets clipped.
+   Give it more room and drop the faux-italic prefix (looks wrong in Arabic). */
+[dir="rtl"] .hero__dynamic {
+  height: auto;
+  min-height: 2.75rem;
+  line-height: 1.6;
+  padding-block: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.3em;
+}
+[dir="rtl"] .hero__dynamic-prefix {
+  font-style: normal;
+}
+
 /* ===== DYNAMIC WORD ===== */
 .hero__dynamic {
   font-family: var(--font-serif);

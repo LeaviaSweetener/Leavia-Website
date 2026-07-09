@@ -29,7 +29,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section section--dark">
+      <section className="contact-page__connect section section--dark">
         <div className="container">
           <div className="contact-page__layout">
             {/* Info column */}

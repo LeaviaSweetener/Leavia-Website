@@ -7,11 +7,7 @@ import Footer from './components/Footer/Footer'
 // Pages
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
-import BenefitsPage from './pages/BenefitsPage/BenefitsPage'
-import IngredientsPage from './pages/IngredientsPage/IngredientsPage'
 import Research from './pages/Research/Research'
-import TestimonialsPage from './pages/TestimonialsPage/TestimonialsPage'
-import FAQPage from './pages/FAQPage/FAQPage'
 import ContactPage from './pages/ContactPage/ContactPage'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import Purchase from './pages/Purchase/Purchase'
@@ -46,11 +42,7 @@ function AppLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/benefits" element={<BenefitsPage />} />
-          <Route path="/ingredients" element={<IngredientsPage />} />
           <Route path="/research" element={<Research />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/faq" element={<FAQPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/product" element={<ProductDetails />} />
           <Route path="/purchase" element={<Purchase />} />

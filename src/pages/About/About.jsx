@@ -90,7 +90,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="section section--dark">
+      <section className="about__stats section section--dark">
         <div className="container">
           <SectionTitle overline={t('about_team_overline')} title={t('about_team_title')} />
           <div className="about__team">
