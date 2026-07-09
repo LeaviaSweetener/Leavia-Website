@@ -6,11 +6,8 @@ import './Navigation.css'
 const NAV_KEYS = [
   { key: 'nav_home', path: '/' },
   { key: 'nav_about', path: '/about' },
-  { key: 'nav_benefits', path: '/benefits' },
-  { key: 'nav_ingredients', path: '/ingredients' },
+  { key: 'nav_product', path: '/product' },
   { key: 'nav_research', path: '/research' },
-  { key: 'nav_testimonials', path: '/testimonials' },
-  { key: 'nav_faq', path: '/faq' },
   { key: 'nav_contact', path: '/contact' },
 ]
 
@@ -53,7 +50,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link to="/" className="nav__logo" aria-label="Leavia">
             <img
-              src={lang === 'ar' ? '/logo-ar-white.png' : '/logo-en-white.png'}
+              src={lang === 'ar' ? '/logos/logo-ar-white.png' : '/logos/logo-en-white.png'}
               alt="Leavia"
               className="nav__logo-img"
             />

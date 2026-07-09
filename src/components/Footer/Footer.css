@@ -4,16 +4,6 @@
   position: relative;
 }
 
-.footer__wave {
-  line-height: 0;
-  margin-bottom: -2px;
-}
-.footer__wave svg {
-  width: 100%;
-  height: 60px;
-  display: block;
-}
-
 .footer__main {
   padding: 5rem 0 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);

@@ -75,3 +75,14 @@
 .section-title--light .section-title__subtitle {
   color: var(--gray-600);
 }
+
+/* ===== ARABIC (RTL) =====
+   Arabic script is taller than Latin, so the tight Latin heading line-height
+   (1.12) makes multi-line Arabic titles collide. Loosen it for RTL only. */
+[dir="rtl"] .section-title__heading {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+[dir="rtl"] .section-title__subtitle {
+  line-height: 1.9;
+}

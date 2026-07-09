@@ -1,7 +1,20 @@
 .ingredients {
   position: relative;
   overflow: hidden;
-  background: var(--gradient-section-light) !important;
+  /* Lifestyle photo backdrop. This section renders LIGHT (dark green text),
+     so a near-opaque light wash keeps the photo a soft texture and preserves
+     readability. Overlay listed first = rendered above the image. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 250, 245, 0.6) 0%,
+      rgba(232, 245, 233, 0.88) 100%
+    ),
+    url("/bg-pics/Card1.png") !important;
+  background-size: cover !important;
+  background-position: top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
 }
 
 .ingredients .section-title__overline {
@@ -20,7 +33,11 @@
   left: -200px;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(201, 168, 76, 0.06) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -45,7 +62,7 @@
   padding: 1rem 1.25rem;
   border-radius: var(--radius-md);
   background: var(--green-deep);
-  border: 1px solid rgba(29,120,59,0.4);
+  border: 1px solid rgba(29, 120, 59, 0.4);
   cursor: pointer;
   transition: all var(--transition-base);
   text-align: left;
@@ -54,13 +71,13 @@
 
 .ingredients__item:hover {
   background: var(--green-emerald);
-  border-color: rgba(29,120,59,0.7);
+  border-color: rgba(29, 120, 59, 0.7);
 }
 
 .ingredients__item--active {
-  background: #1D783B !important;
-  border-color: rgba(201,168,76,0.5) !important;
-  box-shadow: 0 0 0 2px rgba(201,168,76,0.3);
+  background: #1d783b !important;
+  border-color: rgba(201, 168, 76, 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.3);
 }
 
 .ingredients__item-left {
@@ -85,7 +102,7 @@
 
 .ingredients__item-origin {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
   letter-spacing: 0.05em;
 }
 
@@ -101,20 +118,24 @@
 .ingredients__detail {
   border-radius: var(--radius-xl);
   padding: 2.5rem;
-  border: 1px solid rgba(201,168,76,0.15);
+  border: 1px solid rgba(201, 168, 76, 0.15);
   position: relative;
   overflow: hidden;
   transition: background 0.4s ease;
 }
 
 .ingredients__detail::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -100px;
   right: -100px;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.04) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -146,7 +167,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .ingredients__detail-name {
@@ -161,7 +182,7 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
   margin-bottom: 0;
 }
 
@@ -174,7 +195,7 @@
 .ingredients__detail-desc {
   font-size: 0.9rem;
   line-height: 1.8;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: 1.5rem;
 }
 
@@ -199,7 +220,7 @@
   align-items: center;
   gap: 0.6rem;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .ingredients__provenance {
@@ -207,9 +228,9 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
   letter-spacing: 0.05em;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1.25rem;
   margin-bottom: 0;
 }
@@ -230,8 +251,12 @@
 }
 
 .ingredients__nature-banner {
-  background: linear-gradient(135deg, rgba(29,120,59,0.18) 0%, rgba(201,168,76,0.10) 100%);
-  border: 1px solid rgba(201,168,76,0.25);
+  background: linear-gradient(
+    135deg,
+    rgba(29, 120, 59, 0.18) 0%,
+    rgba(201, 168, 76, 0.1) 100%
+  );
+  border: 1px solid rgba(201, 168, 76, 0.25);
   border-radius: 16px;
   padding: 2.25rem 2.5rem;
   margin-bottom: 3rem;
@@ -240,10 +265,14 @@
 }
 
 .ingredients__nature-banner::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top left, rgba(29,120,59,0.12), transparent 70%);
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(29, 120, 59, 0.12),
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -259,7 +288,7 @@
   font-family: var(--font-serif);
   font-size: var(--text-base);
   line-height: 1.9;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   max-width: 820px;
   position: relative;
 }

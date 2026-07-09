@@ -1,11 +1,34 @@
-.benefits {
-  background: var(--gradient-section-light);
+/* .benefits.section--cream = higher specificity than the shared
+   .section--cream rule in globals.css, so this photo background wins. */
+.benefits.section--cream {
+  /* Lifestyle photo backdrop. This is a LIGHT section (dark text + cream
+     cards on top), so the overlay is a near-opaque light wash that keeps
+     the photo as a soft, subtle texture and preserves readability. */
+  background:
+    linear-gradient(180deg, rgba(250, 250, 245, 0.50) 0%, rgba(232, 245, 233, 0.75) 100%),
+    url('/bg-pics/Card2.png');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.75rem;
+}
+
+/* Each direct child is a ScrollReveal wrapper; size them to 3 per row.
+   The leftover cards on the last row then center automatically. */
+.benefits__grid > * {
+  flex: 0 1 calc((100% - 2 * 1.75rem) / 3);
+  max-width: calc((100% - 2 * 1.75rem) / 3);
+}
+
+.benefits__grid > * > .benefits__card {
+  height: 100%;
 }
 
 .benefits__card {
@@ -99,12 +122,16 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .benefits__grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* 2 per row; the 5th card centers on the last row */
+  .benefits__grid > * {
+    flex-basis: calc((100% - 1.75rem) / 2);
+    max-width: calc((100% - 1.75rem) / 2);
   }
 }
 @media (max-width: 600px) {
-  .benefits__grid {
-    grid-template-columns: 1fr;
+  /* 1 per row */
+  .benefits__grid > * {
+    flex-basis: 100%;
+    max-width: 100%;
   }
 }

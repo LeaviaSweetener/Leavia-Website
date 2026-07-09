@@ -1,7 +1,6 @@
 import Product3D from '../../components/Product3D/Product3D'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
 import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
-import CTA from '../../components/CTA/CTA'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
 import './ProductDetails.css'
@@ -294,8 +293,6 @@ export default function ProductDetails() {
           </ScrollReveal>
         </div>
       </section>
-
-      <CTA />
     </div>
   )
 }

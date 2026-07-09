@@ -1,17 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Organic Monk Fruit Extract",
-    "latin": "Siraitia grosvenorii",
-    "percentage": 35,
-    "origin": "Southern China",
-    "description": "The crown jewel of natural sweeteners. Monk fruit has been used in Traditional Chinese Medicine for centuries. Its natural sweetness comes from mogrosides — powerful antioxidants, not sugars — delivering 150–200x the sweetness of cane sugar with zero calories and zero glycemic impact.",
-    "benefits": ["Zero calories", "Potent antioxidants", "Anti-inflammatory", "Zero glycemic index"],
-    "icon": "🍈",
-    "color": "#f0d060",
-    "bgColor": "#14542A"
-  },
-  {
     "id": 2,
     "name": "Organic Stevia Leaf Extract",
     "latin": "Stevia rebaudiana",

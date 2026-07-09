@@ -11,11 +11,11 @@ import './Product3D.css'
    Set any face to null to use the built-in canvas artwork instead.
    ============================================================ */
 const CUBE_FACE_IMAGES = {
-  front:  '/FrontAr.png',
-  back:   '/FrontEn.png',
-  right:  '/detailsAr.png',
-  left:   '/detailsEn.png',
-  top:    '/top-of-product.png',
+  front:  '/mockups/FrontAr.png',
+  back:   '/mockups/FrontEn.png',
+  right:  '/mockups/detailsAr.png',
+  left:   '/mockups/detailsEn.png',
+  top:    '/product/top-of-product.png',
   bottom: null,
 }
 
