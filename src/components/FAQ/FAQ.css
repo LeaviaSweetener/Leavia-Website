@@ -31,11 +31,18 @@
 }
 
 .faq__q-text {
+  flex: 1;
+  min-width: 0;
+  text-align: start;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--green-deep);
   line-height: 1.4;
+}
+
+[dir='rtl'] .faq__question {
+  text-align: right;
 }
 
 .faq__icon {

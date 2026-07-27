@@ -15,17 +15,30 @@
 
 /* ===== TABS ===== */
 .why-better__tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-auto-columns: minmax(0, 1fr);
   gap: 0.5rem;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-full);
   padding: 0.3rem;
-  width: fit-content;
+  width: min(100%, 25rem);
+  min-height: 3rem;
+  box-sizing: border-box;
   margin: 0 auto 3rem;
 }
 
 .why-better__tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: 100%;
+  min-height: 2.4rem;
+  box-sizing: border-box;
   font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 600;
@@ -38,6 +51,20 @@
   background: none;
   cursor: pointer;
   transition: all var(--transition-base);
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .why-better__tabs {
+    gap: 0.25rem;
+  }
+
+  .why-better__tab {
+    padding-inline: 0.5rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+  }
 }
 
 .why-better__tab--active {
@@ -109,6 +136,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   text-align: right;
+  white-space: nowrap;
 }
 .why-better__bar-val--good { color: #4caf50; }
 .why-better__bar-val--bad  { color: #e57373; }
@@ -116,8 +144,14 @@
 /* ===== TABLE ===== */
 .why-better__table-wrap {
   overflow-x: auto;
+  scrollbar-width: none;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255,255,255,0.1);
+}
+
+.why-better__table-wrap::-webkit-scrollbar,
+.why-better__diff-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .why-better__table {
@@ -183,6 +217,43 @@
   .why-better__row-label {
     text-align: left;
   }
+
+  [dir="rtl"] .why-better__row-label {
+    width: 100%;
+    text-align: right;
+  }
+
+  [dir="rtl"] .why-better__bar-name {
+    text-align: right;
+  }
+
+  [dir="rtl"] .why-better__bar-val {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-better__comparisons,
+  .why-better__row,
+  .why-better__bars {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .why-better__bar-group {
+    grid-template-columns: 3.5rem minmax(0, 1fr) 5.25rem;
+    gap: 0.5rem;
+  }
+
+  .why-better__row-label {
+    font-size: 0.8rem;
+  }
+
+  .why-better__bar-name,
+  .why-better__bar-val {
+    font-size: 0.72rem;
+    letter-spacing: 0;
+  }
 }
 
 /* ===== DIFF TABLE ===== */
@@ -202,6 +273,7 @@
 
 .why-better__diff-scroll {
   overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .why-better__diff-table {
@@ -247,6 +319,174 @@
   font-weight: 600;
 }
 
+.why-better__status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+}
+
+.why-better__status-icon--positive {
+  color: #4caf50;
+}
+
+.why-better__status-icon--negative {
+  color: #d86a73;
+}
+
 .why-better__diff-table tbody tr:hover {
-  background: rgba(255,255,255,0.03);
+  background: linear-gradient(90deg, rgba(54,143,81,0.16), rgba(201,168,76,0.07));
+}
+
+.why-better__diff-table tbody tr,
+.why-better__table-wrap--flat .why-better__table tbody tr {
+  cursor: default;
+  transition: opacity 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.why-better__diff-table tbody tr > *,
+.why-better__table-wrap--flat .why-better__table tbody tr > * {
+  transition: color 220ms ease, transform 220ms ease, background 220ms ease;
+}
+
+.why-better__diff-table tbody:hover tr:not(:hover),
+.why-better__table-wrap--flat .why-better__table tbody:hover tr:not(:hover) {
+  opacity: 0.68;
+}
+
+.why-better__diff-table tbody tr:hover,
+.why-better__table-wrap--flat .why-better__table tbody tr:hover {
+  background: linear-gradient(90deg, rgba(54,143,81,0.16), rgba(201,168,76,0.07));
+  box-shadow: inset 3px 0 0 rgba(201,168,76,0.78), inset 0 0 24px rgba(76,175,80,0.045);
+}
+
+[dir='rtl'] .why-better__diff-table tbody tr:hover,
+[dir='rtl'] .why-better__table-wrap--flat .why-better__table tbody tr:hover {
+  box-shadow: inset -3px 0 0 rgba(201,168,76,0.78), inset 0 0 24px rgba(76,175,80,0.045);
+}
+
+.why-better__diff-table tbody tr:hover > *,
+.why-better__table-wrap--flat .why-better__table tbody tr:hover > * {
+  color: rgba(255,255,255,0.94);
+  transform: translateX(3px);
+}
+
+[dir='rtl'] .why-better__diff-table tbody tr:hover > *,
+[dir='rtl'] .why-better__table-wrap--flat .why-better__table tbody tr:hover > * {
+  transform: translateX(-3px);
+}
+
+.why-better__diff-table tbody tr:hover > :first-child,
+.why-better__table-wrap--flat .why-better__table tbody tr:hover > :first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.why-better__diff-table tbody tr:hover > :last-child,
+.why-better__table-wrap--flat .why-better__table tbody tr:hover > :last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.why-better__diff-table tbody tr:hover .why-better__diff-leavia,
+.why-better__table-wrap--flat .why-better__table tbody tr:hover td:nth-child(2) {
+  background: rgba(76,175,80,0.06);
+  text-shadow: 0 0 12px rgba(76,175,80,0.4);
+}
+
+.why-better__diff-table tbody tr:hover .why-better__status-icon,
+.why-better__table-wrap--flat .why-better__table tbody tr:hover .why-better__status-icon {
+  transform: scale(1.12);
+}
+
+/* Both languages share the same flat comparison-table structure. */
+.why-better__diff-scroll,
+.why-better__table-wrap--flat {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+
+.why-better__diff-scroll::-webkit-scrollbar,
+.why-better__table-wrap--flat::-webkit-scrollbar {
+  display: none;
+}
+
+.why-better__diff-scroll::-webkit-scrollbar-thumb,
+.why-better__table-wrap--flat::-webkit-scrollbar-thumb {
+  background: var(--gold-warm);
+  border-radius: 999px;
+}
+
+@media (max-width: 600px) {
+  .why-better__diff-scroll,
+  .why-better__table-wrap--flat {
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-warm) rgba(255,255,255,0.08);
+  }
+
+  .why-better__diff-scroll::-webkit-scrollbar,
+  .why-better__table-wrap--flat::-webkit-scrollbar {
+    display: block;
+    height: 5px;
+  }
+
+  .why-better__diff-table,
+  .why-better__table-wrap--flat .why-better__table {
+    min-width: 640px;
+  }
+
+  .why-better__diff-table th,
+  .why-better__table-wrap--flat .why-better__table th,
+  .why-better__diff-table td,
+  .why-better__table-wrap--flat .why-better__table td {
+    padding-inline: 0.8rem;
+    font-size: 0.75rem;
+  }
+}
+
+.why-better__diff-table,
+.why-better__table-wrap--flat .why-better__table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.why-better__table-wrap--flat {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.why-better__table-wrap--flat .why-better__table thead tr {
+  background: transparent;
+  border-bottom: 2px solid rgba(201, 168, 76, 0.4);
+}
+
+.why-better__table-wrap--flat .why-better__table th {
+  padding: 0.75rem 1.1rem;
+  text-align: start;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+
+.why-better__table-wrap--flat .why-better__table td {
+  padding: 0.85rem 1.1rem;
+  border-top: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.75);
+  text-align: start;
+  vertical-align: middle;
+}
+
+.why-better__table-wrap--flat .why-better__table tbody tr:last-child td {
+  border-bottom: 0;
 }

@@ -137,15 +137,17 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
   font-family: 'Carlito', 'Calibri', var(--font-sans);
 }
 
-/* Arabic text runs slightly small at a given size, so bump the root by 2px
-   (16px -> 18px) when the document is RTL. All rem-based sizes scale up,
-   affecting only the Arabic layout. */
+/* Keep the same layout scale in both locales. Arabic typography is handled by
+   its dedicated font rather than resizing every rem-based component. */
 html[dir="rtl"] {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 body {
@@ -154,7 +156,9 @@ body {
   line-height: 1.6;
   color: var(--gray-700);
   background: var(--white);
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -428,6 +432,25 @@ p {
   :root {
     --section-padding: 3rem;
   }
+
+  .container {
+    min-width: 0;
+    padding-inline: 1rem;
+  }
+
+  [dir="rtl"] p,
+  [dir="rtl"] blockquote,
+  [dir="rtl"] li {
+    overflow-wrap: anywhere;
+  }
+}
+
+#root,
+main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
 }
 
 /* ===== RTL DIRECTIONAL ARROWS =====
@@ -437,7 +460,6 @@ p {
    vertical (up/down) chevrons are intentionally excluded. */
 [dir="rtl"] .hero__btn--primary svg,
 [dir="rtl"] .contact__submit svg,
-[dir="rtl"] .testimonials__nav-btn svg,
-[dir="rtl"] .footer__form-btn {
+[dir="rtl"] .testimonials__nav-btn svg {
   transform: scaleX(-1);
 }

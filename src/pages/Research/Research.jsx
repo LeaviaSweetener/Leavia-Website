@@ -3,6 +3,7 @@ import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
 import CertCarousel from '../../components/CertCarousel/CertCarousel'
 import CTA from '../../components/CTA/CTA'
+import { BookOpen, CalendarDays, ShieldCheck } from 'lucide-react'
 import './Research.css'
 
 const CATEGORY_COLORS = {
@@ -23,16 +24,30 @@ const CATEGORY_KEYS = {
   'Weight Management': 'res_cat_weight',
 }
 
+function OfficialFsscText({ text }) {
+  const [before, after] = text.split('FSSC 22000')
+
+  if (after === undefined) return text
+
+  return (
+    <>
+      {before}
+      <bdi dir="ltr" data-no-localize>FSSC 22000</bdi>
+      {after}
+    </>
+  )
+}
+
 export default function Research() {
   const { t, researchData } = useLanguage()
 
   return (
     <div className="research page-wrapper">
 
-      {/* ── Hero ── */}
-      <section className="section section--dark" style={{ paddingTop: '8rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden', background: 'var(--gradient-hero)' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <ScrollReveal>
+      {/* ── Research Intro & Certifications ── */}
+      <section className="section section--dark" style={{ background: 'var(--gradient-hero)', paddingTop: '5rem', paddingBottom: '2rem' }}>
+        <div className="container">
+          <ScrollReveal className="research__intro">
             <span className="overline">{t('res_overline')}</span>
             <h1 style={{ color: 'white', marginTop: '1rem', marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
               {t('res_title')}
@@ -41,20 +56,26 @@ export default function Research() {
               {t('res_subtitle')}
             </p>
           </ScrollReveal>
-        </div>
-      </section>
 
-      {/* ── Certifications Carousel ── */}
-      <section className="section section--dark" style={{ background: 'var(--gradient-hero)', paddingTop: '5rem', paddingBottom: '2rem' }}>
-        <div className="container">
           <ScrollReveal>
             <SectionTitle
               overline={t('cert_carousel_overline')}
               title={t('cert_carousel_title')}
-              subtitle={t('cert_carousel_subtitle')}
+              subtitle={<OfficialFsscText text={t('cert_carousel_subtitle')} />}
             />
           </ScrollReveal>
-          <CertCarousel />
+          <CertCarousel group="certificates" />
+
+          <div className="research__quality-documents">
+            <ScrollReveal>
+              <SectionTitle
+                overline={t('quality_docs_overline')}
+                title={t('quality_docs_title')}
+                subtitle={t('quality_docs_subtitle')}
+              />
+            </ScrollReveal>
+            <CertCarousel group="documents" />
+          </div>
         </div>
       </section>
 
@@ -79,19 +100,25 @@ export default function Research() {
                     >
                       {t(CATEGORY_KEYS[study.category] || study.category)}
                     </span>
-                    <span className="research__year">{study.year}</span>
+                    <span className="research__year">
+                      <CalendarDays size={14} strokeWidth={1.8} aria-hidden="true" />
+                      {study.year}
+                    </span>
                   </div>
 
                   <h3 className="research__title">{study.title}</h3>
                   <p className="research__authors">{study.authors}</p>
-                  <p className="research__journal">📖 {study.journal}</p>
+                  <p className="research__journal"><BookOpen size={16} strokeWidth={1.9} aria-hidden="true" /> {study.journal}</p>
 
                   <div className="research__divider" />
 
                   <p className="research__summary">{study.summary}</p>
 
                   <div className="research__finding">
-                    <span className="research__finding-label">{t('res_key_finding')}</span>
+                    <span className="research__finding-label">
+                      <ShieldCheck size={14} strokeWidth={1.9} aria-hidden="true" />
+                      {t('res_key_finding')}
+                    </span>
                     <p className="research__finding-text">{study.keyFinding}</p>
                   </div>
                 </article>
@@ -99,13 +126,6 @@ export default function Research() {
             ))}
           </div>
 
-          <ScrollReveal delay={0.5}>
-            <div className="research__disclaimer">
-              <p>
-                <strong>{t('res_disclaimer_note')}</strong> {t('res_disclaimer')}
-              </p>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 

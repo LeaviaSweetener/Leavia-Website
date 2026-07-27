@@ -1,35 +1,25 @@
-import Product3D from '../../components/Product3D/Product3D'
+import { lazy, Suspense } from 'react'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
+import SaudiRiyalPrice from '../../components/shared/SaudiRiyalPrice/SaudiRiyalPrice'
 import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
+import NutritionTable from '../../components/shared/NutritionTable/NutritionTable'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
+import { translations } from '../../i18n/translations'
+import { Award, Leaf, PackageOpen, Scale, Sparkles, Weight } from 'lucide-react'
 import './ProductDetails.css'
 
+const Product3D = lazy(() => import('../../components/Product3D/Product3D'))
+
 const EN_PANEL = {
-  perLabel: 'Per Serving',
-  dvLabel: 'Daily Value',
-  nutrition: [
-    { label: 'Calories',         value: '0 Kcal', dv: '0.0%' },
-    { label: 'Total Fat',        value: '0 g',    dv: '0.0%' },
-    { label: 'Saturated Fat',    value: '0 g',    dv: '0.0%', indent: true },
-    { label: 'Trans Fat',        value: '0 g',    dv: '0.0%', indent: true },
-    { label: 'Monounsaturated',  value: '0 g',    dv: '0.0%', indent: true },
-    { label: 'Polyunsaturated',  value: '0 g',    dv: '0.0%', indent: true },
-    { label: 'Cholesterol',      value: '0 mg',   dv: '0.0%' },
-    { label: 'Sodium',           value: '0 mg',   dv: '0.0%' },
-    { label: 'Carbohydrate',     value: '7 g',    dv: '3%'   },
-    { label: 'Sugars',           value: '0 g',    dv: '0.0%', indent: true },
-    { label: 'Added Sugar',      value: '0 g',    dv: '0.0%', indent: true },
-    { label: 'Protein',          value: '0 g',    dv: '0.0%' },
-  ],
   ingredientsLabel: 'Ingredients',
-  ingredients: 'Erythritol & Steviol Glycosides',
+  ingredients: 'Erythritol and Steviol Glycosides',
   weightLabel: 'Net Weight',
-  weight: '500 g',
+  weight: '350 g · 50 sachets × 7 g',
   madeInLabel: 'Made in',
   madeIn: 'China',
-  certLabel: 'Certifications',
-  certifications: ['Halal', 'Zero Calorie', '100% Natural'],
+  certLabel: 'Pack Mark',
+  certifications: ['Halal', 'Zero calories', '100% Natural'],
   suitableLabel: 'Suitable For',
   suitableFor: [
     { label: 'Cooking',   sub: 'Heat Resistant' },
@@ -38,57 +28,15 @@ const EN_PANEL = {
   ],
 }
 
-const EN_COMPARE = {
-  title: 'Why is Leavia Different?',
-  headers: ['Criterion', 'Leavia', 'White Sugar', 'Artificial Sweeteners'],
-  rows: [
-    { label: 'Source',                   leavia: '100% Natural', sugar: 'Refined',         artificial: 'Artificial'      },
-    { label: 'Calories',                 leavia: 'Zero',         sugar: 'High',            artificial: 'Variable'        },
-    { label: 'Taste',                    leavia: 'Sweet, no bitterness', sugar: 'Sweet',   artificial: 'Sweet with bitterness' },
-    { label: 'Chemicals',                leavia: 'None',         sugar: 'Processed',       artificial: 'Present'         },
-    { label: 'Suitable for Diabetics',   leavia: '✅',           sugar: '❌',              artificial: 'Depends on type' },
-    { label: 'Natural',                  leavia: '✅',           sugar: '❌',              artificial: '❌'              },
-  ],
-}
-
-const AR_COMPARE = {
-  title: 'لماذا ليفيا مختلف؟',
-  headers: ['المعيار', 'ليفيا', 'السكر الأبيض', 'المحليات الصناعية'],
-  rows: [
-    { label: 'المصدر',                   leavia: 'طبيعي 100%',         sugar: 'مكرر',     artificial: 'صناعي'         },
-    { label: 'السعرات الحرارية',         leavia: 'صفر',                sugar: 'عالية',    artificial: 'متفاوتة'       },
-    { label: 'الطعم',                    leavia: 'حلو بدون مرارة',    sugar: 'حلو',      artificial: 'حلو مع مرارة'  },
-    { label: 'المواد الكيميائية',        leavia: 'لا يوجد',            sugar: 'معالج',    artificial: 'يوجد'          },
-    { label: 'مناسب لمرضى السكري',       leavia: '✅',                 sugar: '❌',       artificial: 'حسب النوع'     },
-    { label: 'طبيعي',                    leavia: '✅',                 sugar: '❌',       artificial: '❌'            },
-  ],
-}
-
 const AR_PANEL = {
-  perLabel: 'لكل حصة',
-  dvLabel: 'القيمة اليومية',
-  nutrition: [
-    { label: 'السعرات الحرارية',  value: '٠ كيلوكالوري', dv: '0.0%' },
-    { label: 'الدهون الكلية',     value: '٠ جم',         dv: '0.0%' },
-    { label: 'الدهون المشبعة',    value: '٠ جم',         dv: '0.0%', indent: true },
-    { label: 'الدهون المتحولة',   value: '٠ جم',         dv: '0.0%', indent: true },
-    { label: 'أحادية غير مشبعة',  value: '٠ جم',         dv: '0.0%', indent: true },
-    { label: 'متعددة غير مشبعة',  value: '٠ جم',         dv: '0.0%', indent: true },
-    { label: 'الكوليسترول',       value: '٠ ملجم',       dv: '0.0%' },
-    { label: 'الصوديوم',          value: '٠ ملجم',       dv: '0.0%' },
-    { label: 'الكربوهيدرات',      value: '٧ جم',         dv: '3%'   },
-    { label: 'السكريات',          value: '٠ جم',         dv: '0.0%', indent: true },
-    { label: 'سكر مضاف',          value: '٠ جم',         dv: '0.0%', indent: true },
-    { label: 'البروتين',          value: '٠ جم',         dv: '0.0%' },
-  ],
   ingredientsLabel: 'المكونات',
-  ingredients: 'إريثريتول وجليكوسيدات الستيفيول',
+  ingredients: 'الإريثريتول وجليكوسيدات الستيفيول',
   weightLabel: 'الوزن الصافي',
-  weight: '٥٠٠ جم',
+  weight: '٣٥٠ جرامًا · ٥٠ ظرفًا × ٧ جرامات',
   madeInLabel: 'بلد المنشأ',
   madeIn: 'الصين',
-  certLabel: 'الاعتمادات',
-  certifications: ['حلال', 'صفر سعرات', '١٠٠٪ طبيعي'],
+  certLabel: 'العلامة على العبوة',
+  certifications: ['حلال', 'صفر سعرة حرارية', 'طبيعي 100٪'],
   suitableLabel: 'مناسب لـ',
   suitableFor: [
     { label: 'الطبخ',     sub: 'مقاوم للحرارة' },
@@ -102,27 +50,63 @@ const SPEC_KEYS = [
   ['pd_spec_1_label', 'pd_spec_1_value'],
   ['pd_spec_2_label', 'pd_spec_2_value'],
   ['pd_spec_3_label', 'pd_spec_3_value'],
+  ['pd_spec_14_label', 'pd_spec_14_value'],
   ['pd_spec_4_label', 'pd_spec_4_value'],
+  ['pd_spec_12_label', 'pd_spec_12_value'],
   ['pd_spec_5_label', 'pd_spec_5_value'],
   ['pd_spec_6_label', 'pd_spec_6_value'],
   ['pd_spec_7_label', 'pd_spec_7_value'],
   ['pd_spec_8_label', 'pd_spec_8_value'],
   ['pd_spec_9_label', 'pd_spec_9_value'],
+  ['pd_spec_10_label', 'pd_spec_10_value'],
+  ['pd_spec_11_label', 'pd_spec_11_value'],
 ]
 
 const CERT_KEYS = ['pd_cert_0', 'pd_cert_1', 'pd_cert_2', 'pd_cert_3', 'pd_cert_4', 'pd_cert_5']
 
+const COMPARE_HEADERS = [
+  'pd_compare_th_criteria',
+  'pd_compare_th_leavia',
+  'pd_compare_th_sugar',
+  'pd_compare_th_artificial',
+]
+
+const COMPARE_ROWS = [
+  { key: '1' },
+  { key: '2' },
+  { key: '3' },
+  { key: '4' },
+  { key: '5', leaviaIcon: 'check', sugarIcon: 'cross' },
+  { key: '6', leaviaIcon: 'check', sugarIcon: 'cross' },
+]
+
+function ComparisonIcon({ type, label }) {
+  const isCheck = type === 'check'
+
+  return (
+    <span className={`pd-compare__icon pd-compare__icon--${type}`}>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        {isCheck ? (
+          <path d="m5 12.5 4.2 4.2L19 7" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+        ) : (
+          <path d="m7 7 10 10M17 7 7 17" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
+        )}
+      </svg>
+      <span className="pd-compare__sr-only">{label}</span>
+    </span>
+  )
+}
+
 const QUICK_FACTS = [
-  { icon: '🌿', key: 'pd_fact_0' },
-  { icon: '✨', key: 'pd_fact_1' },
-  { icon: '💚', key: 'pd_fact_2' },
-  { icon: '🏅', key: 'pd_fact_3' },
+  { Icon: Leaf, key: 'pd_fact_0' },
+  { Icon: Sparkles, key: 'pd_fact_1' },
+  { Icon: Award, key: 'pd_fact_3' },
 ]
 
 export default function ProductDetails() {
   const { t, isAr } = useLanguage()
   const panel   = isAr ? AR_PANEL   : EN_PANEL
-  const compare = isAr ? AR_COMPARE : EN_COMPARE
+  const compareText = (key) => translations[isAr ? 'ar' : 'en'][key]
 
   return (
     <div className="product-details page-wrapper">
@@ -132,7 +116,9 @@ export default function ProductDetails() {
           <div className="product-details__hero-layout">
             {/* 3D Product */}
             <div className="product-details__3d">
-              <Product3D />
+              <Suspense fallback={null}>
+                <Product3D />
+              </Suspense>
             </div>
 
             {/* Info */}
@@ -147,17 +133,35 @@ export default function ProductDetails() {
                 </p>
 
                 <div className="product-details__quick-facts">
-                  {QUICK_FACTS.map((fact) => (
-                    <div key={fact.key} className="product-details__fact">
-                      <span>{fact.icon}</span>
-                      <span>{t(fact.key)}</span>
+                  {QUICK_FACTS.map(({ Icon, key }) => (
+                    <div key={key} className="product-details__fact">
+                      <Icon className="product-details__fact-icon" size={19} strokeWidth={1.9} aria-hidden="true" />
+                      <span>{t(key)}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="product-details__price-block">
-                  <span className="product-details__price">31 ر.س</span>
-                  <span className="product-details__price-note">{t('pd_price_note')}</span>
+                  <SaudiRiyalPrice value={31} className="product-details__price" />
+                  <div className="product-details__pack-specs" aria-label={t('pd_price_note')}>
+                    <span className="product-details__pack-spec">
+                      <Scale aria-hidden="true" />
+                      <bdi dir="ltr" className="product-details__pack-number">350</bdi>
+                      <span>{isAr ? 'جرامًا' : 'g'}</span>
+                    </span>
+                    <i aria-hidden="true" />
+                    <span className="product-details__pack-spec">
+                      <PackageOpen aria-hidden="true" />
+                      <bdi dir="ltr" className="product-details__pack-number">50</bdi>
+                      <span>{isAr ? 'ظرفًا' : 'sachets'}</span>
+                    </span>
+                    <i aria-hidden="true" />
+                    <span className="product-details__pack-spec">
+                      <Weight aria-hidden="true" />
+                      <bdi dir="ltr" className="product-details__pack-number">7</bdi>
+                      <span>{isAr ? 'جرامات لكل ظرف' : 'g each'}</span>
+                    </span>
+                  </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -197,21 +201,7 @@ export default function ProductDetails() {
               <ScrollReveal direction="right">
                 <div className="product-details__nutrition">
                   <div className="product-details__nutrition-panel">
-
-                    {/* Per Serving / Daily Value header */}
-                    <div className="product-details__nutrition-dv-header">
-                      <span className="product-details__nutrition-per">{panel.perLabel}</span>
-                      <span className="product-details__nutrition-dv-label">{panel.dvLabel}</span>
-                    </div>
-
-                    {/* Nutrition rows */}
-                    {panel.nutrition.map((row, i) => (
-                      <div key={i} className={`product-details__nutrition-row${row.indent ? ' product-details__nutrition-row--indent' : ''}`}>
-                        <span className="product-details__nutrition-name">{row.label}</span>
-                        <span className="product-details__nutrition-val">{row.value}</span>
-                        <span className="product-details__nutrition-dv">{row.dv}</span>
-                      </div>
-                    ))}
+                    <NutritionTable isAr={isAr} />
 
                     <div className="product-details__nutrition-divider" />
 
@@ -266,25 +256,32 @@ export default function ProductDetails() {
       <section className="section section--cream">
         <div className="container">
           <ScrollReveal>
-            <h2 className="pd-compare__title">{compare.title}</h2>
+            <h2 className="pd-compare__title">{compareText('pd_compare_title')}</h2>
+            <p className="pd-compare__description">{compareText('pd_compare_description')}</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="pd-compare__wrap">
-              <table className="pd-compare__table">
+              <table className="pd-compare__table" data-no-localize>
                 <thead>
                   <tr>
-                    {compare.headers.map((h, i) => (
-                      <th key={i} className={i === 1 ? 'pd-compare__th--leavia' : ''}>{h}</th>
+                    {COMPARE_HEADERS.map((key, i) => (
+                      <th scope="col" key={key} className={i === 1 ? 'pd-compare__th--leavia' : ''}>{compareText(key)}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {compare.rows.map((row, i) => (
-                    <tr key={i}>
-                      <td className="pd-compare__criterion">{row.label}</td>
-                      <td className="pd-compare__leavia">{row.leavia}</td>
-                      <td>{row.sugar}</td>
-                      <td>{row.artificial}</td>
+                  {COMPARE_ROWS.map((row) => (
+                    <tr key={row.key}>
+                      <th scope="row" className="pd-compare__criterion">{compareText(`pd_compare_r${row.key}_criteria`)}</th>
+                      <td className="pd-compare__leavia">
+                        {row.leaviaIcon ? <ComparisonIcon type={row.leaviaIcon} label={compareText(`pd_compare_${row.leaviaIcon}`)} /> : compareText(`pd_compare_r${row.key}_leavia`)}
+                      </td>
+                      <td>
+                        {row.sugarIcon ? <ComparisonIcon type={row.sugarIcon} label={compareText(`pd_compare_${row.sugarIcon}`)} /> : compareText(`pd_compare_r${row.key}_sugar`)}
+                      </td>
+                      <td>
+                        {row.artificialIcon ? <ComparisonIcon type={row.artificialIcon} label={compareText(`pd_compare_${row.artificialIcon}`)} /> : compareText(`pd_compare_r${row.key}_artificial`)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

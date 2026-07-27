@@ -2,39 +2,87 @@
    .contact-page__connect.section--dark = higher specificity than the shared
    .section--dark rule in globals.css, so this photo background wins.
    Dark section (white text + form), so a dark green overlay keeps it readable. */
+.contact-page__hero {
+  min-height: 420px;
+  box-sizing: border-box;
+  display: grid;
+  align-items: center;
+}
+
 .contact-page__connect.section--dark {
+  background-color: var(--green-deepest);
   background:
     linear-gradient(
-      135deg,
-      rgba(6, 15, 9, 0.88) 0%,
-      rgba(11, 46, 21, 0.82) 45%,
-      rgba(20, 84, 42, 0.78) 100%
+      90deg,
+      rgba(6, 15, 9, 0.9) 0%,
+      rgba(11, 46, 21, 0.78) 48%,
+      rgba(20, 84, 42, 0.3) 78%,
+      rgba(20, 84, 42, 0.18) 100%
     ),
-    url("/bg-pics/Card3.png");
-  background-size: cover;
-  background-position: top;
+    url("/bg-pics/contact-v2.png");
+  /*
+   * Keep the photo crop independent of translated content height. With `cover`
+   * and vertical centering, the slightly different Arabic/English text heights
+   * caused the photo to be rescaled and shifted when switching languages.
+   */
+  background-size: 100% 100%, 100% auto;
+  /* Show the agent, laptop and a larger portion of the desk. */
+  background-position: center, right 66%;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
+}
+
+@media (min-width: 901px) {
+  /*
+   * A fixed desktop canvas makes the photo crop identical in Arabic and
+   * English regardless of small differences in translated text metrics.
+   */
+  .contact-page__connect.section--dark {
+    height: 860px;
+    min-height: 860px;
+    box-sizing: border-box;
+  }
 }
 
 .contact-page__layout {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 5rem;
-  align-items: start;
+  grid-template-columns: 340px minmax(440px, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: stretch;
+  width: min(72%, 1080px);
+  margin-right: auto;
+  direction: ltr;
 }
 
-.contact-page__info-cards {
-  display: flex;
-  flex-direction: column;
+.contact-page__form-column,
+.contact-page__form-wrap {
+  height: 100%;
+}
+
+html[dir='rtl'] .contact-page__info,
+html[dir='rtl'] .contact-page__form-wrap {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir='ltr'] .contact-page__info,
+html[dir='ltr'] .contact-page__form-wrap {
+  direction: ltr;
+  text-align: left;
+}
+
+.contact-page__cards {
+  display: grid;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .contact-page__info-card {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-md);
@@ -47,8 +95,21 @@
 }
 
 .contact-page__info-icon {
-  font-size: 1.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--gold-warm);
   flex-shrink: 0;
+}
+
+.contact-page__info-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-page__info-content {
+  min-width: 0;
 }
 
 .contact-page__info-label {
@@ -64,36 +125,37 @@
 .contact-page__info-value {
   display: block;
   font-size: 0.9rem;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 0.15rem;
+  overflow-wrap: anywhere;
+  transition: color var(--transition-base);
+}
+
+.contact-page__info-value:hover {
+  color: var(--gold-light);
+}
+
+.contact-page__info-value--phone {
+  width: fit-content;
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+.contact-page__info-value--email {
+  width: fit-content;
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  font-size: 0.82rem;
 }
 
 .contact-page__info-sub {
   font-size: 0.72rem;
   color: rgba(255, 255, 255, 0.35);
-}
-
-.contact-page__hours {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
-}
-
-.contact-page__hours h4 {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold-warm);
-  margin-bottom: 0.75rem;
-}
-
-.contact-page__hours p {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 0.3rem;
-  line-height: 1.5;
 }
 
 .contact-page__form-wrap {
@@ -104,8 +166,43 @@
 }
 
 @media (max-width: 900px) {
+  .contact-page__connect.section--dark {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6, 15, 9, 0.76) 0%,
+        rgba(11, 46, 21, 0.88) 48%,
+        rgba(6, 15, 9, 0.94) 100%
+      ),
+      url("/bg-pics/contact-v2.png");
+    background-size: cover;
+    /* Keep the support agent's face in view on tablets. */
+    background-position: center, 82% center;
+  }
+
   .contact-page__layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+    width: 100%;
+  }
+
+  .contact-page__form-column,
+  .contact-page__form-wrap {
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-page__connect.section--dark {
+    background-position: center, 84% center;
+  }
+
+  .contact-page__form-wrap {
+    padding: 1.5rem;
+  }
+
+  .contact-page__info-card {
+    height: auto;
+    min-height: 150px;
   }
 }

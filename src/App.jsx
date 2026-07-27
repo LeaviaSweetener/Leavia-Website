@@ -30,6 +30,50 @@ function ScrollToTop() {
   return null
 }
 
+const PAGE_TITLES = {
+  en: {
+    '/': 'Home | LEAVIA',
+    '/about': 'About Us | LEAVIA',
+    '/product': 'Our Product | LEAVIA',
+    '/research': 'Quality & Certifications | LEAVIA',
+    '/contact': 'Contact Us | LEAVIA',
+    '/purchase': 'Shop LEAVIA',
+    fallback: 'Page Not Found | LEAVIA',
+  },
+  ar: {
+    '/': 'الصفحة الرئيسية | ليفيا',
+    '/about': 'من نحن | ليفيا',
+    '/product': 'منتجنا | ليفيا',
+    '/research': 'الجودة والاعتمادات | ليفيا',
+    '/contact': 'اتصل بنا | ليفيا',
+    '/purchase': 'تسوق ليفيا',
+    fallback: 'الصفحة غير موجودة | ليفيا',
+  },
+}
+
+function PageTitle() {
+  const { pathname } = useLocation()
+  const { lang } = useLanguage()
+
+  useEffect(() => {
+    const titles = PAGE_TITLES[lang] || PAGE_TITLES.en
+    document.title = titles[pathname] || titles.fallback
+
+    const logoPath =
+      lang === 'ar'
+        ? '/logos/logo-ar-gold.png?v=3'
+        : '/logos/logo-en-gold.png?v=3'
+
+    document
+      .querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]')
+      .forEach((link) => {
+        link.href = logoPath
+      })
+  }, [lang, pathname])
+
+  return null
+}
+
 /**
  * AppLayout — wraps all pages with nav and footer
  */
@@ -37,6 +81,7 @@ function AppLayout() {
   return (
     <>
       <ScrollToTop />
+      <PageTitle />
       <Navigation />
       <main>
         <Routes>

@@ -4,6 +4,7 @@ import { Float, Sparkles, Environment, PerspectiveCamera, OrbitControls, Text } 
 import * as THREE from 'three'
 import { useSmoothMousePosition } from '../../hooks/useMousePosition'
 import { useLanguage } from '../../context/LanguageContext'
+import NutritionTable from '../shared/NutritionTable/NutritionTable'
 import './Product3D.css'
 
 /* ============================================================
@@ -279,11 +280,11 @@ function createFrontTexture() {
   ctx.fillStyle = TXT
   ctx.font = 'bold 42px Arial, sans-serif'
   ctx.textAlign = 'left'
-  ctx.fillText('% 100 natural sweetener', 60, 240)
+  ctx.fillText('Stevia-based natural sweetener', 60, 240)
 
   ctx.fillStyle = MID
   ctx.font = '400 27px Arial, sans-serif'
-  ctx.fillText('with a taste similar to sugar , with no bitterness', 60, 282)
+  ctx.fillText('with a smooth taste close to sugar', 60, 282)
 
   // Thin divider
   ctx.strokeStyle = LITE; ctx.lineWidth = 1.5
@@ -294,9 +295,9 @@ function createFrontTexture() {
   ctx.font = '400 25px Arial, sans-serif'
   ctx.textAlign = 'left'
   const desc = [
-    'A 100% natural sweetener extracted only from stevia leaves , offering',
-    'a balanced sweetness similar to sugar , free from bitterness and with',
-    'zero calories - making it the perfect healthy choice for everyday use',
+    'A stevia-based sweetener made with erythritol and Steviol Glycosides,',
+    'offering balanced sweetness with a taste close to sugar and no typical',
+    'bitter aftertaste for beverages, cooking, and baking.',
   ]
   desc.forEach((line, i) => ctx.fillText(line, 60, 356 + i * 37))
 
@@ -370,7 +371,7 @@ function createFrontTexture() {
   ctx.fillStyle = TXT; ctx.font = 'bold 40px Georgia, serif'
   ctx.fillText('Ingredients', 640, 720)
   ctx.fillStyle = MID; ctx.font = '400 24px Arial, sans-serif'
-  ctx.fillText('Erythritol &', 640, 758)
+  ctx.fillText('Erythritol and', 640, 758)
   ctx.fillText('Steviol Glycosides', 640, 790)
   ctx.fillStyle = TXT; ctx.font = 'bold 32px Arial, sans-serif'
   ctx.fillText('Made in China', 640, 850)
@@ -380,18 +381,7 @@ function createFrontTexture() {
 
   // ── NUTRITION TABLE ───────────────────────────────────────
   const nutRows = [
-    ['Calories',        '0 Kcal', '0.0%'],
-    ['Total Fat',       '0 g',    '0.0%'],
-    ['Saturated Fat',   '0 g',    '0.0%'],
-    ['Trans Fat',       '0 g',    '0.0%'],
-    ['Monounsaturated', '0 g',    '0.0%'],
-    ['Polyunsaturated', '0 g',    '0.0%'],
-    ['Cholesterol',     '0 mg',   '0.0%'],
-    ['Sodium',          '0 mg',   '0.0%'],
-    ['Carbohydrate',    '7 g',    '3%'  ],
-    ['Sugars',          '0 g',    '0.0%'],
-    ['Added Sugar',     '0 g',    '0.0%'],
-    ['Protein',         '0 g',    '0.0%'],
+    ['Calories', 'Zero calories', ''],
   ]
   const NUT_X = 50, NUT_Y = 910, NUT_W = 480, ROW_H = 32
   const NUT_H = 58 + nutRows.length * ROW_H
@@ -405,7 +395,7 @@ function createFrontTexture() {
   ctx.fillStyle = TXT; ctx.font = 'bold 20px Arial, sans-serif'; ctx.textAlign = 'center'
   ctx.fillText('Nutrition Facts', NUT_X + NUT_W / 2, NUT_Y + 24)
   ctx.fillStyle = '#556655'; ctx.font = '400 14px Arial, sans-serif'
-  ctx.fillText('Per Serving  /  لكل حصة', NUT_X + NUT_W / 2, NUT_Y + 44)
+  ctx.fillText('Nutrition  /  القيم الغذائية', NUT_X + NUT_W / 2, NUT_Y + 44)
 
   ctx.strokeStyle = TXT; ctx.lineWidth = 1.5
   ctx.beginPath(); ctx.moveTo(NUT_X, NUT_Y + 58); ctx.lineTo(NUT_X + NUT_W, NUT_Y + 58); ctx.stroke()
@@ -439,9 +429,9 @@ function createFrontTexture() {
   ctx.fillStyle = '#d4eed8'; ctx.font = '400 28px Arial, sans-serif'; ctx.textAlign = 'left'
   ctx.fillText('Net Weight', 58, H - 140)
   ctx.fillStyle = '#ffffff';  ctx.font = 'bold 64px Arial, sans-serif'
-  ctx.fillText('500 g', 58, H - 68)
+  ctx.fillText('350 g', 58, H - 68)
 
-  // ZERO CALORIE seal
+  // Per-serving calorie seal
   const sx = W - 128, sy = H - 100, sr = 82
   ctx.beginPath(); ctx.arc(sx, sy, sr, 0, Math.PI * 2)
   ctx.fillStyle = '#7a6830'; ctx.fill()
@@ -451,12 +441,24 @@ function createFrontTexture() {
   ctx.strokeStyle = '#c8b860'; ctx.lineWidth = 1.5; ctx.stroke()
 
   ctx.fillStyle = '#fff8d8'; ctx.font = 'bold 19px Arial, sans-serif'; ctx.textAlign = 'center'
-  ctx.fillText('ZERO', sx, sy - 10)
-  ctx.fillText('CALORIE', sx, sy + 16)
+  ctx.fillText('0 KCAL', sx, sy - 10)
+  ctx.fillText('NUTRITION', sx, sy + 16)
   for (let i = 0; i < 8; i++) {
     const a = (i / 8) * Math.PI * 2
-    ctx.fillStyle = '#c8b860'; ctx.font = '11px sans-serif'
-    ctx.fillText('★', sx + Math.cos(a) * (sr - 20), sy + Math.sin(a) * (sr - 20) + 4)
+    const starX = sx + Math.cos(a) * (sr - 20)
+    const starY = sy + Math.sin(a) * (sr - 20)
+    ctx.beginPath()
+    for (let p = 0; p < 10; p++) {
+      const radius = p % 2 === 0 ? 4.5 : 2
+      const angle = -Math.PI / 2 + (p * Math.PI) / 5
+      const x = starX + Math.cos(angle) * radius
+      const y = starY + Math.sin(angle) * radius
+      if (p === 0) ctx.moveTo(x, y)
+      else ctx.lineTo(x, y)
+    }
+    ctx.closePath()
+    ctx.fillStyle = '#c8b860'
+    ctx.fill()
   }
 
   return new THREE.CanvasTexture(cv)
@@ -503,11 +505,11 @@ function createSideTexture() {
 
   ctx.fillStyle = G_MID
   ctx.font = '400 26px Arial, sans-serif'
-  ctx.fillText('100% Natural Sweetener', W / 2, H / 2 + 24)
+  ctx.fillText('Stevia-Based Sweetener', W / 2, H / 2 + 24)
 
   ctx.fillStyle = '#9a9a9a'
   ctx.font = '400 24px Arial, sans-serif'
-  ctx.fillText('300g', W / 2, H / 2 + 92)
+  ctx.fillText('350 g · 50 Sachets', W / 2, H / 2 + 92)
 
   return new THREE.CanvasTexture(cv)
 }
@@ -605,7 +607,9 @@ function useImageTexture(url) {
       t.colorSpace    = THREE.SRGBColorSpace
       t.wrapS         = THREE.ClampToEdgeWrapping
       t.wrapT         = THREE.ClampToEdgeWrapping
-      t.minFilter     = THREE.LinearMipmapLinearFilter
+      // Keep small packaging copy crisp at oblique viewing angles. Using the
+      // nearest mip level avoids the extra blur caused by trilinear blending.
+      t.minFilter     = THREE.LinearMipmapNearestFilter
       t.magFilter     = THREE.LinearFilter
       t.anisotropy    = 16
       t.generateMipmaps = true
@@ -653,7 +657,9 @@ function ProductBox({ mousePosition, onBoxClick }) {
   const topTex    = topImgTex    ?? topCanvasTex
   const bottomTex = bottomImgTex ?? botCanvasTex
 
-  const boxGeo = useMemo(() => new THREE.BoxGeometry(1.8, 2.8, 1.0, 1, 1, 1), [])
+  // Real pack proportions: 7 cm wide x 6 cm high x 3 cm deep.
+  // Scaled uniformly for the scene so the box keeps its physical aspect ratio.
+  const boxGeo = useMemo(() => new THREE.BoxGeometry(2.8, 2.4, 1.2, 1, 1, 1), [])
 
   // Per-face colors — shown when no image is assigned to that face
   const FACE_COLORS = {
@@ -667,11 +673,12 @@ function ProductBox({ mousePosition, onBoxClick }) {
 
   // BoxGeometry material slots: +X(right), -X(left), +Y(top), -Y(bottom), +Z(front), -Z(back)
   const mats = useMemo(() => {
-    const p = { roughness: 0.55, metalness: 0.08 }
     const make = (imgTex, color) =>
       imgTex
-        ? new THREE.MeshStandardMaterial({ map: imgTex, ...p })
-        : new THREE.MeshStandardMaterial({ color, ...p })
+        // Unlit material preserves the PDF artwork exactly: no highlights,
+        // exposure shifts, reflections, or shadow-darkened print colours.
+        ? new THREE.MeshBasicMaterial({ map: imgTex, toneMapped: false })
+        : new THREE.MeshBasicMaterial({ color, toneMapped: false })
     return [
       make(rightImgTex,  FACE_COLORS.right),
       make(leftImgTex,   FACE_COLORS.left),
@@ -718,12 +725,11 @@ function ProductBox({ mousePosition, onBoxClick }) {
       </mesh>
 
       {/* Crisp dark-green bottom edge */}
-      <mesh position={[0, -1.415, 0]}>
-        <boxGeometry args={[1.82, 0.025, 1.02]} />
+      <mesh position={[0, -1.215, 0]}>
+        <boxGeometry args={[2.82, 0.025, 1.22]} />
         <meshStandardMaterial color={G_DARK} roughness={0.62} />
       </mesh>
 
-      <Text position={[0, -1.402, 0]} fontSize={0.16} color="white" anchorX="center" anchorY="middle" rotation={[Math.PI / 2, 0, 0]}>BOTTOM</Text>
     </group>
   )
 }
@@ -781,11 +787,11 @@ function Scene({ mousePosition, onBoxClick }) {
 /* ============================================================
    LOADING FALLBACK
    ============================================================ */
-function ProductLoader() {
+function ProductLoader({ isAr }) {
   return (
     <div className="product3d__loader">
       <div className="product3d__loader-ring" />
-      <p>Loading 3D Product</p>
+      <p>{isAr ? 'جارٍ تحميل منتج ليفيا' : 'Loading LEAVIA Product'}</p>
     </div>
   )
 }
@@ -795,77 +801,43 @@ function ProductLoader() {
    ============================================================ */
 const EN_DATA = {
   name: 'LEAVIA',
-  subtitle: '100% Natural Sweetener',
-  description: 'Extracted from stevia leaves — balanced sweetness similar to sugar, free from bitterness, zero calories.',
-  weight: '500 g',
-  ingredients: 'Erythritol & Steviol Glycosides',
+  subtitle: 'Stevia-Based Sweetener',
+  description: 'A stevia-based sweetener with balanced sugar-like sweetness and zero calories.',
+  weight: '350 g · 50 sachets × 7 g',
+  ingredients: 'Erythritol and Steviol Glycosides',
   madeIn: 'China',
-  certifications: ['Halal', 'Zero Calorie', '100% Natural'],
+  certifications: ['Halal', 'Zero calories', '100% Natural'],
   suitableFor: [
     { label: 'Cooking',   sub: 'Heat Resistant' },
     { label: 'Baking',    sub: 'Heat Resistant' },
     { label: 'Beverages', sub: 'Hot & Cold' },
   ],
-  nutrition: [
-    { label: 'Calories',        value: '0 Kcal', dv: '0.0%' },
-    { label: 'Total Fat',       value: '0 g',    dv: '0.0%' },
-    { label: 'Saturated Fat',   value: '0 g',    dv: '0.0%' },
-    { label: 'Trans Fat',       value: '0 g',    dv: '0.0%' },
-    { label: 'Monounsaturated', value: '0 g',    dv: '0.0%' },
-    { label: 'Polyunsaturated', value: '0 g',    dv: '0.0%' },
-    { label: 'Cholesterol',     value: '0 mg',   dv: '0.0%' },
-    { label: 'Sodium',          value: '0 mg',   dv: '0.0%' },
-    { label: 'Carbohydrate',    value: '7 g',    dv: '3%'   },
-    { label: 'Sugars',          value: '0 g',    dv: '0.0%' },
-    { label: 'Added Sugar',     value: '0 g',    dv: '0.0%' },
-    { label: 'Protein',         value: '0 g',    dv: '0.0%' },
-  ],
-  perLabel: 'Per Serving',
-  dvLabel: 'Daily Value',
   ingredientsLabel: 'Ingredients',
   weightLabel: 'Net Weight',
   madeInLabel: 'Made in',
   suitableLabel: 'Suitable For',
-  certLabel: 'Certifications',
-  nutritionLabel: 'Nutrition Facts',
+  certLabel: 'Pack Mark',
   closeLabel: 'Close',
 }
 
 const AR_DATA = {
-  name: 'ليفيا',
-  subtitle: 'محلي طبيعي ١٠٠٪',
-  description: 'مستخلص من أوراق الستيفيا — حلاوة متوازنة مشابهة للسكر، خالٍ من المرارة، صفر سعرات حرارية.',
-  weight: '٥٠٠ جم',
-  ingredients: 'إريثريتول وجليكوسيدات الستيفيول',
+  name: 'عبوة ليفيا',
+  subtitle: 'مُحلّي قائم على الستيفيا',
+  description: 'مُحلّي قائم على الستيفيا بحلاوة متوازنة قريبة من السكر وصفر سعرة حرارية.',
+  weight: '٣٥٠ جرامًا · ٥٠ ظرفًا × ٧ جرامات',
+  ingredients: 'الإريثريتول وجليكوسيدات الستيفيول',
   madeIn: 'الصين',
-  certifications: ['حلال', 'صفر سعرات', '١٠٠٪ طبيعي'],
+  certifications: ['حلال', 'صفر سعرة حرارية', 'طبيعي 100٪'],
   suitableFor: [
     { label: 'الطبخ',    sub: 'مقاوم للحرارة' },
     { label: 'الخبز',    sub: 'مقاوم للحرارة' },
     { label: 'المشروبات',sub: 'ساخن وبارد' },
   ],
-  nutrition: [
-    { label: 'السعرات الحرارية', value: '٠ كيلوكالوري', dv: '0.0%' },
-    { label: 'الدهون الكلية',    value: '٠ جم',         dv: '0.0%' },
-    { label: 'الدهون المشبعة',   value: '٠ جم',         dv: '0.0%' },
-    { label: 'الدهون المتحولة',  value: '٠ جم',         dv: '0.0%' },
-    { label: 'أحادية غير مشبعة', value: '٠ جم',         dv: '0.0%' },
-    { label: 'متعددة غير مشبعة', value: '٠ جم',         dv: '0.0%' },
-    { label: 'الكوليسترول',      value: '٠ ملجم',       dv: '0.0%' },
-    { label: 'الصوديوم',         value: '٠ ملجم',       dv: '0.0%' },
-    { label: 'الكربوهيدرات',     value: '٧ جم',         dv: '3%'   },
-    { label: 'السكريات',         value: '٠ جم',         dv: '0.0%' },
-    { label: 'سكر مضاف',         value: '٠ جم',         dv: '0.0%' },
-    { label: 'البروتين',         value: '٠ جم',         dv: '0.0%' },
-  ],
-  perLabel: 'لكل حصة',
-  dvLabel: 'القيمة اليومية',
   ingredientsLabel: 'المكونات',
   weightLabel: 'الوزن الصافي',
   madeInLabel: 'بلد المنشأ',
   suitableLabel: 'مناسب لـ',
-  certLabel: 'الاعتمادات',
-  nutritionLabel: 'القيم الغذائية',
+  certLabel: 'العلامة على العبوة',
   closeLabel: 'إغلاق',
 }
 
@@ -900,10 +872,10 @@ export default function Product3D({ className = '' }) {
 
   return (
     <div className={`product3d ${className}`}>
-      {!isLoaded && <ProductLoader />}
+      {!isLoaded && <ProductLoader isAr={isAr} />}
       <Canvas
         shadows
-        dpr={[1, 2]}
+        dpr={[2, 3]}
         gl={{
           antialias: true,
           alpha: true,
@@ -956,25 +928,7 @@ export default function Product3D({ className = '' }) {
             <div className="product3d__modal-body">
               {/* Nutrition Facts */}
               <div className="product3d__nutrition">
-                <h3 className="product3d__section-title">{d.nutritionLabel}</h3>
-                <p className="product3d__per">{d.perLabel}</p>
-                <div className="product3d__nutrition-table">
-                  <div className="product3d__nutrition-dv-header">
-                    <span className="product3d__nutrition-col-spacer" />
-                    <div className="product3d__nutrition-vline" />
-                    <span className="product3d__nutrition-dv-title">{d.dvLabel}</span>
-                  </div>
-                  {d.nutrition.map((row, i) => (
-                    <div key={i} className={`product3d__nutrition-row ${i % 2 === 0 ? 'product3d__nutrition-row--alt' : ''}`}>
-                      <div className="product3d__nutrition-left">
-                        <span className="product3d__nutrition-name">{row.label}</span>
-                        <span className="product3d__nutrition-val">{row.value}</span>
-                      </div>
-                      <div className="product3d__nutrition-vline" />
-                      <span className="product3d__nutrition-dv">{row.dv}</span>
-                    </div>
-                  ))}
-                </div>
+                <NutritionTable isAr={isAr} />
               </div>
 
               {/* Product Details */}

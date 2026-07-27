@@ -5,6 +5,8 @@
 .valueprop__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: 2rem;
   margin-bottom: 4rem;
   max-width: 960px;
@@ -12,7 +14,19 @@
   margin-right: auto;
 }
 
+.valueprop__grid > div {
+  min-width: 0;
+  height: 100%;
+}
+
 .valueprop__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  box-sizing: border-box;
   background: var(--cream);
   border: 1px solid rgba(29, 120, 59, 0.1);
   border-radius: var(--radius-xl);
@@ -48,13 +62,30 @@
 }
 
 .valueprop__icon {
-  width: 56px;
-  height: 56px;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
   margin-bottom: 1.75rem;
-  transition: transform var(--transition-smooth);
+  color: #a98528;
+  background: linear-gradient(145deg, rgba(250, 241, 207, 0.92), rgba(255, 255, 255, 0.72));
+  border: 1px solid rgba(201, 168, 76, 0.34);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(201, 168, 76, 0.1);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
 }
+
+.valueprop__icon svg {
+  width: 27px;
+  height: 27px;
+  stroke-width: 1.8;
+}
+
 .valueprop__card:hover .valueprop__icon {
-  transform: scale(1.1) rotate(5deg);
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow: 0 12px 24px rgba(201, 168, 76, 0.18);
 }
 
 .valueprop__title {
@@ -70,21 +101,6 @@
   font-size: var(--text-base);
   line-height: 1.75;
   color: var(--gray-600);
-  margin-bottom: 1.5rem;
-}
-
-.valueprop__highlight {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-warm);
-  background: rgba(201, 168, 76, 0.08);
-  border: 1px solid rgba(201, 168, 76, 0.2);
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius-full);
 }
 
 /* ===== STRIP ===== */
@@ -155,6 +171,7 @@
 
 @media (max-width: 600px) {
   .valueprop__card {
+    min-height: 340px;
     padding: 2rem 1.5rem;
   }
   .valueprop__strip {

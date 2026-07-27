@@ -28,7 +28,6 @@ export default function FAQ({ limit }) {
             </button>
             <div className="faq__answer" style={{ maxHeight: openId === item.id ? '400px' : '0' }}>
               <div className="faq__answer-inner">
-                <span className="faq__category">{item.category}</span>
                 <p>{item.answer}</p>
               </div>
             </div>

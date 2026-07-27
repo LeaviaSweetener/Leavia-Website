@@ -2,13 +2,14 @@ import { useState } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
+import SaudiRiyalPrice from '../../components/shared/SaudiRiyalPrice/SaudiRiyalPrice'
+import { Package } from 'lucide-react'
 import './Purchase.css'
 
 const GUARANTEES = ['pur_g_0', 'pur_g_1', 'pur_g_2']
 
 export default function Purchase() {
-  const { t, productsData, isAr } = useLanguage()
-  const currency = isAr ? 'ر.س' : 'S.R'
+  const { t, productsData } = useLanguage()
   const [selectedProduct, setSelectedProduct] = useState(productsData[1].id)
   const [quantity, setQuantity] = useState(1)
   const [isSubscription, setIsSubscription] = useState(false)
@@ -26,21 +27,16 @@ export default function Purchase() {
 
   return (
     <div className="purchase page-wrapper">
-      {/* Hero */}
-      <section className="section section--dark" style={{ paddingTop: '8rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden', background: 'var(--gradient-hero)' }}>
-        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <ScrollReveal>
+      {/* Product Grid */}
+      <section className="section section--dark">
+        <div className="container">
+          <ScrollReveal className="purchase__intro">
             <span className="overline">{t('pur_overline')}</span>
             <h1 style={{ color: 'white', marginTop: '1rem', marginBottom: '1rem', fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}>
               {t('pur_title')}
             </h1>
           </ScrollReveal>
-        </div>
-      </section>
 
-      {/* Product Grid */}
-      <section className="section section--dark">
-        <div className="container">
           <div className="purchase__layout">
             {/* Product selector */}
             <div className="purchase__products">
@@ -48,7 +44,8 @@ export default function Purchase() {
                 overline={t('pur_select_overline')}
                 title={t('pur_select_title')}
                 align="left"
-                titleMaxWidth="400px"
+                className="purchase__select-title"
+                titleMaxWidth="760px"
               />
 
               <div className="purchase__grid">
@@ -66,7 +63,7 @@ export default function Purchase() {
 
                       {p.image
                         ? <img src={p.image} alt={p.name} className="purchase__card-img" draggable={false} />
-                        : <div className="purchase__jar-icon">🫙</div>
+                        : <div className="purchase__jar-icon" aria-hidden="true"><Package size={42} strokeWidth={1.8} /></div>
                       }
 
                       <h3 className="purchase__card-name">{p.name}</h3>
@@ -75,11 +72,13 @@ export default function Purchase() {
 
                       <div className="purchase__card-price">
                         {p.originalPrice && (
-                          <span className="purchase__original-price">{p.originalPrice} {currency}</span>
+                          <SaudiRiyalPrice value={p.originalPrice} className="purchase__original-price" />
                         )}
-                        <span className="purchase__price" style={{ color: p.color }}>{p.price} {currency}</span>
+                        <SaudiRiyalPrice value={p.price} className="purchase__price" />
                         {p.pricePerServing && (
-                          <span className="purchase__per-serving">{p.pricePerServing} {currency}/{t('pur_per_serving')}</span>
+                          <span className="purchase__per-serving">
+                            <SaudiRiyalPrice value={p.pricePerServing} />/{t('pur_per_serving')}
+                          </span>
                         )}
                       </div>
 

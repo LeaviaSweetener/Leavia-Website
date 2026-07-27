@@ -5,17 +5,11 @@ import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
 import './ContactPage.css'
 
 export default function ContactPage() {
-  const { t } = useLanguage()
-
-  const CONTACT_INFO = [
-    { icon: '📧', labelKey: 'cp_email_label', value: 'hello@leaviasweetener.com', subKey: 'cp_email_sub' },
-    { icon: '📞', labelKey: 'cp_phone_label', value: '1-800-Leavia-01', subKey: 'cp_phone_sub' },
-    { icon: '📦', labelKey: 'cp_orders_label', value: 'orders@leaviasweetener.com', subKey: 'cp_orders_sub' },
-  ]
+  const { t, isAr } = useLanguage()
 
   return (
     <div className="contact-page page-wrapper">
-      <section className="section section--dark" style={{ paddingTop: '8rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden', background: 'var(--gradient-hero)' }}>
+      <section className="contact-page__hero section section--dark" style={{ paddingTop: '8rem', paddingBottom: '4rem', position: 'relative', overflow: 'hidden', background: 'var(--gradient-hero)' }}>
         <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <ScrollReveal>
             <span className="overline">{t('cp_overline')}</span>
@@ -38,38 +32,55 @@ export default function ContactPage() {
                 <SectionTitle
                   overline={t('cp_contact_overline')}
                   title={t('cp_contact_title')}
-                  align="left"
+                  align={isAr ? 'right' : 'left'}
                   titleMaxWidth="400px"
                 />
               </ScrollReveal>
 
-              <div className="contact-page__info-cards">
-                {CONTACT_INFO.map((info, i) => (
-                  <ScrollReveal key={i} delay={i * 0.1} direction="left">
-                    <div className="contact-page__info-card">
-                      <span className="contact-page__info-icon">{info.icon}</span>
-                      <div>
-                        <span className="contact-page__info-label">{t(info.labelKey)}</span>
-                        <strong className="contact-page__info-value">{info.value}</strong>
-                        <span className="contact-page__info-sub">{t(info.subKey)}</span>
-                      </div>
+              <div className="contact-page__cards">
+                <ScrollReveal direction="left">
+                  <div className="contact-page__info-card">
+                    <span className="contact-page__info-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M3 6.5h18v11H3z" stroke="currentColor" strokeWidth="1.7" />
+                        <path d="m4 7.5 8 6 8-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <div className="contact-page__info-content">
+                      <span className="contact-page__info-label">{t('cp_email_label')}</span>
+                      <a
+                        className="contact-page__info-value contact-page__info-value--email"
+                        href="mailto:info@leaviasweetener.com"
+                        dir="ltr"
+                        lang="en"
+                        data-no-localize
+                      >
+                        info@leaviasweetener.com
+                      </a>
+                      <span className="contact-page__info-sub">{t('cp_email_sub')}</span>
                     </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+                  </div>
+                </ScrollReveal>
 
-              <ScrollReveal delay={0.4} direction="left">
-                <div className="contact-page__hours">
-                  <h4>{t('cp_hours_title')}</h4>
-                  <p>{t('cp_hours_mf')}</p>
-                  <p>{t('cp_hours_sat')}</p>
-                  <p>{t('cp_hours_sun')}</p>
-                </div>
-              </ScrollReveal>
+                <ScrollReveal direction="left">
+                  <div className="contact-page__info-card">
+                    <span className="contact-page__info-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7.2 3.5 10 7.7 8.2 9.5c1.2 2.4 3.9 5.1 6.3 6.3l1.8-1.8 4.2 2.8c.2 2-1.7 4-3.8 3.7C10 19.5 4.5 14 3.5 7.3c-.3-2.1 1.7-4 3.7-3.8Z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <div className="contact-page__info-content">
+                      <span className="contact-page__info-label">{t('cp_phone_label')}</span>
+                      <a className="contact-page__info-value contact-page__info-value--phone" href="tel:0556090514" dir="ltr" lang="en" data-no-localize>0556090514</a>
+                      <span className="contact-page__info-sub">{t('cp_phone_sub')}</span>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              </div>
             </div>
 
             {/* Form column */}
-            <ScrollReveal direction="right">
+            <ScrollReveal direction="right" className="contact-page__form-column">
               <div className="contact-page__form-wrap">
                 <Contact />
               </div>
