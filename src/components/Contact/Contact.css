@@ -16,6 +16,15 @@
   gap: 0.5rem;
 }
 
+.contact__honeypot {
+  position: absolute;
+  inset-inline-start: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .contact__label {
   font-size: 0.72rem;
   font-weight: 700;
@@ -44,6 +53,17 @@
 .contact__input:focus {
   border-color: rgba(201, 168, 76, 0.5);
   background: rgba(255, 255, 255, 0.08);
+}
+
+.contact__input[aria-invalid="true"] {
+  border-color: #f28aa0;
+}
+
+.contact__field-error {
+  display: block;
+  color: #ffc2cf;
+  font-size: 0.7rem;
+  line-height: 1.4;
 }
 
 .contact__select {
@@ -88,6 +108,8 @@
   box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4);
   transition: all var(--transition-smooth);
   align-self: flex-start;
+  min-width: 210px;
+  min-height: 54px;
 }
 
 .contact__submit:hover:not(:disabled) {
@@ -98,6 +120,20 @@
 .contact__submit:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.contact__status {
+  margin: -0.25rem 0 0;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.contact__status--submitting {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.contact__status--error {
+  color: #ffc2cf;
 }
 
 .contact__btn-shine {

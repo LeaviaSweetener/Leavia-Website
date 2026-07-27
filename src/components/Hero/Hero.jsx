@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Product3D from '../Product3D/Product3D'
+import { lazy, Suspense } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import { BadgeCheck, Coffee, Droplet, Flame, Gauge, Leaf } from 'lucide-react'
 import './Hero.css'
+
+const Product3D = lazy(() => import('../Product3D/Product3D'))
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
   const [mounted, setMounted] = useState(false)
   const heroRef = useRef(null)
-  const { t } = useLanguage()
+  const { t, isAr } = useLanguage()
 
   const HERO_WORDS = [
     t('hero_word_0'),
@@ -47,7 +50,11 @@ export default function Hero() {
 
           {/* Main Headline */}
           <h1 className="hero__title">
-            <span className="hero__title-row">{t('hero_title_1')}</span>
+            <img
+              className={`hero__headline-logo ${isAr ? 'hero__headline-logo--ar' : ''}`}
+              src={isAr ? '/logos/logo-ar-white.png' : '/logos/logo-en-white.png'}
+              alt={t('hero_title_1')}
+            />
             <span className="hero__title-row hero__title-row--italic">{t('hero_title_2')}</span>
             <span className="hero__title-row">{t('hero_title_3')}</span>
           </h1>
@@ -69,13 +76,16 @@ export default function Hero() {
           {/* Stats row */}
           <div className="hero__stats">
             {[
-              { value: '0', labelKey: 'hero_stat_calories' },
-              { value: '0', labelKey: 'hero_stat_gi' },
-              { value: '5', labelKey: 'hero_stat_ingredients' },
-              { value: '1:1', labelKey: 'hero_stat_replacement' },
+              { value: '100%', labelKey: 'hero_stat_replacement', Icon: BadgeCheck },
+              { value: '2', labelKey: 'hero_stat_ingredients', Icon: Leaf },
+              { value: '0', labelKey: 'hero_stat_gi', Icon: Droplet },
+              { value: '0', labelKey: 'hero_stat_calories', Icon: Flame },
             ].map((stat) => (
               <div key={stat.labelKey} className="hero__stat">
-                <span className="hero__stat-value">{stat.value}</span>
+                <span className="hero__stat-icon" aria-hidden="true">
+                  <stat.Icon size={17} strokeWidth={1.8} />
+                </span>
+                <span className="hero__stat-value" dir="ltr">{stat.value}</span>
                 <span className="hero__stat-label">{t(stat.labelKey)}</span>
               </div>
             ))}
@@ -99,29 +109,33 @@ export default function Hero() {
 
         {/* Right — 3D Product */}
         <div className={`hero__product ${mounted ? 'hero__product--mounted' : ''}`}>
-          <div className="hero__product-badge">
-            <span>{t('hero_360')}</span>
-            <svg viewBox="0 0 20 20" fill="none" width="12" height="12">
-              <path d="M10 2C5.5 2 2 5.5 2 10s3.5 8 8 8 8-3.5 8-8-3.5-8-8-8z" stroke="currentColor" strokeWidth="1.2"/>
-              <path d="M10 6v4l3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-          </div>
-
-          <Product3D />
+          <Suspense fallback={null}>
+            <Product3D />
+          </Suspense>
 
           {/* Floating info cards */}
           <div className="hero__card hero__card--tl">
-            <span className="hero__card-icon">🌿</span>
+            <span className="hero__card-icon" aria-hidden="true"><Leaf size={23} strokeWidth={1.9} /></span>
             <div>
               <strong>{t('hero_card_monk')}</strong>
               <span>{t('hero_card_monk_sub')}</span>
             </div>
           </div>
           <div className="hero__card hero__card--br">
-            <span className="hero__card-icon">✨</span>
+            <span className="hero__card-icon" aria-hidden="true"><Gauge size={23} strokeWidth={1.9} /></span>
             <div>
               <strong>{t('hero_card_zero')}</strong>
               <span>{t('hero_card_zero_sub')}</span>
+            </div>
+          </div>
+          <div className="hero__card hero__card--bl">
+            <span className="hero__card-icon hero__card-icon--taste" aria-hidden="true">
+              <Coffee size={23} strokeWidth={1.9} />
+              <BadgeCheck className="hero__card-icon-check" size={11} strokeWidth={2} />
+            </span>
+            <div>
+              <strong>{t('hero_card_taste')}</strong>
+              <span>{t('hero_card_taste_sub')}</span>
             </div>
           </div>
         </div>

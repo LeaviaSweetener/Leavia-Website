@@ -81,15 +81,29 @@
 
 /* Ghost – transparent white */
 .btn--ghost {
-  background: var(--glass-white);
+  background: linear-gradient(145deg, rgba(45, 122, 79, 0.34), rgba(11, 46, 21, 0.24));
   color: var(--white);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(116, 183, 135, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 22px rgba(3,24,11,0.16);
+}
+.btn--ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0.5px 18% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,229,151,0.52), transparent);
+  pointer-events: none;
 }
 .btn--ghost:hover {
-  background: var(--glass-white-hover);
+  background: linear-gradient(145deg, rgba(54,143,81,0.42), rgba(11,46,21,0.3));
   transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(201,168,76,0.52);
+  box-shadow: 0 10px 28px rgba(3,24,11,0.22), 0 0 18px rgba(201,168,76,0.1);
+}
+.btn--ghost:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* Outline gold */

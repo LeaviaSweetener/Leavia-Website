@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Languages } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import './Navigation.css'
 
@@ -79,10 +80,7 @@ export default function Navigation() {
               aria-label={t('nav_lang_switch')}
               title={t('nav_lang_switch')}
             >
-              <svg viewBox="0 0 20 20" fill="none" width="14" height="14" aria-hidden="true">
-                <circle cx="10" cy="10" r="8.5" stroke="currentColor" strokeWidth="1.2"/>
-                <path d="M10 1.5C10 1.5 7 5 7 10s3 8.5 3 8.5M10 1.5C10 1.5 13 5 13 10s-3 8.5-3 8.5M1.5 10h17M2 6.5h16M2 13.5h16" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-              </svg>
+              <Languages size={16} strokeWidth={1.8} aria-hidden="true" />
               <span>{t('nav_lang_label')}</span>
             </button>
 
@@ -90,7 +88,7 @@ export default function Navigation() {
             <button
               className={`nav__hamburger ${mobileOpen ? 'nav__hamburger--open' : ''}`}
               onClick={toggleMobile}
-              aria-label="Toggle menu"
+              aria-label={lang === 'ar' ? 'فتح أو إغلاق القائمة' : 'Open or close menu'}
               aria-expanded={mobileOpen}
             >
               <span />
@@ -127,10 +125,7 @@ export default function Navigation() {
           </div>
           <div className="nav__mobile-footer">
             <button className="nav__mobile-lang" onClick={toggleLang}>
-              <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
-                <circle cx="10" cy="10" r="8.5" stroke="currentColor" strokeWidth="1.2"/>
-                <path d="M10 1.5C10 1.5 7 5 7 10s3 8.5 3 8.5M10 1.5C10 1.5 13 5 13 10s-3 8.5-3 8.5M1.5 10h17M2 6.5h16M2 13.5h16" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-              </svg>
+              <Languages size={18} strokeWidth={1.8} aria-hidden="true" />
               <span>{lang === 'en' ? 'عربي' : 'English'}</span>
             </button>
             <p className="nav__mobile-tagline">{t('nav_mobile_tagline')}</p>

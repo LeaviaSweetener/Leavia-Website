@@ -1,10 +1,14 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import { BadgeCheck, ChevronLeft, ChevronRight, FileCheck2, X, ZoomIn } from 'lucide-react'
 import './CertCarousel.css'
 
-const CERTS = [
+const CERTIFICATES = [
   { src: '/certs/cert-fssc.png',   labelKey: 'cert_label_fssc' },
   { src: '/certs/cert-halal.png',  labelKey: 'cert_label_halal' },
+]
+
+const QUALITY_DOCUMENTS = [
   { src: '/certs/cert-cgmp.png',   labelKey: 'cert_label_cgmp' },
   { src: '/certs/cert-food.png',   labelKey: 'cert_label_food' },
   { src: '/certs/cert-haccp1.png', labelKey: 'cert_label_haccp1' },
@@ -13,167 +17,241 @@ const CERTS = [
   { src: '/certs/cert-haccp4.png', labelKey: 'cert_label_haccp4' },
 ]
 
-const TOTAL      = CERTS.length
-const ANGLE_STEP = 360 / TOTAL
-const RADIUS     = 360
-
-export default function CertCarousel() {
-  const { t } = useLanguage()
-  const stageRef    = useRef(null)
-  const cardRefs    = useRef([])
-  const rafRef      = useRef(null)
-  const angleRef    = useRef(0)
-  const targetRef   = useRef(0)
-  const dragRef     = useRef({ active: false, startX: 0, startAngle: 0 })
-  const activeIdxRef = useRef(0)
+export default function CertCarousel({ group = 'certificates' }) {
+  const { t, isAr } = useLanguage()
+  const isCertificates = group === 'certificates'
+  const items = isCertificates ? CERTIFICATES : QUALITY_DOCUMENTS
+  const total = items.length
+  const dragRef = useRef({ active: false, startX: 0 })
+  const suppressClickRef = useRef(false)
   const [activeIdx, setActiveIdx] = useState(0)
-
-  const animate = useCallback(() => {
-    const diff = targetRef.current - angleRef.current
-    if (Math.abs(diff) > 0.01) {
-      angleRef.current += diff * 0.09
-    } else {
-      angleRef.current = targetRef.current
-    }
-
-    if (stageRef.current) {
-      stageRef.current.style.transform = `rotateY(${-angleRef.current}deg)`
-    }
-
-    let newActive = 0
-    let minDist   = Infinity
-    cardRefs.current.forEach((card, i) => {
-      if (!card) return
-      let angle = ((i * ANGLE_STEP - angleRef.current) % 360 + 360) % 360
-      if (angle > 180) angle -= 360
-      const dist = Math.abs(angle)
-      const opacity = Math.max(0.18, 1 - (dist / 140) * 0.82)
-      card.style.opacity = opacity.toFixed(3)
-      if (dist < minDist) { minDist = dist; newActive = i }
-    })
-
-    if (newActive !== activeIdxRef.current) {
-      activeIdxRef.current = newActive
-      setActiveIdx(newActive)
-    }
-
-    rafRef.current = requestAnimationFrame(animate)
-  }, [])
+  const [selectedCert, setSelectedCert] = useState(null)
 
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(rafRef.current)
-  }, [animate])
+    if (!selectedCert) return undefined
 
-  const snapToNearest = () => {
-    targetRef.current = Math.round(targetRef.current / ANGLE_STEP) * ANGLE_STEP
-  }
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setSelectedCert(null)
+    }
 
-  const onMouseDown = useCallback((e) => {
-    dragRef.current = { active: true, startX: e.clientX, startAngle: targetRef.current }
-    e.preventDefault()
-  }, [])
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
 
-  const onMouseMove = useCallback((e) => {
-    if (!dragRef.current.active) return
-    const delta = (e.clientX - dragRef.current.startX) / 2.2
-    targetRef.current = dragRef.current.startAngle - delta
-  }, [])
-
-  const onMouseUp = useCallback(() => {
-    if (!dragRef.current.active) return
-    dragRef.current.active = false
-    snapToNearest()
-  }, [])
-
-  const onTouchStart = useCallback((e) => {
-    dragRef.current = { active: true, startX: e.touches[0].clientX, startAngle: targetRef.current }
-  }, [])
-
-  const onTouchMove = useCallback((e) => {
-    if (!dragRef.current.active) return
-    const delta = (e.touches[0].clientX - dragRef.current.startX) / 2.2
-    targetRef.current = dragRef.current.startAngle - delta
-    e.preventDefault()
-  }, [])
-
-  const onTouchEnd = useCallback(() => {
-    dragRef.current.active = false
-    snapToNearest()
-  }, [])
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [selectedCert])
 
   const goTo = useCallback((idx) => {
-    const current = Math.round(targetRef.current / ANGLE_STEP)
-    let delta = idx - (current % TOTAL + TOTAL) % TOTAL
-    if (delta > TOTAL / 2)  delta -= TOTAL
-    if (delta < -TOTAL / 2) delta += TOTAL
-    targetRef.current = current * ANGLE_STEP + delta * ANGLE_STEP
+    setActiveIdx((idx + total) % total)
+  }, [total])
+
+  const getSlidePosition = useCallback((index) => {
+    let offset = index - activeIdx
+    if (offset > total / 2) offset -= total
+    if (offset < -total / 2) offset += total
+    if (offset === 0) return 'active'
+    if (offset === -1) return 'previous'
+    if (offset === 1) return 'next'
+    return 'hidden'
+  }, [activeIdx, total])
+
+  const onPointerDown = useCallback((event) => {
+    dragRef.current = { active: true, startX: event.clientX }
+    event.currentTarget.setPointerCapture?.(event.pointerId)
   }, [])
+
+  const onPointerUp = useCallback((event) => {
+    if (!dragRef.current.active) return
+    const distance = event.clientX - dragRef.current.startX
+    dragRef.current.active = false
+    if (Math.abs(distance) < 45) return
+    suppressClickRef.current = true
+    goTo(activeIdx + (distance < 0 ? 1 : -1))
+    window.setTimeout(() => { suppressClickRef.current = false }, 0)
+  }, [activeIdx, goTo])
+
+  if (isCertificates) {
+    return (
+      <>
+        <div className="cert-grid">
+          {items.map((cert) => {
+            const label = cert.labelKey === 'cert_label_fssc'
+              ? (isAr ? 'شهادة نظام سلامة الغذاء FSSC 22000' : 'FSSC 22000 Food Safety System Certificate')
+              : t(cert.labelKey)
+            const badge = cert.labelKey === 'cert_label_halal'
+              ? (isAr ? 'موثق دوليًا' : 'Internationally verified')
+              : (isAr ? 'معتمد' : 'Certified')
+
+            return (
+              <article
+                className="cert-grid__card"
+                key={cert.labelKey}
+                role="button"
+                tabIndex={0}
+                aria-label={`${label} — ${isAr ? 'فتح الشهادة' : 'Open certificate'}`}
+                onClick={() => setSelectedCert({ ...cert, label })}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    setSelectedCert({ ...cert, label })
+                  }
+                }}
+              >
+                <div className="cert-grid__image-frame">
+                  <img src={cert.src} alt={label} draggable={false} />
+                  <span className="cert-grid__zoom" aria-hidden="true">
+                    <ZoomIn size={16} strokeWidth={1.8} />
+                  </span>
+                </div>
+                <div className="cert-grid__content">
+                  <span className="cert-grid__badge">
+                    <BadgeCheck size={14} strokeWidth={2} aria-hidden="true" />
+                    {badge}
+                  </span>
+                  <h3 className="cert-grid__label">
+                    <BadgeCheck className="cert-grid__title-icon" size={19} strokeWidth={1.8} aria-hidden="true" />
+                    <span>{label}</span>
+                  </h3>
+                  <span className="cert-grid__gold-line" aria-hidden="true" />
+                </div>
+              </article>
+            )
+          })}
+        </div>
+
+        {selectedCert && (
+          <div
+            className="cert-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedCert.label}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setSelectedCert(null)
+            }}
+          >
+            <button
+              className="cert-lightbox__close"
+              type="button"
+              onClick={() => setSelectedCert(null)}
+              aria-label={isAr ? 'إغلاق' : 'Close'}
+              autoFocus
+            >
+              <X size={22} />
+            </button>
+            <figure className="cert-lightbox__figure">
+              <img src={selectedCert.src} alt={selectedCert.label} />
+              <figcaption>
+                <BadgeCheck size={18} aria-hidden="true" />
+                {selectedCert.label}
+              </figcaption>
+            </figure>
+          </div>
+        )}
+      </>
+    )
+  }
 
   return (
     <div
       className="cert-carousel"
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+      onPointerCancel={() => { dragRef.current.active = false }}
     >
-      <p className="cert-carousel__hint">
-        <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
-          <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-        {t('cert_carousel_hint')}
-      </p>
+      <div className="cert-carousel__viewport">
+        <button
+          className="cert-carousel__arrow cert-carousel__arrow--previous"
+          type="button"
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={() => goTo(activeIdx - 1)}
+          aria-label={isAr ? 'الوثيقة السابقة' : 'Previous document'}
+        >
+          {isAr ? <ChevronRight /> : <ChevronLeft />}
+        </button>
 
-      <div className="cert-carousel__scene">
-        <div className="cert-carousel__stage" ref={stageRef}>
-          {CERTS.map((cert, i) => (
-            <div
-              key={i}
-              ref={el => cardRefs.current[i] = el}
-              className={`cert-carousel__card${activeIdx === i ? ' cert-carousel__card--active' : ''}`}
-              style={{ transform: `rotateY(${i * ANGLE_STEP}deg) translateZ(${RADIUS}px)` }}
-              onClick={() => goTo(i)}
-            >
-              <img
-                src={cert.src}
-                alt={t(cert.labelKey)}
-                draggable={false}
-                onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'flex' }}
-              />
-              <div className="cert-carousel__placeholder">
-                <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-                  <rect x="6" y="4" width="28" height="32" rx="3" stroke="rgba(201,168,76,0.5)" strokeWidth="1.5"/>
-                  <line x1="11" y1="13" x2="29" y2="13" stroke="rgba(201,168,76,0.4)" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="11" y1="18" x2="29" y2="18" stroke="rgba(201,168,76,0.4)" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="11" y1="23" x2="22" y2="23" stroke="rgba(201,168,76,0.4)" strokeWidth="1.5" strokeLinecap="round"/>
-                  <circle cx="28" cy="28" r="6" fill="rgba(29,120,59,0.15)" stroke="rgba(201,168,76,0.6)" strokeWidth="1.2"/>
-                  <path d="M25.5 28l2 2 3.5-3" stroke="rgba(201,168,76,0.8)" strokeWidth="1.2" strokeLinecap="round"/>
-                </svg>
-                <span>{t(cert.labelKey)}</span>
-              </div>
-            </div>
-          ))}
+        <div className="cert-carousel__track">
+          {items.map((cert, index) => {
+            const position = getSlidePosition(index)
+            const label = t(cert.labelKey)
+            return (
+              <article
+                key={cert.labelKey}
+                className={`cert-carousel__card cert-carousel__card--${position}`}
+                aria-hidden={position === 'hidden'}
+                onClick={() => {
+                  if (suppressClickRef.current) return
+                  if (position === 'active') setSelectedCert({ ...cert, label })
+                  else if (position !== 'hidden') goTo(index)
+                }}
+              >
+                <div className="cert-carousel__paper">
+                  <img src={cert.src} alt={label} draggable={false} />
+                </div>
+                <div className="cert-carousel__card-info">
+                  <span className="cert-carousel__badge">
+                    <FileCheck2 size={14} aria-hidden="true" />
+                    {isAr ? 'وثيقة جودة' : 'Quality document'}
+                  </span>
+                  <h3><BadgeCheck size={18} aria-hidden="true" />{label}</h3>
+                </div>
+              </article>
+            )
+          })}
         </div>
+
+        <button
+          className="cert-carousel__arrow cert-carousel__arrow--next"
+          type="button"
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={() => goTo(activeIdx + 1)}
+          aria-label={isAr ? 'الوثيقة التالية' : 'Next document'}
+        >
+          {isAr ? <ChevronLeft /> : <ChevronRight />}
+        </button>
       </div>
 
       <div className="cert-carousel__footer">
-        <p className="cert-carousel__label">{t(CERTS[activeIdx].labelKey)}</p>
         <div className="cert-carousel__dots">
-          {CERTS.map((_, i) => (
+          {items.map((_, i) => (
             <button
               key={i}
               className={`cert-carousel__dot${activeIdx === i ? ' cert-carousel__dot--active' : ''}`}
               onClick={() => goTo(i)}
-              aria-label={t(CERTS[i].labelKey)}
+              aria-label={t(items[i].labelKey)}
             />
           ))}
         </div>
       </div>
+
+      {selectedCert && (
+        <div
+          className="cert-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedCert.label}
+          onPointerDown={(event) => event.stopPropagation()}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedCert(null)
+          }}
+        >
+          <button
+            className="cert-lightbox__close"
+            type="button"
+            onClick={() => setSelectedCert(null)}
+            aria-label={isAr ? 'إغلاق' : 'Close'}
+            autoFocus
+          >
+            <X size={22} />
+          </button>
+          <figure className="cert-lightbox__figure">
+            <img src={selectedCert.src} alt={selectedCert.label} />
+            <figcaption><BadgeCheck size={18} aria-hidden="true" />{selectedCert.label}</figcaption>
+          </figure>
+        </div>
+      )}
     </div>
   )
 }

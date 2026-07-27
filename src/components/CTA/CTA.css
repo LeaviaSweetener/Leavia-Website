@@ -9,13 +9,14 @@
   background:
     linear-gradient(
       135deg,
-      rgba(6, 15, 9, 0.88) 0%,
-      rgba(11, 46, 21, 0.82) 45%,
-      rgba(20, 84, 42, 0.78) 100%
+      rgba(6, 15, 9, 0.82) 0%,
+      rgba(11, 46, 21, 0.72) 45%,
+      rgba(20, 84, 42, 0.62) 100%
     ),
-    url("/bg-pics/Home.png");
+    url("/bg-pics/cta-v2.png");
   background-size: cover;
-  background-position: top;
+  /* Anchor the crop around the couple rather than the empty dark wall. */
+  background-position: 78% center;
   background-repeat: no-repeat;
 }
 
@@ -68,8 +69,8 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold-warm);
-  background: rgba(201, 168, 76, 0.1);
-  border: 1px solid rgba(201, 168, 76, 0.25);
+  background: transparent;
+  border: none;
   padding: 0.4rem 1.25rem;
   border-radius: var(--radius-full);
   margin-bottom: 2rem;
@@ -84,12 +85,19 @@
   margin-bottom: 0;
 }
 
-.cta__title em {
-  font-style: italic;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.cta__title-line {
+  display: block;
+}
+
+/* Both locales intentionally use the same two-line title footprint. */
+@media (min-width: 601px) {
+  .cta__title {
+    min-height: 129px;
+  }
+
+  .cta__subtitle {
+    min-height: 64px;
+  }
 }
 
 .cta__divider {
@@ -176,14 +184,28 @@
 }
 
 .cta__btn--ghost {
-  background: var(--glass-white);
+  background: linear-gradient(145deg, rgba(45,122,79,0.34), rgba(11,46,21,0.24));
   color: var(--white);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(116,183,135,0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 22px rgba(3,24,11,0.16);
+}
+.cta__btn--ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0.5px 18% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,229,151,0.52), transparent);
 }
 .cta__btn--ghost:hover {
-  background: var(--glass-white-hover);
-  transform: translateY(-3px);
+  background: linear-gradient(145deg, rgba(54,143,81,0.42), rgba(11,46,21,0.3));
+  transform: translateY(-2px);
+  border-color: rgba(201,168,76,0.52);
+  box-shadow: 0 10px 28px rgba(3,24,11,0.22), 0 0 18px rgba(201,168,76,0.1);
+}
+.cta__btn--ghost:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .cta__btn-shine {
@@ -213,6 +235,10 @@
 }
 
 @media (max-width: 600px) {
+  .cta.section--dark {
+    background-position: 80% center;
+  }
+
   .cta__offer {
     flex-direction: column;
     gap: 0.75rem;

@@ -17,8 +17,8 @@ export default function CTA() {
             <span className="cta__overline">{t('cta_overline')}</span>
 
             <h2 className="cta__title">
-              {t('cta_title_1')}<br />
-              <em>{t('cta_title_em')}</em>
+              <span className="cta__title-line">{t('cta_title_1')}</span>
+              <span className="cta__title-line">{t('cta_title_em')}</span>
             </h2>
 
             <div className="cta__divider" />

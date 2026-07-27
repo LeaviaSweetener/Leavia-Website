@@ -1,0 +1,18 @@
+.saudi-riyal-price {
+  display: inline-flex;
+  align-items: baseline;
+  direction: ltr;
+  gap: 0.16em;
+  line-height: 1;
+}
+
+.saudi-riyal-price__symbol {
+  display: block;
+  width: 0.77em;
+  height: 0.86em;
+  flex: 0 0 auto;
+  align-self: center;
+  background-color: currentColor;
+  -webkit-mask: url('../../../assets/icons/saudi-riyal-symbol.svg') center / contain no-repeat;
+  mask: url('../../../assets/icons/saudi-riyal-symbol.svg') center / contain no-repeat;
+}
