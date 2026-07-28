@@ -30,6 +30,7 @@
 .testimonials__body {
   position: relative;
   z-index: 1;
+  padding-top: 2rem;
   animation: fadeInUp 0.5s ease forwards;
 }
 
@@ -332,6 +333,10 @@
   .testimonials__text {
     width: 100%;
     min-width: 0;
+  }
+
+  .testimonials__body {
+    padding-top: 2.5rem;
   }
 
   .testimonials__quote-mark {

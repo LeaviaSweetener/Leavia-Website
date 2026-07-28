@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
+import { Mail, Smartphone } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import WhatsAppLink from '../shared/WhatsAppLink/WhatsAppLink'
 import './Footer.css'
 
 export default function Footer() {
@@ -14,15 +16,10 @@ export default function Footer() {
     [t('footer_col_company')]: [
       { labelKey: 'footer_link_about', path: '/about' },
       { labelKey: 'footer_link_mission', path: '/about#mission' },
-      {
-        labelKey: 'footer_link_sustainability',
-        path: '/about#sustainability',
-      },
-      { labelKey: 'footer_link_press', path: '/contact' },
     ],
     [t('footer_col_support')]: [
       { labelKey: 'footer_link_contact', path: '/contact' },
-      { labelKey: 'footer_link_track', path: '/contact' },
+      { labelKey: 'footer_link_faq', path: '/#faq' },
     ],
   }
 
@@ -91,38 +88,26 @@ export default function Footer() {
                 )}
               </div>
 
-              {/* Social */}
+              {/* Direct contact */}
               <div className="footer__social">
-                {[
-                  {
-                    name: 'Instagram',
-                    icon: 'M12 2.2C6.5 2.2 2.2 6.5 2.2 12s4.3 9.8 9.8 9.8 9.8-4.3 9.8-9.8S17.5 2.2 12 2.2zm0 3.6c1.8 0 2 0 2.8.04 1.6.07 2.4.35 3 .58.7.27 1.3.6 1.9 1.2.6.6.93 1.2 1.2 1.9.23.6.5 1.4.58 3 .04.8.04 1 .04 2.8s0 2-.04 2.8c-.07 1.6-.35 2.4-.58 3-.27.7-.6 1.3-1.2 1.9-.6.6-1.2.93-1.9 1.2-.6.23-1.4.5-3 .58-.8.04-1 .04-2.8.04s-2 0-2.8-.04c-1.6-.07-2.4-.35-3-.58-.7-.27-1.3-.6-1.9-1.2-.6-.6-.93-1.2-1.2-1.9-.23-.6-.5-1.4-.58-3C5.8 14 5.8 13.8 5.8 12s0-2 .04-2.8c.07-1.6.35-2.4.58-3 .27-.7.6-1.3 1.2-1.9.6-.6 1.2-.93 1.9-1.2.6-.23 1.4-.5 3-.58.8-.04 1-.04 2.8-.04zm0 2.4A3.8 3.8 0 1 0 12 15.8 3.8 3.8 0 0 0 12 8.2zm0 6.2a2.4 2.4 0 1 1 0-4.8 2.4 2.4 0 0 1 0 4.8zm4.7-5.9a.9.9 0 1 1-1.8 0 .9.9 0 0 1 1.8 0z',
-                  },
-                  {
-                    name: 'Facebook',
-                    icon: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z',
-                  },
-                  {
-                    name: 'Twitter/X',
-                    icon: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
-                  },
-                ].map((social) => (
-                  <a
-                    key={social.name}
-                    href="#"
-                    className="footer__social-link"
-                    aria-label={social.name}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                    >
-                      <path d={social.icon} />
-                    </svg>
-                  </a>
-                ))}
+                <a
+                  href="mailto:info@leaviasweetener.com"
+                  className="footer__social-link"
+                  aria-label={isAr ? 'إرسال بريد إلكتروني إلى ليفيا' : 'Email LEAVIA'}
+                >
+                  <Mail size={18} strokeWidth={1.8} aria-hidden="true" />
+                </a>
+                <a
+                  href="tel:0556090514"
+                  className="footer__social-link"
+                  aria-label={isAr ? 'الاتصال بليفيا' : 'Call LEAVIA'}
+                >
+                  <Smartphone size={18} strokeWidth={1.8} aria-hidden="true" />
+                </a>
+                <WhatsAppLink
+                  className="footer__social-link"
+                  ariaLabel={isAr ? 'مراسلة ليفيا عبر واتساب' : 'Message LEAVIA on WhatsApp'}
+                />
               </div>
             </div>
 
@@ -214,20 +199,6 @@ export default function Footer() {
         <div className="container">
           <div className="footer__bottom-inner">
             <p>{t('footer_copyright')}</p>
-
-            <div className="footer__legal">
-              <a href="#">
-                {t('footer_privacy')}
-              </a>
-
-              <a href="#">
-                {t('footer_terms')}
-              </a>
-
-              <a href="#">
-                {t('footer_cookies')}
-              </a>
-            </div>
           </div>
         </div>
       </div>

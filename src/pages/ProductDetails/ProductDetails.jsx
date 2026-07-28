@@ -6,7 +6,7 @@ import NutritionTable from '../../components/shared/NutritionTable/NutritionTabl
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
 import { translations } from '../../i18n/translations'
-import { Award, Leaf, PackageOpen, Scale, Sparkles, Weight } from 'lucide-react'
+import { Leaf, PackageOpen, Scale, Sparkles, Weight } from 'lucide-react'
 import './ProductDetails.css'
 
 const Product3D = lazy(() => import('../../components/Product3D/Product3D'))
@@ -100,7 +100,6 @@ function ComparisonIcon({ type, label }) {
 const QUICK_FACTS = [
   { Icon: Leaf, key: 'pd_fact_0' },
   { Icon: Sparkles, key: 'pd_fact_1' },
-  { Icon: Award, key: 'pd_fact_3' },
 ]
 
 export default function ProductDetails() {
@@ -117,7 +116,7 @@ export default function ProductDetails() {
             {/* 3D Product */}
             <div className="product-details__3d">
               <Suspense fallback={null}>
-                <Product3D />
+                <Product3D mobileZoomOut />
               </Suspense>
             </div>
 
@@ -142,7 +141,6 @@ export default function ProductDetails() {
                 </div>
 
                 <div className="product-details__price-block">
-                  <SaudiRiyalPrice value={31} className="product-details__price" />
                   <div className="product-details__pack-specs" aria-label={t('pd_price_note')}>
                     <span className="product-details__pack-spec">
                       <Scale aria-hidden="true" />
@@ -162,6 +160,7 @@ export default function ProductDetails() {
                       <span>{isAr ? 'جرامات لكل ظرف' : 'g each'}</span>
                     </span>
                   </div>
+                  <SaudiRiyalPrice value={31} className="product-details__price" />
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

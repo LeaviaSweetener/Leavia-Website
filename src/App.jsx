@@ -4,6 +4,7 @@ import { LanguageProvider } from './context/LanguageContext'
 import { useLanguage } from './context/LanguageContext'
 import Navigation from './components/Navigation/Navigation'
 import Footer from './components/Footer/Footer'
+import WhatsAppLink from './components/shared/WhatsAppLink/WhatsAppLink'
 // Pages
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
@@ -23,10 +24,20 @@ import './components/shared/Button/Button.css'
  * ScrollToTop — resets scroll position on route change
  */
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   useEffect(() => {
+    if (hash) {
+      const target = document.getElementById(hash.slice(1))
+      if (target) {
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        })
+        return
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [pathname])
+  }, [pathname, hash])
   return null
 }
 
@@ -96,6 +107,7 @@ function AppLayout() {
         </Routes>
       </main>
       <Footer />
+      <WhatsAppLink className="whatsapp-float" ariaLabel="WhatsApp LEAVIA" />
     </>
   )
 }

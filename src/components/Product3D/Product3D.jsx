@@ -737,10 +737,23 @@ function ProductBox({ mousePosition, onBoxClick }) {
 /* ============================================================
    SCENE – LIGHTING + ENVIRONMENT
    ============================================================ */
-function Scene({ mousePosition, onBoxClick }) {
+function Scene({ mousePosition, onBoxClick, mobileZoomOut = false }) {
+  const [isMobileViewport, setIsMobileViewport] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches,
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 640px)')
+    const updateViewport = (event) => setIsMobileViewport(event.matches)
+    mediaQuery.addEventListener('change', updateViewport)
+    return () => mediaQuery.removeEventListener('change', updateViewport)
+  }, [])
+
+  const cameraDistance = mobileZoomOut && isMobileViewport ? 10.2 : 7.2
+
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0.2, 7.2]} fov={26} />
+      <PerspectiveCamera makeDefault position={[0, 0.2, cameraDistance]} fov={26} />
       <Environment preset="forest" background={false} />
 
       <ambientLight intensity={0.75} color="#f4f8f4" />
@@ -844,7 +857,7 @@ const AR_DATA = {
 /* ============================================================
    MAIN EXPORT
    ============================================================ */
-export default function Product3D({ className = '' }) {
+export default function Product3D({ className = '', mobileZoomOut = false }) {
   const mousePosition = useSmoothMousePosition(0.04)
   const [isLoaded, setIsLoaded] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
@@ -888,7 +901,11 @@ export default function Product3D({ className = '' }) {
         className="product3d__canvas"
       >
         <Suspense fallback={null}>
-          <Scene mousePosition={mousePosition} onBoxClick={() => setModalOpen(true)} />
+          <Scene
+            mousePosition={mousePosition}
+            onBoxClick={() => setModalOpen(true)}
+            mobileZoomOut={mobileZoomOut}
+          />
         </Suspense>
       </Canvas>
 

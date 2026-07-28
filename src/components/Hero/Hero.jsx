@@ -110,7 +110,7 @@ export default function Hero() {
         {/* Right — 3D Product */}
         <div className={`hero__product ${mounted ? 'hero__product--mounted' : ''}`}>
           <Suspense fallback={null}>
-            <Product3D />
+            <Product3D mobileZoomOut />
           </Suspense>
 
           {/* Floating info cards */}
@@ -183,7 +183,7 @@ export default function Hero() {
           <path
             d="M0,68 C260,108 520,28 760,70 C980,108 1200,32 1440,66 L1440,130 L0,130 Z"
             fill="url(#waveGradMain)"
-            opacity="0.9"
+            opacity="0.72"
           />
 
           {/* ── Layer 3 — blurred ghost wave for depth ── */}
@@ -197,14 +197,14 @@ export default function Hero() {
           <path
             d="M0,48 C180,85 480,10 720,48 C940,84 1230,14 1440,48 L1440,65 C1230,30 940,98 720,65 C480,28 180,99 0,65 Z"
             fill="url(#waveGradCrest)"
-            opacity="0.7"
+            opacity="0.48"
           />
 
           {/* ── Layer 5 — thin highlight line at the very crest ── */}
           <path
             d="M0,46 C180,83 480,8 720,46 C940,82 1230,12 1440,46"
-            stroke="rgba(255,255,255,0.35)"
-            strokeWidth="1.5"
+            stroke="rgba(229,203,115,0.5)"
+            strokeWidth="1.25"
             fill="none"
             strokeLinecap="round"
           />

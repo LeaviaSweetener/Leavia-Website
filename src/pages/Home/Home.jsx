@@ -46,7 +46,7 @@ export default function Home() {
       <Testimonials />
 
       {/* Quick FAQ preview on home */}
-      <section className="section section--dark" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <section id="faq" className="section section--dark" style={{ paddingTop: '5rem', paddingBottom: '5rem', scrollMarginTop: 'var(--nav-height)' }}>
         <div className="container" style={{ maxWidth: '800px' }}>
           <SectionTitle
             overline={t('home_faq_overline')}

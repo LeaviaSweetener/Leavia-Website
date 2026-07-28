@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { useLanguage } from '../../context/LanguageContext'
 import { BadgeCheck, ChevronLeft, ChevronRight, FileCheck2, X, ZoomIn } from 'lucide-react'
 import './CertCarousel.css'
@@ -60,7 +61,6 @@ export default function CertCarousel({ group = 'certificates' }) {
 
   const onPointerDown = useCallback((event) => {
     dragRef.current = { active: true, startX: event.clientX }
-    event.currentTarget.setPointerCapture?.(event.pointerId)
   }, [])
 
   const onPointerUp = useCallback((event) => {
@@ -122,7 +122,7 @@ export default function CertCarousel({ group = 'certificates' }) {
           })}
         </div>
 
-        {selectedCert && (
+        {selectedCert && createPortal(
           <div
             className="cert-lightbox"
             role="dialog"
@@ -148,7 +148,8 @@ export default function CertCarousel({ group = 'certificates' }) {
                 {selectedCert.label}
               </figcaption>
             </figure>
-          </div>
+          </div>,
+          document.body,
         )}
       </>
     )
@@ -181,14 +182,28 @@ export default function CertCarousel({ group = 'certificates' }) {
                 key={cert.labelKey}
                 className={`cert-carousel__card cert-carousel__card--${position}`}
                 aria-hidden={position === 'hidden'}
+                role={position === 'active' ? 'button' : undefined}
+                tabIndex={position === 'active' ? 0 : -1}
+                aria-label={position === 'active' ? `${label} — ${isAr ? 'فتح الوثيقة' : 'Open document'}` : undefined}
                 onClick={() => {
                   if (suppressClickRef.current) return
                   if (position === 'active') setSelectedCert({ ...cert, label })
                   else if (position !== 'hidden') goTo(index)
                 }}
+                onKeyDown={(event) => {
+                  if (position === 'active' && (event.key === 'Enter' || event.key === ' ')) {
+                    event.preventDefault()
+                    setSelectedCert({ ...cert, label })
+                  }
+                }}
               >
                 <div className="cert-carousel__paper">
                   <img src={cert.src} alt={label} draggable={false} />
+                  {position === 'active' && (
+                    <span className="cert-carousel__zoom" aria-hidden="true">
+                      <ZoomIn size={18} strokeWidth={1.8} />
+                    </span>
+                  )}
                 </div>
                 <div className="cert-carousel__card-info">
                   <span className="cert-carousel__badge">
@@ -226,7 +241,7 @@ export default function CertCarousel({ group = 'certificates' }) {
         </div>
       </div>
 
-      {selectedCert && (
+      {selectedCert && createPortal(
         <div
           className="cert-lightbox"
           role="dialog"
@@ -250,7 +265,8 @@ export default function CertCarousel({ group = 'certificates' }) {
             <img src={selectedCert.src} alt={selectedCert.label} />
             <figcaption><BadgeCheck size={18} aria-hidden="true" />{selectedCert.label}</figcaption>
           </figure>
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   )

@@ -64,7 +64,7 @@
 
 .cta__overline {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: var(--section-overline-size);
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -78,7 +78,7 @@
 
 .cta__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: var(--section-heading-size);
   font-weight: 800;
   color: var(--white);
   line-height: 1.15;
@@ -110,7 +110,7 @@
 
 .cta__subtitle {
   font-family: var(--font-serif);
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-size: var(--section-subtitle-size);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.65);
   margin-bottom: 2.5rem;
