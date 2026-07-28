@@ -114,6 +114,10 @@ export default function About() {
         </div>
       </section>
 
+      <div className="about__section-divider" aria-hidden="true">
+        <span />
+      </div>
+
       <CTA />
     </div>
   )

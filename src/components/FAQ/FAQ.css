@@ -103,3 +103,19 @@
 .section--dark .faq__answer-inner p {
   color: rgba(255,255,255,0.6);
 }
+
+@media (max-width: 768px) {
+  .faq__question {
+    transition: background-color 160ms ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .section--dark .faq__question:active {
+    background: rgba(201, 168, 76, 0.16);
+  }
+
+  .section--dark .faq__item--open {
+    background: rgba(201, 168, 76, 0.1);
+    border-color: rgba(225, 194, 105, 0.42);
+  }
+}

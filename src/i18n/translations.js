@@ -9,15 +9,15 @@ export const enBenefitsData = [
     icon: "🌿",
     title: "100% Natural",
     description:
-      "A sweetener based on stevia, erythritol, and steviol glycosides.",
+      "1. Erythritol\n2. Steviol glycosides extracted from the stevia plant",
     color: "#1D783B",
   },
   {
     id: 2,
     icon: "⚡",
-    title: "Low in Calories",
+    title: "Zero Calories",
     description:
-      "Enjoy sugar-like sweetness without worrying about calories. Every cup of coffee, every dessert, every sweet moment... without the guilt.",
+      "Enjoy balanced, sugar-like sweetness with zero calories in coffee, beverages, desserts, and everyday recipes.",
     color: "#c9a84c",
   },
   {
@@ -52,15 +52,15 @@ export const arBenefitsData = [
     icon: "🌿",
     title: "طبيعي ١٠٠٪",
     description:
-      "مُحلٍّ قائم على الستيفيا والإريثريتول وجليكوسيدات الستيفيول.",
+      "مُحلّي قائم على مكوّنين فقط: الإريثريتول وجليكوسيدات الستيفيول المستخلصة من نبات الستيفيا.",
     color: "#1D783B",
   },
   {
     id: 2,
     icon: "⚡",
-    title: "سعرات حرارية قليلة",
+    title: "صفر سعرة حرارية",
     description:
-      "استمتع بحلاوة السكر دون القلق من السعرات الحرارية. كل كوب قهوة، كل حلى، كل لحظة حلوة... بلا أي شعور بالذنب.",
+      "استمتع بحلاوة متوازنة بطعم قريب من السكر وصفر سعرة حرارية في القهوة والمشروبات والحلويات والوصفات اليومية.",
     color: "#c9a84c",
   },
   {
@@ -95,13 +95,14 @@ export const enIngredientsData = [
     name: "Steviol Glycosides",
     latin: "Steviol Glycosides",
     percentage: null,
-    origin: "Listed on the pack",
+    origin: "Stevia leaves",
     description:
-      "Steviol Glycosides are the stevia-derived sweetening ingredient listed on the official LEAVIA pack. Together with erythritol, they help create balanced sweetness with a taste close to sugar and no typical bitter aftertaste.",
+      "Steviol Glycosides are sweet-tasting compounds derived from stevia leaves. They provide concentrated sweetness, while their pairing with erythritol creates a smoother, more balanced taste experience.",
     benefits: [
-      "A stevia-derived sweetening ingredient",
-      "Part of LEAVIA's two-ingredient formula",
-      "Supports a smooth, balanced sweetness profile",
+      "Provides sweetness derived from stevia leaves",
+      "Delivers concentrated sweetness in a small amount",
+      "Works with erythritol for smoother sweetness",
+      "Delivers a clean, balanced finish",
     ],
     icon: "🌿",
     color: "#4caf50",
@@ -112,14 +113,14 @@ export const enIngredientsData = [
     name: "Erythritol",
     latin: "Erythritol",
     percentage: null,
-    origin: "Listed on the pack",
+    origin: "Sweetening ingredient",
     description:
-      "Erythritol is the first ingredient listed on the official LEAVIA pack. It works with Steviol Glycosides to deliver a practical sweetening blend with balanced, sugar-like taste for everyday use.",
+      "Erythritol is a mildly sweet ingredient that adds body to the blend and distributes sweetness evenly, helping create a familiar taste and texture across everyday uses.",
     benefits: [
-      "First ingredient listed on the pack",
-      "Balances the overall sweetness profile",
-      "Suitable for drinks, cooking, and baking",
-      "Convenient for everyday recipes",
+      "Softens and balances concentrated sweetness",
+      "Adds body for a more familiar mouthfeel",
+      "Dissolves easily in hot and cold drinks",
+      "Works well in cooking, baking, and desserts",
     ],
     icon: "🍇",
     color: "#81c784",
@@ -130,14 +131,14 @@ export const enIngredientsData = [
     name: "The Perfect Blend",
     latin: "Perfect Blend",
     percentage: null,
-    origin: "Official product formula",
+    origin: "Balanced formula",
     description:
-      "A stevia-based sweetener made with erythritol and Steviol Glycosides, delivering balanced sweetness with a taste close to sugar. It has zero calories.",
+      "LEAVIA brings erythritol and Steviol Glycosides together in a balanced formula: erythritol adds body, while stevia provides sweetness. The result is a smooth, consistent taste designed for versatile everyday use.",
     benefits: [
-      "Taste close to sugar",
-      "Zero calories",
-      "One sachet for foods and beverages",
-      "Heat-resistant for cooking and baking",
+      "Balanced sweetness with a familiar taste",
+      "Zero-calorie formula",
+      "Suitable for hot and cold beverages",
+      "Versatile for cooking, baking, and desserts",
     ],
     icon: "✨",
     color: "#f0c040",
@@ -151,13 +152,14 @@ export const arIngredientsData = [
     name: "جليكوسيدات الستيفيول (Steviol Glycosides)",
     latin: "Steviol Glycosides",
     percentage: null,
-    origin: "مذكور على العبوة",
+    origin: "أوراق الستيفيا",
     description:
-      "جليكوسيدات الستيفيول هي مكوّن التحلية المشتق من الستيفيا والمدرج على عبوة ليفيا الرسمية. وتعمل مع الإريثريتول لتمنح مذاقًا متوازنًا قريبًا من السكر ومن دون المذاق المُرّ المعتاد.",
+      "جليكوسيدات الستيفيول مركّبات حلوة المذاق مشتقة من أوراق الستيفيا. تمنح حلاوة مركّزة، ويحقق تكاملها مع الإريثريتول مذاقًا أكثر نعومة وتوازنًا.",
     benefits: [
-      "مكوّن تحلية مشتق من الستيفيا",
-      "جزء من تركيبة ليفيا ثنائية المكونات",
-      "يسهم في حلاوة ناعمة ومتوازنة",
+      "حلاوة مستمدة من أوراق الستيفيا",
+      "حلاوة مركّزة بكمية صغيرة",
+      "تتكامل مع الإريثريتول لحلاوة أكثر توازنًا",
+      "تمنح مذاقًا نهائيًا متوازنًا",
     ],
     icon: "🌿",
     color: "#4caf50",
@@ -168,14 +170,14 @@ export const arIngredientsData = [
     name: "الإريثريتول",
     latin: "Erythritol",
     percentage: null,
-    origin: "مذكور على العبوة",
+    origin: "مكوّن للتحلية",
     description:
-      "الإريثريتول هو المكوّن الأول المدرج على عبوة ليفيا الرسمية. ويتكامل مع جليكوسيدات الستيفيول ليقدّم مزيج تحلية عمليًا بطعم متوازن قريب من السكر للاستخدام اليومي.",
+      "الإريثريتول مكوّن ذو حلاوة خفيفة، يمنح المزيج قوامًا أفضل ويساعد على توزيع الحلاوة بصورة متجانسة، لتجربة مذاق مألوفة في الاستخدامات اليومية.",
     benefits: [
-      "المكوّن الأول المدرج على العبوة",
-      "يوازن مذاق الحلاوة",
-      "مناسب للمشروبات والطبخ والخَبز",
-      "عملي للوصفات اليومية",
+      "يوازن شدة الحلاوة المركّزة",
+      "يمنح المزيج قوامًا وإحساسًا مألوفًا",
+      "سهل الذوبان في المشروبات الساخنة والباردة",
+      "مناسب للطبخ والخَبز والحلويات",
     ],
     icon: "🍇",
     color: "#81c784",
@@ -186,10 +188,15 @@ export const arIngredientsData = [
     name: "المزيج المثالي",
     latin: "Perfect Blend",
     percentage: null,
-    origin: "تركيبة المنتج الرسمية",
+    origin: "تركيبة متوازنة",
     description:
-      "مُحلّي قائم على الإريثريتول وجليكوسيدات الستيفيول، يمنحك حلاوة متوازنة بطعم قريب من السكر. ويحتوي على صفر سعرة حرارية.",
-    benefits: ["طعم قريب من السكر", "صفر سعرة حرارية", "ظرف واحد للأطعمة والمشروبات", "مقاوم للحرارة للطبخ والخَبز"],
+      "تجمع ليفيا بين الإريثريتول وجليكوسيدات الستيفيول في تركيبة متوازنة؛ يمنح الإريثريتول القوام، وتوفر الستيفيا الحلاوة، لتجربة ناعمة وثابتة تناسب الاستخدام اليومي.",
+    benefits: [
+      "حلاوة متوازنة بطعم مألوف",
+      "تركيبة خالية من السعرات الحرارية",
+      "مناسبة للمشروبات الساخنة والباردة",
+      "متعددة الاستخدامات للطبخ والخَبز والحلويات",
+    ],
     icon: "✨",
     color: "#f0c040",
     bgColor: "#0b2e15",
@@ -625,7 +632,7 @@ const en = {
     "Perfect Taste Inspired by Nature, with Carefully Selected Ingredients",
   ing_subtitle:
     "Every ingredient is carefully selected from trusted sources and blended in thoughtfully balanced proportions to deliver smooth sweetness and a distinctive taste.",
-  ing_key_benefits: "Key Benefits",
+  ing_key_benefits: "Role in the Blend",
   ing_of_formula: "of formula",
   ing_sourced_from: "Sourced from:",
 
@@ -939,7 +946,7 @@ const ar = {
   // Nav
   nav_home: "الرئيسية",
   nav_about: "من نحن",
-  nav_product: "المنتج",
+  nav_product: "المنتجات",
   nav_benefits: "الفوائد",
   nav_ingredients: "المكونات",
   nav_research: "الاعتمادات",
@@ -988,7 +995,7 @@ const ar = {
 
   // ValueProp
   vp_overline: "لماذا تختار ليفيا؟",
-  vp_title: "طعم السكر الحقيقي، من الطبيعة مباشرة.",
+  vp_title: "طعم السكر الحقيقي من الطبيعة مباشرة",
   vp_subtitle: "",
   vp_prop_0_title: "حلاوة بلا مرارة",
   vp_prop_0_desc:
@@ -1073,15 +1080,15 @@ const ar = {
   ing_title: "طعم مثالي مستوحى من الطبيعة بمكوّنات مختارة بعناية",
   ing_subtitle:
     "كل مكوّن مختار بعناية، من مصادر موثوقة، وبنسب مدروسة لتحقيق حلاوة متوازنة ومذاق مميز.",
-  ing_key_benefits: "الفوائد الرئيسية",
+  ing_key_benefits: "دوره في التركيبة",
   ing_of_formula: "من التركيبة",
   ing_sourced_from: "مصدره من:",
 
   // Testimonials
-  test_overline: "مصمم للحياة اليومية",
+  test_overline: "تجارب حقيقية",
   test_title: "ما يقوله مجتمع ليفيا",
   test_subtitle:
-    "من قهوة الصباح إلى الإنتاج واسع النطاق، يضيف ليفيا حلاوة راقية إلى كل استخدام.",
+    "تجارب متنوعة مع ليفيا، من قهوة الصباح والحلويات المنزلية إلى الاستخدامات المهنية واسعة النطاق.",
   test_verified: "شراء موثق",
   test_uses_title: "استخدامات متعددة… منتج واحد",
   test_uses_description: "تم تطوير ليفيا ليكون عمليًا ومرنًا، مما يجعله مناسبًا لـ:",
@@ -1501,7 +1508,7 @@ export const arAboutTimeline = [
   {
     year: "٦",
     title: "ما ننتج",
-    desc: "من أيدينا إلى أيديكم — حلاوة طبيعية نقية تُقدّم بعناية وجودة يمكنكم الوثوق بها.",
+    desc: "من أيدينا إلى أيديكم، حلاوة طبيعية نقية تُقدّم بعناية وجودة يمكنكم الوثوق بها.",
     image: "/product/product-family.jpg",
   },
 ];

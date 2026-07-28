@@ -78,7 +78,7 @@ export default function Ingredients() {
                   {ingredient.benefits.map((b, i) => (
                     <li key={i}>
                       <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-                        <path d="M3 8l4 4 6-6" stroke={ingredient.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M3 8l4 4 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                       {b}
                     </li>

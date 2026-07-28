@@ -445,8 +445,9 @@
   box-sizing: content-box;
   flex: 0 0 auto;
   padding: 0.16rem;
+  color: var(--gold-warm);
   border-radius: 50%;
-  background: rgba(76,175,80,0.13);
+  background: rgba(201,168,76,0.13);
 }
 
 @media (max-width: 900px) {
