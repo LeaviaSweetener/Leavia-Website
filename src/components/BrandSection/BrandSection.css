@@ -169,19 +169,21 @@
   max-height: 210px;
 }
 
-.brand__logo-image:hover {
-  filter:
-    brightness(0)
-    saturate(100%)
-    invert(36%)
-    sepia(42%)
-    saturate(1054%)
-    hue-rotate(92deg)
-    brightness(89%)
-    contrast(90%)
-    drop-shadow(0 0 8px rgba(29, 120, 59, 0.3))
-    drop-shadow(0 0 24px rgba(29, 120, 59, 0.2));
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .brand__logo-image:hover {
+    filter:
+      brightness(0)
+      saturate(100%)
+      invert(36%)
+      sepia(42%)
+      saturate(1054%)
+      hue-rotate(92deg)
+      brightness(89%)
+      contrast(90%)
+      drop-shadow(0 0 8px rgba(29, 120, 59, 0.3))
+      drop-shadow(0 0 24px rgba(29, 120, 59, 0.2));
+    transform: translateY(-2px);
+  }
 }
 
 /* ── Leaf ───────────────────────────────────────── */
@@ -462,6 +464,12 @@
 /* ===================================================
    RESPONSIVE
    =================================================== */
+@media (min-width: 601px) {
+  .brand__identity {
+    transform: translateY(2rem);
+  }
+}
+
 @media (max-width: 600px) {
   .brand {
     height: 100svh;
@@ -510,20 +518,20 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    min-height: 120px;
+    min-height: 150px;
     padding: 0;
     top: 1.5rem;
   }
 
   .brand__logo-image {
-    width: min(78vw, 340px);
+    width: min(90vw, 400px);
     max-width: 100%;
-    max-height: 150px;
+    max-height: 185px;
   }
   .brand__logo-image--ar {
-    width: min(82vw, 360px);
+    width: min(96vw, 420px);
     max-width: 100%;
-    max-height: 160px;
+    max-height: 200px;
   }
   .brand__leaf {
     width: 38px;
