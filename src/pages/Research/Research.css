@@ -1,3 +1,32 @@
+.research__certifications-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  background:
+    radial-gradient(circle at 16% 24%, rgba(201,168,76,0.1), transparent 28%),
+    radial-gradient(circle at 84% 58%, rgba(76,175,80,0.1), transparent 30%),
+    linear-gradient(135deg, rgba(6,15,9,0.98), rgba(11,46,21,0.97) 44%, rgba(20,84,42,0.96));
+}
+
+.research__certifications-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+.research__certifications-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
 .research__intro {
   margin-bottom: clamp(5rem, 9vw, 8rem);
   text-align: center;
@@ -6,7 +35,6 @@
 .research__quality-documents {
   margin-top: 1rem;
   padding-top: clamp(3rem, 6vw, 5rem);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .research__grid {

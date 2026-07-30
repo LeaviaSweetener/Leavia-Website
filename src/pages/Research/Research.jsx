@@ -45,7 +45,7 @@ export default function Research() {
     <div className="research page-wrapper">
 
       {/* ── Research Intro & Certifications ── */}
-      <section className="section section--dark" style={{ background: 'var(--gradient-hero)', paddingTop: '5rem', paddingBottom: '2rem' }}>
+      <section className="research__certifications-section section section--dark">
         <div className="container">
           <ScrollReveal className="research__intro">
             <span className="overline">{t('res_overline')}</span>
@@ -67,6 +67,18 @@ export default function Research() {
           <CertCarousel group="certificates" />
 
           <div className="research__quality-documents">
+            <div className="why-better__section-divider" aria-hidden="true">
+              <span className="why-better__section-divider-line" />
+              <span className="why-better__section-divider-mark">
+                <svg viewBox="0 0 32 32" fill="none">
+                  <path
+                    d="M25.8 6.4C18.2 6.7 11.1 10 8.2 16.1c-1.7 3.5-.9 7.1 1.4 9.5 2.5-6.7 6.8-11.4 12.7-14.5-5 3.6-8.7 8.4-10.9 14.4 3.5.8 7.1-.5 9.2-3.5 3.3-4.8 3.7-10.8 5.2-15.6Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <span className="why-better__section-divider-line" />
+            </div>
             <ScrollReveal>
               <SectionTitle
                 overline={t('quality_docs_overline')}

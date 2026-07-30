@@ -4,6 +4,7 @@ import SectionTitle from "../shared/SectionTitle/SectionTitle";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { useLanguage } from "../../context/LanguageContext";
 import { Check, X } from "lucide-react";
+import TransitionDivider from "../shared/TransitionDivider/TransitionDivider";
 import "./WhyBetter.css";
 
 const POSITIVE_MARK = String.fromCodePoint(0x2705);
@@ -232,18 +233,20 @@ export default function WhyBetter() {
         {/* Diff Table — always visible below tabs */}
         <ScrollReveal>
           <div className="why-better__diff-wrap">
-            <div className="why-better__section-divider" aria-hidden="true">
-              <span className="why-better__section-divider-line" />
-              <span className="why-better__section-divider-mark">
-                <svg viewBox="0 0 32 32" fill="none">
-                  <path
-                    d="M25.8 6.4C18.2 6.7 11.1 10 8.2 16.1c-1.7 3.5-.9 7.1 1.4 9.5 2.5-6.7 6.8-11.4 12.7-14.5-5 3.6-8.7 8.4-10.9 14.4 3.5.8 7.1-.5 9.2-3.5 3.3-4.8 3.7-10.8 5.2-15.6Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-              <span className="why-better__section-divider-line" />
-            </div>
+            {activeTab === "comparison" && (
+              <div className="why-better__section-divider" aria-hidden="true">
+                <span className="why-better__section-divider-line" />
+                <span className="why-better__section-divider-mark">
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path
+                      d="M25.8 6.4C18.2 6.7 11.1 10 8.2 16.1c-1.7 3.5-.9 7.1 1.4 9.5 2.5-6.7 6.8-11.4 12.7-14.5-5 3.6-8.7 8.4-10.9 14.4 3.5.8 7.1-.5 9.2-3.5 3.3-4.8 3.7-10.8 5.2-15.6Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span className="why-better__section-divider-line" />
+              </div>
+            )}
             <h3 className="why-better__diff-title">{t("wb_diff_title")}</h3>
             <div className="why-better__diff-scroll">
               <table className="why-better__diff-table">
@@ -279,6 +282,18 @@ export default function WhyBetter() {
         {/* Comparison Table Panel */}
         {activeTab === "table" && (
           <ScrollReveal>
+            <div className="why-better__section-divider why-better__section-divider--between-tables" aria-hidden="true">
+              <span className="why-better__section-divider-line" />
+              <span className="why-better__section-divider-mark">
+                <svg viewBox="0 0 32 32" fill="none">
+                  <path
+                    d="M25.8 6.4C18.2 6.7 11.1 10 8.2 16.1c-1.7 3.5-.9 7.1 1.4 9.5 2.5-6.7 6.8-11.4 12.7-14.5-5 3.6-8.7 8.4-10.9 14.4 3.5.8 7.1-.5 9.2-3.5 3.3-4.8 3.7-10.8 5.2-15.6Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <span className="why-better__section-divider-line" />
+            </div>
             <div className="why-better__table-wrap why-better__table-wrap--flat">
               <table className="why-better__table" dir={isAr ? "rtl" : "ltr"}>
                 <thead>
@@ -326,6 +341,7 @@ export default function WhyBetter() {
             </div>
           </ScrollReveal>
         )}
+        <TransitionDivider atSectionEnd />
       </div>
     </section>
   );

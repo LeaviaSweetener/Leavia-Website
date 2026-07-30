@@ -2,6 +2,7 @@ import { useLanguage } from '../../context/LanguageContext'
 import Contact from '../../components/Contact/Contact'
 import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
+import TransitionDivider from '../../components/shared/TransitionDivider/TransitionDivider'
 import './ContactPage.css'
 
 export default function ContactPage() {
@@ -21,6 +22,7 @@ export default function ContactPage() {
             </p>
           </ScrollReveal>
         </div>
+        <TransitionDivider atSectionEnd />
       </section>
 
       <section className="contact-page__connect section section--dark">

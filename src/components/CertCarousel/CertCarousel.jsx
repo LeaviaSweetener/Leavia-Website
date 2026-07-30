@@ -1,25 +1,27 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
+import { useLocation } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
 import { BadgeCheck, ChevronLeft, ChevronRight, FileCheck2, X, ZoomIn } from 'lucide-react'
 import './CertCarousel.css'
 
 const CERTIFICATES = [
-  { src: '/certs/cert-fssc.png',   labelKey: 'cert_label_fssc' },
-  { src: '/certs/cert-halal.png',  labelKey: 'cert_label_halal' },
+  { id: 'fssc', src: '/certs/cert-fssc.png',   labelKey: 'cert_label_fssc' },
+  { id: 'halal', src: '/certs/cert-halal.png',  labelKey: 'cert_label_halal' },
 ]
 
 const QUALITY_DOCUMENTS = [
-  { src: '/certs/cert-cgmp.png',   labelKey: 'cert_label_cgmp' },
-  { src: '/certs/cert-food.png',   labelKey: 'cert_label_food' },
-  { src: '/certs/cert-haccp1.png', labelKey: 'cert_label_haccp1' },
-  { src: '/certs/cert-haccp2.png', labelKey: 'cert_label_haccp2' },
-  { src: '/certs/cert-haccp3.png', labelKey: 'cert_label_haccp3' },
-  { src: '/certs/cert-haccp4.png', labelKey: 'cert_label_haccp4' },
+  { id: 'cgmp', src: '/certs/cert-cgmp.png',   labelKey: 'cert_label_cgmp' },
+  { id: 'food', src: '/certs/cert-food.png',   labelKey: 'cert_label_food' },
+  { id: 'haccp', src: '/certs/cert-haccp1.png', labelKey: 'cert_label_haccp1' },
+  { id: 'haccp-2', src: '/certs/cert-haccp2.png', labelKey: 'cert_label_haccp2' },
+  { id: 'haccp-3', src: '/certs/cert-haccp3.png', labelKey: 'cert_label_haccp3' },
+  { id: 'haccp-4', src: '/certs/cert-haccp4.png', labelKey: 'cert_label_haccp4' },
 ]
 
 export default function CertCarousel({ group = 'certificates' }) {
   const { t, isAr } = useLanguage()
+  const location = useLocation()
   const isCertificates = group === 'certificates'
   const items = isCertificates ? CERTIFICATES : QUALITY_DOCUMENTS
   const total = items.length
@@ -27,6 +29,21 @@ export default function CertCarousel({ group = 'certificates' }) {
   const suppressClickRef = useRef(false)
   const [activeIdx, setActiveIdx] = useState(0)
   const [selectedCert, setSelectedCert] = useState(null)
+
+  useEffect(() => {
+    const requestedId = new URLSearchParams(location.search).get('certificate')
+    if (!requestedId) return
+
+    const requestedIndex = items.findIndex((item) => item.id === requestedId)
+    if (requestedIndex < 0) return
+
+    const cert = items[requestedIndex]
+    setActiveIdx(requestedIndex)
+    setSelectedCert({ ...cert, label: t(cert.labelKey) })
+  // `t` is recreated by the language provider on every render; `isAr` is the
+  // stable locale signal that should reopen/relabel a deep-linked certificate.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, location.search, isAr])
 
   useEffect(() => {
     if (!selectedCert) return undefined

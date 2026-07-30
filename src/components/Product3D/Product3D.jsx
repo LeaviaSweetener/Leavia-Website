@@ -737,7 +737,13 @@ function ProductBox({ mousePosition, onBoxClick }) {
 /* ============================================================
    SCENE – LIGHTING + ENVIRONMENT
    ============================================================ */
-function Scene({ mousePosition, onBoxClick, mobileZoomOut = false }) {
+function Scene({
+  mousePosition,
+  onBoxClick,
+  mobileZoomOut = false,
+  mobileCenterOffset = 0,
+  mobileCameraDistance = 10.2,
+}) {
   const [isMobileViewport, setIsMobileViewport] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches,
   )
@@ -749,7 +755,7 @@ function Scene({ mousePosition, onBoxClick, mobileZoomOut = false }) {
     return () => mediaQuery.removeEventListener('change', updateViewport)
   }, [])
 
-  const cameraDistance = mobileZoomOut && isMobileViewport ? 10.2 : 7.2
+  const cameraDistance = mobileZoomOut && isMobileViewport ? mobileCameraDistance : 7.2
 
   return (
     <>
@@ -770,11 +776,18 @@ function Scene({ mousePosition, onBoxClick, mobileZoomOut = false }) {
       <pointLight position={[0, 3, -7]}  intensity={1.5} color="#f0d060" />
       <pointLight position={[0, -3, 2]}  intensity={0.7} color={G_MID} />
 
-      <Float speed={1.6} rotationIntensity={0.10} floatIntensity={0.45} floatingRange={[-0.05, 0.05]}>
+      <Float
+        speed={1.6}
+        rotationIntensity={0.10}
+        floatIntensity={0.45}
+        floatingRange={[-0.05, 0.05]}
+        position={[isMobileViewport ? mobileCenterOffset : 0, 0, 0]}
+      >
         <ProductBox mousePosition={mousePosition} onBoxClick={onBoxClick} />
       </Float>
 
       <OrbitControls
+        target={[isMobileViewport ? mobileCenterOffset : 0, 0, 0]}
         enablePan={false}
         enableZoom={false}
         enableDamping
@@ -857,7 +870,12 @@ const AR_DATA = {
 /* ============================================================
    MAIN EXPORT
    ============================================================ */
-export default function Product3D({ className = '', mobileZoomOut = false }) {
+export default function Product3D({
+  className = '',
+  mobileZoomOut = false,
+  mobileCenterOffset = 0,
+  mobileCameraDistance = 10.2,
+}) {
   const mousePosition = useSmoothMousePosition(0.04)
   const [isLoaded, setIsLoaded] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
@@ -905,6 +923,8 @@ export default function Product3D({ className = '', mobileZoomOut = false }) {
             mousePosition={mousePosition}
             onBoxClick={() => setModalOpen(true)}
             mobileZoomOut={mobileZoomOut}
+            mobileCenterOffset={mobileCenterOffset}
+            mobileCameraDistance={mobileCameraDistance}
           />
         </Suspense>
       </Canvas>

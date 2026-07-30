@@ -483,8 +483,43 @@
 }
 
 @media (max-width: 640px) {
+  .product-details__hero {
+    padding-top: calc(var(--nav-height) + 2rem);
+    padding-bottom: 4rem;
+  }
+
+  .product-details__hero-layout,
+  .product-details__info,
+  .product-details__info > div {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-details__info h1 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+    line-height: 1.25;
+  }
+
   .product-details__3d {
     height: clamp(280px, 82vw, 340px);
+    margin-bottom: 2.75rem;
+    overflow: visible;
+  }
+
+  .product-details__3d .product3d {
+    height: 100%;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .product-details__3d .product3d__hint {
+    top: auto;
+    bottom: -2rem;
+    width: 100%;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    text-align: center;
   }
 
   .pd-compare__wrap {
@@ -499,15 +534,50 @@
 
   .product-details__price-block { gap: 0.75rem; }
 
+  .product-details__quick-facts {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .product-details__fact {
+    min-width: 0;
+    gap: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.96);
+  }
+
+  .product-details__fact-icon {
+    width: 21px;
+    height: 21px;
+  }
+
   .product-details__pack-specs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.55rem 0.8rem;
     width: 100%;
+    padding: 1.15rem 1.25rem;
   }
 
   .product-details__pack-spec {
     justify-content: flex-start;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.94);
+  }
+
+  .product-details__pack-spec > svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .product-details__pack-number {
+    font-size: 0.9rem;
   }
 
   .product-details__pack-spec:last-of-type {
@@ -534,5 +604,35 @@
 
   .pd-compare__table {
     min-width: 620px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-details__pack-specs {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .product-details__pack-spec,
+  .product-details__pack-spec:last-of-type {
+    grid-column: auto;
+    justify-content: flex-start;
+    white-space: normal;
+    line-height: 1.45;
+  }
+
+  .product-details__price {
+    font-size: 2.15rem;
+  }
+
+  .product-details__info .btn {
+    width: calc(100% - 4.75rem);
+    min-width: 0;
+    justify-content: center;
+    margin-inline-start: 4.75rem;
+    margin-inline-end: 0;
+    padding-inline: 1rem;
+    text-align: center;
   }
 }

@@ -7,7 +7,20 @@ export default function BrandSection() {
   return (
     <section className="brand">
       <div className="brand__inner">
+        <picture>
+          <source
+            media="(max-width: 600px)"
+            srcSet="/generated/leavia-family-kitchen-hero-mobile-v1.png?v=2"
+          />
+          <img
+            className="brand__lifestyle"
+            src="/generated/leavia-family-sachet-hero-premium-2x1-final.webp?v=1"
+            alt=""
+            aria-hidden="true"
+          />
+        </picture>
 
+        <div className="brand__identity">
         {/* Official logo */}
         <div className="brand__logo-mark">
           <img
@@ -22,6 +35,7 @@ export default function BrandSection() {
 
         {/* Gold divider */}
         <div className="brand__divider" />
+        </div>
 
       </div>
     </section>
