@@ -116,7 +116,11 @@ export default function ProductDetails() {
             {/* 3D Product */}
             <div className="product-details__3d">
               <Suspense fallback={null}>
-                <Product3D mobileZoomOut />
+                <Product3D
+                  mobileZoomOut
+                  mobileCenterOffset={0.4}
+                  mobileCameraDistance={8.4}
+                />
               </Suspense>
             </div>
 

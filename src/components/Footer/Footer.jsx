@@ -24,11 +24,11 @@ export default function Footer() {
   }
 
   const CERTS = [
-    'footer_cert_usda',
-    'footer_cert_nongmo',
-    'footer_cert_vegan',
-    'footer_cert_kosher',
-    'footer_cert_halal',
+    { labelKey: 'footer_cert_usda', certificate: 'fssc', ltrLabel: 'FSSC 22000' },
+    { labelKey: 'footer_cert_nongmo', certificate: 'cgmp' },
+    { labelKey: 'footer_cert_vegan', certificate: 'haccp' },
+    { labelKey: 'footer_cert_kosher', certificate: 'food' },
+    { labelKey: 'footer_cert_halal', certificate: 'halal' },
   ]
 
   return (
@@ -44,7 +44,7 @@ export default function Footer() {
                 aria-label={
                   isAr
                     ? 'شعار ليفيا، العودة إلى الصفحة الرئيسية'
-                    : 'LEAVIA logo, return to the home page'
+                    : 'LEAVIA Logo, return to the home page'
                 }
               >
                 <span className="footer__localized-logo-frame">
@@ -66,26 +66,19 @@ export default function Footer() {
               </p>
 
               <div className="footer__certifications">
-                {CERTS.map((key) =>
-                  key === 'footer_cert_usda' ? (
-                    <span
-                      key={key}
-                      className="footer__cert footer__cert--ltr"
-                      lang="en"
-                      dir="ltr"
-                      data-no-localize
-                    >
-                      FSSC 22000
-                    </span>
-                  ) : (
-                    <span
-                      key={key}
-                      className="footer__cert"
-                    >
-                      {t(key)}
-                    </span>
-                  )
-                )}
+                {CERTS.map(({ labelKey, certificate, ltrLabel }) => (
+                  <Link
+                    key={certificate}
+                    to={`/research?certificate=${certificate}`}
+                    className={`footer__cert ${ltrLabel ? 'footer__cert--ltr' : ''}`}
+                    lang={ltrLabel ? 'en' : undefined}
+                    dir={ltrLabel ? 'ltr' : undefined}
+                    data-no-localize={ltrLabel ? true : undefined}
+                    aria-label={`${t(labelKey)} — ${isAr ? 'عرض الشهادة' : 'View certificate'}`}
+                  >
+                    {ltrLabel || t(labelKey)}
+                  </Link>
+                ))}
               </div>
 
               {/* Direct contact */}

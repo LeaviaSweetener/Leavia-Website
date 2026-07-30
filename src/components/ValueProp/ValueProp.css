@@ -2,6 +2,10 @@
   background: var(--white);
 }
 
+[dir='rtl'] .valueprop.section {
+  padding-top: 0;
+}
+
 .valueprop__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -49,6 +53,10 @@
   transform-origin: left;
   transition: transform var(--transition-smooth);
   border-radius: 3px 3px 0 0;
+}
+
+[dir='rtl'] .valueprop__card::before {
+  transform-origin: right;
 }
 
 .valueprop__card:hover {

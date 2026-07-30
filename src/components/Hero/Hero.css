@@ -158,16 +158,16 @@
 
 .hero__headline-logo {
   display: block;
-  width: clamp(120px, 10vw, 165px);
+  width: clamp(155px, 13vw, 215px);
   height: auto;
-  max-height: 72px;
+  max-height: 96px;
   object-fit: contain;
   object-position: left center;
   margin-bottom: 0.7rem;
 }
 
 .hero__headline-logo--ar {
-  width: clamp(105px, 9vw, 145px);
+  width: clamp(150px, 12vw, 205px);
   object-position: right center;
   margin-left: auto;
 }
@@ -613,6 +613,26 @@
   line-height: 0;
   filter: drop-shadow(0 -3px 16px rgba(29, 120, 59, 0.07));
 }
+
+/* Avoid a thin rendered edge beneath the white wave in the English layout. */
+[dir='ltr'] .hero__wave {
+  bottom: -2px;
+  filter: none;
+}
+
+[dir='rtl'] .hero__wave {
+  bottom: -2px;
+  filter: none;
+}
+
+[dir='ltr'] .hero__wave svg {
+  height: 132px;
+}
+
+[dir='rtl'] .hero__wave svg {
+  height: 132px;
+}
+
 .hero__wave svg {
   width: 100%;
   height: 130px;
@@ -758,5 +778,40 @@
   .hero__stat-unit,
   .hero__product-badge {
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  [dir='rtl'] .hero__content {
+    align-items: flex-start;
+    text-align: right;
+  }
+
+  [dir='rtl'] .hero__overline {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  [dir='rtl'] .hero__title,
+  [dir='rtl'] .hero__dynamic,
+  [dir='rtl'] .hero__subtitle {
+    width: 100%;
+    text-align: right;
+  }
+
+  [dir='rtl'] .hero__headline-logo--ar {
+    margin-right: 0;
+    margin-left: auto;
+    object-position: right center;
+  }
+
+  [dir='rtl'] .hero__dynamic {
+    justify-content: flex-start;
+  }
+
+  [dir='rtl'] .hero__divider,
+  [dir='rtl'] .hero__subtitle {
+    margin-right: 0;
+    margin-left: auto;
   }
 }
