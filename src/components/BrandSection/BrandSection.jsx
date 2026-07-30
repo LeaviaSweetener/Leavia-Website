@@ -10,11 +10,11 @@ export default function BrandSection() {
         <picture>
           <source
             media="(max-width: 600px)"
-            srcSet="/generated/leavia-family-kitchen-hero-mobile-v1.png?v=2"
+            srcSet="/generated/leavia-family-kitchen-hero-mobile.png?v=1"
           />
           <img
             className="brand__lifestyle"
-            src="/generated/leavia-family-sachet-hero-premium-2x1-final.webp?v=1"
+            src="/generated/leavia-family-kitchen-hero-desktop.png?v=1"
             alt=""
             aria-hidden="true"
           />
