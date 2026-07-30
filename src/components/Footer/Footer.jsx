@@ -44,7 +44,7 @@ export default function Footer() {
                 aria-label={
                   isAr
                     ? 'شعار ليفيا، العودة إلى الصفحة الرئيسية'
-                    : 'LEAVIA logo, return to the home page'
+                    : 'LEAVIA Logo, return to the home page'
                 }
               >
                 <span className="footer__localized-logo-frame">
