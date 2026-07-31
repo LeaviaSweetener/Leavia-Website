@@ -55,6 +55,22 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Keep Chrome/Safari autofill aligned with the green glass form theme. */
+.contact__input:-webkit-autofill,
+.contact__input:-webkit-autofill:hover,
+.contact__input:-webkit-autofill:focus,
+.contact__input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--white);
+  caret-color: var(--white);
+  -webkit-box-shadow: 0 0 0 1000px #234a30 inset;
+  box-shadow: 0 0 0 1000px #234a30 inset;
+  transition: background-color 9999s ease-out 0s;
+}
+
+.contact__input:-webkit-autofill:focus {
+  border-color: rgba(212, 175, 55, 0.72);
+}
+
 .contact__input[aria-invalid="true"] {
   border-color: #f28aa0;
 }
@@ -66,19 +82,77 @@
   line-height: 1.4;
 }
 
+.contact__select-wrap {
+  position: relative;
+}
+
 .contact__select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 16px;
-  padding-right: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: start;
 }
 
-.contact__select option {
+.contact__select-placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.contact__select-chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition-base);
+}
+
+.contact__select[aria-expanded="true"] .contact__select-chevron {
+  transform: rotate(180deg);
+}
+
+.contact__select-menu {
+  position: absolute;
+  z-index: 20;
+  inset-inline: 0;
+  top: calc(100% + 0.3rem);
+  padding: 0.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: var(--radius-md);
   background: var(--green-deep);
+  box-shadow: 0 14px 30px rgba(5, 24, 13, 0.35);
+}
+
+.contact__select-option {
+  display: block;
+  width: 100%;
+  padding: 0.58rem 0.85rem;
+  border: 0;
+  border-radius: calc(var(--radius-md) - 4px);
+  background: transparent;
   color: var(--white);
+  font: inherit;
+  line-height: 1.35;
+  text-align: start;
+  cursor: pointer;
+}
+
+.contact__select-option:hover,
+.contact__select-option:focus-visible,
+.contact__select-option--active {
+  color: var(--green-deep);
+  background: var(--gold-warm);
+  outline: none;
+}
+
+.contact__select-option[aria-selected="true"] {
+  font-weight: 700;
 }
 
 .contact__textarea {

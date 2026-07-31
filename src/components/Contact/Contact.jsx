@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { CircleCheck } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
@@ -35,17 +35,131 @@ const EMAILJS_VARIABLES = [
   ['VITE_EMAILJS_PUBLIC_KEY', EMAILJS_CONFIG.publicKey],
 ]
 
+function SubjectSelect({ value, onChange, placeholder, options, invalid, describedBy }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const rootRef = useRef(null)
+  const triggerRef = useRef(null)
+  const selectedIndex = options.findIndex((option) => option.value === value)
+  const selectedOption = selectedIndex >= 0 ? options[selectedIndex] : null
+
+  useEffect(() => {
+    if (!isOpen) return undefined
+
+    const closeOnOutsidePress = (event) => {
+      if (!rootRef.current?.contains(event.target)) setIsOpen(false)
+    }
+
+    document.addEventListener('pointerdown', closeOnOutsidePress)
+    return () => document.removeEventListener('pointerdown', closeOnOutsidePress)
+  }, [isOpen])
+
+  const openMenu = () => {
+    setActiveIndex(selectedIndex >= 0 ? selectedIndex : 0)
+    setIsOpen(true)
+  }
+
+  const selectOption = (option) => {
+    onChange(option.value)
+    setIsOpen(false)
+    triggerRef.current?.focus()
+  }
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Tab') {
+      setIsOpen(false)
+      return
+    }
+
+    if (event.key === 'Escape' && isOpen) {
+      event.preventDefault()
+      setIsOpen(false)
+      return
+    }
+
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      if (!isOpen) {
+        openMenu()
+        return
+      }
+
+      const direction = event.key === 'ArrowDown' ? 1 : -1
+      setActiveIndex((index) => (index + direction + options.length) % options.length)
+      return
+    }
+
+    if ((event.key === 'Enter' || event.key === ' ') && isOpen) {
+      event.preventDefault()
+      selectOption(options[activeIndex])
+    }
+  }
+
+  return (
+    <div className="contact__select-wrap" ref={rootRef}>
+      <button
+        ref={triggerRef}
+        id="subject"
+        type="button"
+        className="contact__input contact__select"
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls="subject-options"
+        aria-activedescendant={isOpen ? `subject-option-${options[activeIndex].value}` : undefined}
+        aria-invalid={invalid}
+        aria-describedby={describedBy}
+        onClick={() => (isOpen ? setIsOpen(false) : openMenu())}
+        onKeyDown={handleKeyDown}
+      >
+        <span className={selectedOption ? undefined : 'contact__select-placeholder'}>
+          {selectedOption?.label ?? placeholder}
+        </span>
+        <svg className="contact__select-chevron" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 6l4 4 4-4" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div id="subject-options" className="contact__select-menu" role="listbox">
+          {options.map((option, index) => (
+            <button
+              id={`subject-option-${option.value}`}
+              key={option.value}
+              type="button"
+              className={`contact__select-option${activeIndex === index ? ' contact__select-option--active' : ''}`}
+              role="option"
+              aria-selected={option.value === value}
+              tabIndex={-1}
+              onPointerEnter={() => setActiveIndex(index)}
+              onClick={() => selectOption(option)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <input type="hidden" name="subject" value={value} />
+    </div>
+  )
+}
+
 export default function Contact() {
   const { t, lang } = useLanguage()
   const [form, setForm] = useState(createEmptyContactForm)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
+  const updateField = (name, value) => {
     setForm((prev) => ({ ...prev, [name]: value }))
     setErrors((prev) => ({ ...prev, [name]: undefined }))
     if (status === 'error') setStatus('idle')
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    updateField(name, value)
   }
 
   const validate = (values) => {
@@ -201,21 +315,14 @@ export default function Contact() {
 
       <div className="contact__field">
         <label className="contact__label" htmlFor="subject">{t('con_subject_label')}</label>
-        <select
-          id="subject"
-          name="subject"
-          className="contact__input contact__select"
+        <SubjectSelect
           value={form.subject}
-          onChange={handleChange}
-          aria-invalid={Boolean(errors.subject)}
-          aria-describedby={errors.subject ? 'subject-error' : undefined}
-          required
-        >
-          <option value="">{t('con_subject_placeholder')}</option>
-          {SUBJECT_OPTIONS.map(({ value, labelKey }) => (
-            <option key={value} value={value}>{t(labelKey)}</option>
-          ))}
-        </select>
+          onChange={(value) => updateField('subject', value)}
+          placeholder={t('con_subject_placeholder')}
+          options={SUBJECT_OPTIONS.map(({ value, labelKey }) => ({ value, label: t(labelKey) }))}
+          invalid={Boolean(errors.subject)}
+          describedBy={errors.subject ? 'subject-error' : undefined}
+        />
         {errors.subject && <span id="subject-error" className="contact__field-error">{errors.subject}</span>}
       </div>
 
