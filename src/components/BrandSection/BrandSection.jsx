@@ -10,11 +10,25 @@ export default function BrandSection() {
         <picture>
           <source
             media="(max-width: 600px)"
+            type="image/webp"
+            srcSet="/generated/leavia-family-kitchen-hero-mobile.webp"
+          />
+          <source
+            media="(max-width: 600px)"
             srcSet="/generated/leavia-family-kitchen-hero-mobile.png?v=1"
+          />
+          <source
+            type="image/webp"
+            srcSet="/generated/leavia-family-kitchen-hero-desktop.webp"
           />
           <img
             className="brand__lifestyle"
             src="/generated/leavia-family-kitchen-hero-desktop.png?v=1"
+            width="1774"
+            height="887"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             alt=""
             aria-hidden="true"
           />

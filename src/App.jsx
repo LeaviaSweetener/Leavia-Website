@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { LanguageProvider } from './context/LanguageContext'
 import { useLanguage } from './context/LanguageContext'
 import Navigation from './components/Navigation/Navigation'
@@ -7,11 +7,11 @@ import Footer from './components/Footer/Footer'
 import WhatsAppLink from './components/shared/WhatsAppLink/WhatsAppLink'
 // Pages
 import Home from './pages/Home/Home'
-import About from './pages/About/About'
-import Research from './pages/Research/Research'
-import ContactPage from './pages/ContactPage/ContactPage'
-import ProductDetails from './pages/ProductDetails/ProductDetails'
-import Purchase from './pages/Purchase/Purchase'
+const About = lazy(() => import('./pages/About/About'))
+const Research = lazy(() => import('./pages/Research/Research'))
+const ContactPage = lazy(() => import('./pages/ContactPage/ContactPage'))
+const ProductDetails = lazy(() => import('./pages/ProductDetails/ProductDetails'))
+const Purchase = lazy(() => import('./pages/Purchase/Purchase'))
 
 // Styles
 import './styles/globals.css'
@@ -95,16 +95,18 @@ function AppLayout() {
       <PageTitle />
       <Navigation />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/product" element={<ProductDetails />} />
-          <Route path="/purchase" element={<Purchase />} />
-          {/* Catch-all */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/product" element={<ProductDetails />} />
+            <Route path="/purchase" element={<Purchase />} />
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
       <WhatsAppLink className="whatsapp-float" ariaLabel="WhatsApp LEAVIA" />

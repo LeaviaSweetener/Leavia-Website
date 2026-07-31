@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import { BadgeCheck, Coffee, Droplet, Flame, Gauge, Leaf } from 'lucide-react'
 import './Hero.css'
@@ -10,6 +9,7 @@ const Product3D = lazy(() => import('../Product3D/Product3D'))
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const [shouldLoadProduct, setShouldLoadProduct] = useState(false)
   const heroRef = useRef(null)
   const { t, isAr } = useLanguage()
 
@@ -26,6 +26,44 @@ export default function Hero() {
       setWordIndex((i) => (i + 1) % HERO_WORDS.length)
     }, 2800)
     return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    let idleId
+    let timerId
+    let requested = false
+
+    const loadProduct = () => {
+      if (requested) return
+      requested = true
+      setShouldLoadProduct(true)
+    }
+
+    const scheduleProduct = () => {
+      if (requested) return
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(loadProduct, { timeout: 2000 })
+      } else {
+        timerId = window.setTimeout(loadProduct, 1000)
+      }
+    }
+
+    window.addEventListener('scroll', loadProduct, { passive: true, once: true })
+
+    if (document.readyState === 'complete') {
+      scheduleProduct()
+    } else {
+      window.addEventListener('load', scheduleProduct, { once: true })
+    }
+
+    return () => {
+      window.removeEventListener('scroll', loadProduct)
+      window.removeEventListener('load', scheduleProduct)
+      if (idleId !== undefined && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId)
+      }
+      if (timerId !== undefined) window.clearTimeout(timerId)
+    }
   }, [])
 
   return (
@@ -109,9 +147,11 @@ export default function Hero() {
 
         {/* Right — 3D Product */}
         <div className={`hero__product ${mounted ? 'hero__product--mounted' : ''}`}>
-          <Suspense fallback={null}>
-            <Product3D mobileZoomOut />
-          </Suspense>
+          {shouldLoadProduct && (
+            <Suspense fallback={null}>
+              <Product3D mobileZoomOut />
+            </Suspense>
+          )}
 
           {/* Floating info cards */}
           <div className="hero__card hero__card--tl">

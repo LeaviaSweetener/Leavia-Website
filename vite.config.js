@@ -6,16 +6,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['three', '@react-three/fiber', '@react-three/drei'],
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          three: ['three'],
-          'react-three': ['@react-three/fiber', '@react-three/drei'],
-          framer: ['framer-motion'],
-          gsap: ['gsap'],
-        },
-      },
-    },
-  },
 })

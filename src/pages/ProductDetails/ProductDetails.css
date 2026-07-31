@@ -630,8 +630,8 @@
     width: calc(100% - 4.75rem);
     min-width: 0;
     justify-content: center;
-    margin-inline-start: 4.75rem;
-    margin-inline-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 4.75rem;
     padding-inline: 1rem;
     text-align: center;
   }
