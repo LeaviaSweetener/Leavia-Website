@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../shared/ScrollReveal/ScrollReveal'
 import { useLanguage } from '../../context/LanguageContext'
+import { ROUTES } from '../../config/site'
 import './CTA.css'
 
 export default function CTA() {
@@ -26,7 +27,7 @@ export default function CTA() {
             <p className="cta__subtitle">{t('cta_subtitle')}</p>
 
             <div className="cta__actions">
-              <Link to="/product" className="cta__btn cta__btn--ghost">
+              <Link to={ROUTES.product} className="cta__btn cta__btn--ghost">
                 {t('cta_btn_learn')}
               </Link>
             </div>

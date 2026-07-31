@@ -2,14 +2,15 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Languages } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import { getLocalizedLogoPath, ROUTES } from '../../config/site'
 import './Navigation.css'
 
 const NAV_KEYS = [
-  { key: 'nav_home', path: '/' },
-  { key: 'nav_about', path: '/about' },
-  { key: 'nav_product', path: '/product' },
-  { key: 'nav_research', path: '/research' },
-  { key: 'nav_contact', path: '/contact' },
+  { key: 'nav_home', path: ROUTES.home },
+  { key: 'nav_about', path: ROUTES.about },
+  { key: 'nav_product', path: ROUTES.product },
+  { key: 'nav_research', path: ROUTES.research },
+  { key: 'nav_contact', path: ROUTES.contact },
 ]
 
 export default function Navigation() {
@@ -18,7 +19,7 @@ export default function Navigation() {
   const [hidden, setHidden] = useState(false)
   const lastScrollY = useRef(0)
   const location = useLocation()
-  const { t, toggleLang, lang } = useLanguage()
+  const { t, toggleLang, lang, isAr } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,9 +56,9 @@ export default function Navigation() {
       <nav className={`nav ${scrolled ? 'nav--scrolled' : ''} ${hidden ? 'nav--hidden' : ''}`}>
         <div className="nav__container">
           {/* Logo */}
-          <Link to="/" className="nav__logo" aria-label="Leavia">
+          <Link to={ROUTES.home} className="nav__logo" aria-label="Leavia">
             <img
-              src={lang === 'ar' ? '/logos/logo-ar-white.png' : '/logos/logo-en-white.png'}
+              src={getLocalizedLogoPath(isAr)}
               alt="Leavia"
               className="nav__logo-img"
             />
@@ -125,7 +126,7 @@ export default function Navigation() {
             ))}
           </ul>
           <div className="nav__mobile-cta">
-            <Link to="/purchase" className="btn btn--gold btn--lg">
+            <Link to={ROUTES.purchase} className="btn btn--gold btn--lg">
               {t('nav_mobile_shop')}
             </Link>
           </div>

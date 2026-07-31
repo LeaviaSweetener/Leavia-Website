@@ -1,10 +1,18 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
+import { getLocalizedLogoPath, ROUTES } from '../../config/site'
 import { BadgeCheck, Coffee, Droplet, Flame, Gauge, Leaf } from 'lucide-react'
 import './Hero.css'
 
 const Product3D = lazy(() => import('../Product3D/Product3D'))
+const HERO_WORD_KEYS = ['hero_word_0', 'hero_word_1', 'hero_word_2', 'hero_word_3']
+const HERO_STATS = [
+  { value: '100%', labelKey: 'hero_stat_replacement', Icon: BadgeCheck },
+  { value: '2', labelKey: 'hero_stat_ingredients', Icon: Leaf },
+  { value: '0', labelKey: 'hero_stat_gi', Icon: Droplet },
+  { value: '0', labelKey: 'hero_stat_calories', Icon: Flame },
+]
 
 export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
@@ -13,17 +21,12 @@ export default function Hero() {
   const heroRef = useRef(null)
   const { t, isAr } = useLanguage()
 
-  const HERO_WORDS = [
-    t('hero_word_0'),
-    t('hero_word_1'),
-    t('hero_word_2'),
-    t('hero_word_3'),
-  ]
+  const heroWords = HERO_WORD_KEYS.map(t)
 
   useEffect(() => {
     setMounted(true)
     const interval = setInterval(() => {
-      setWordIndex((i) => (i + 1) % HERO_WORDS.length)
+      setWordIndex((i) => (i + 1) % HERO_WORD_KEYS.length)
     }, 2800)
     return () => clearInterval(interval)
   }, [])
@@ -90,7 +93,7 @@ export default function Hero() {
           <h1 className="hero__title">
             <img
               className={`hero__headline-logo ${isAr ? 'hero__headline-logo--ar' : ''}`}
-              src={isAr ? '/logos/logo-ar-white.png' : '/logos/logo-en-white.png'}
+              src={getLocalizedLogoPath(isAr)}
               alt={t('hero_title_1')}
             />
             <span className="hero__title-row hero__title-row--italic">{t('hero_title_2')}</span>
@@ -101,7 +104,7 @@ export default function Hero() {
           <div className="hero__dynamic">
             <span className="hero__dynamic-prefix">{t('hero_dynamic_prefix')}</span>
             <span className="hero__dynamic-word" key={wordIndex}>
-              {HERO_WORDS[wordIndex]}
+              {heroWords[wordIndex]}
             </span>
           </div>
 
@@ -113,12 +116,7 @@ export default function Hero() {
 
           {/* Stats row */}
           <div className="hero__stats">
-            {[
-              { value: '100%', labelKey: 'hero_stat_replacement', Icon: BadgeCheck },
-              { value: '2', labelKey: 'hero_stat_ingredients', Icon: Leaf },
-              { value: '0', labelKey: 'hero_stat_gi', Icon: Droplet },
-              { value: '0', labelKey: 'hero_stat_calories', Icon: Flame },
-            ].map((stat) => (
+            {HERO_STATS.map((stat) => (
               <div key={stat.labelKey} className="hero__stat">
                 <span className="hero__stat-icon" aria-hidden="true">
                   <stat.Icon size={17} strokeWidth={1.8} />
@@ -131,14 +129,14 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="hero__actions">
-            <Link to="/purchase" className="hero__btn hero__btn--primary">
+            <Link to={ROUTES.purchase} className="hero__btn hero__btn--primary">
               <span>{t('hero_btn_shop')}</span>
               <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
                 <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <span className="hero__btn-shine" />
             </Link>
-            <Link to="/about" className="hero__btn hero__btn--ghost">
+            <Link to={ROUTES.about} className="hero__btn hero__btn--ghost">
               <span>{t('hero_btn_story')}</span>
             </Link>
           </div>

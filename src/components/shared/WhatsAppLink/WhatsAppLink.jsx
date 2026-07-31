@@ -1,4 +1,6 @@
-export const WHATSAPP_URL = 'https://wa.me/966556090514'
+import { CONTACT_DETAILS } from '../../../config/site'
+
+export const WHATSAPP_URL = CONTACT_DETAILS.whatsappHref
 
 export function WhatsAppIcon({ size = 20 }) {
   return (

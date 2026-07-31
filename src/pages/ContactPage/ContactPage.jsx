@@ -3,6 +3,7 @@ import Contact from '../../components/Contact/Contact'
 import SectionTitle from '../../components/shared/SectionTitle/SectionTitle'
 import ScrollReveal from '../../components/shared/ScrollReveal/ScrollReveal'
 import TransitionDivider from '../../components/shared/TransitionDivider/TransitionDivider'
+import { CONTACT_DETAILS } from '../../config/site'
 import './ContactPage.css'
 
 export default function ContactPage() {
@@ -52,12 +53,12 @@ export default function ContactPage() {
                       <span className="contact-page__info-label">{t('cp_email_label')}</span>
                       <a
                         className="contact-page__info-value contact-page__info-value--email"
-                        href="mailto:info@leaviasweetener.com"
+                        href={CONTACT_DETAILS.emailHref}
                         dir="ltr"
                         lang="en"
                         data-no-localize
                       >
-                        info@leaviasweetener.com
+                        {CONTACT_DETAILS.email}
                       </a>
                       <span className="contact-page__info-sub">{t('cp_email_sub')}</span>
                     </div>
@@ -73,7 +74,7 @@ export default function ContactPage() {
                     </span>
                     <div className="contact-page__info-content">
                       <span className="contact-page__info-label">{t('cp_phone_label')}</span>
-                      <a className="contact-page__info-value contact-page__info-value--phone" href="tel:0556090514" dir="ltr" lang="en" data-no-localize>0556090514</a>
+                      <a className="contact-page__info-value contact-page__info-value--phone" href={CONTACT_DETAILS.phoneHref} dir="ltr" lang="en" data-no-localize>{CONTACT_DETAILS.phone}</a>
                       <span className="contact-page__info-sub">{t('cp_phone_sub')}</span>
                     </div>
                   </div>

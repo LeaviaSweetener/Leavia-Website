@@ -4,6 +4,7 @@ import { Float, Sparkles, Environment, PerspectiveCamera, OrbitControls, Text } 
 import * as THREE from 'three'
 import { useSmoothMousePosition } from '../../hooks/useMousePosition'
 import { useLanguage } from '../../context/LanguageContext'
+import { PRODUCT_PACKAGING } from '../../data/productPackaging'
 import NutritionTable from '../shared/NutritionTable/NutritionTable'
 import './Product3D.css'
 
@@ -813,51 +814,6 @@ function ProductLoader({ isAr }) {
 }
 
 /* ============================================================
-   PACKAGING DATA
-   ============================================================ */
-const EN_DATA = {
-  name: 'LEAVIA',
-  subtitle: 'Stevia-Based Sweetener',
-  description: 'A stevia-based sweetener with balanced sugar-like sweetness and zero calories.',
-  weight: '350 g · 50 sachets × 7 g',
-  ingredients: 'Erythritol and Steviol Glycosides',
-  madeIn: 'China',
-  certifications: ['Halal', 'Zero calories', '100% Natural'],
-  suitableFor: [
-    { label: 'Cooking',   sub: 'Heat Resistant' },
-    { label: 'Baking',    sub: 'Heat Resistant' },
-    { label: 'Beverages', sub: 'Hot & Cold' },
-  ],
-  ingredientsLabel: 'Ingredients',
-  weightLabel: 'Net Weight',
-  madeInLabel: 'Made in',
-  suitableLabel: 'Suitable For',
-  certLabel: 'Pack Mark',
-  closeLabel: 'Close',
-}
-
-const AR_DATA = {
-  name: 'عبوة ليفيا',
-  subtitle: 'مُحلّي قائم على الستيفيا',
-  description: 'مُحلّي قائم على الستيفيا بحلاوة متوازنة قريبة من السكر وصفر سعرة حرارية.',
-  weight: '٣٥٠ جرامًا · ٥٠ ظرفًا × ٧ جرامات',
-  ingredients: 'الإريثريتول وجليكوسيدات الستيفيول',
-  madeIn: 'الصين',
-  certifications: ['حلال', 'صفر سعرة حرارية', 'طبيعي 100٪'],
-  suitableFor: [
-    { label: 'الطبخ',    sub: 'مقاوم للحرارة' },
-    { label: 'الخبز',    sub: 'مقاوم للحرارة' },
-    { label: 'المشروبات',sub: 'ساخن وبارد' },
-  ],
-  ingredientsLabel: 'المكونات',
-  weightLabel: 'الوزن الصافي',
-  madeInLabel: 'بلد المنشأ',
-  suitableLabel: 'مناسب لـ',
-  certLabel: 'العلامة على العبوة',
-  closeLabel: 'إغلاق',
-}
-
-/* ============================================================
    MAIN EXPORT
    ============================================================ */
 export default function Product3D({
@@ -874,7 +830,7 @@ export default function Product3D({
   const productRootRef = useRef(null)
   const { lang } = useLanguage()
   const isAr = lang === 'ar'
-  const d = isAr ? AR_DATA : EN_DATA
+  const d = PRODUCT_PACKAGING[isAr ? 'ar' : 'en']
 
   useEffect(() => {
     const element = productRootRef.current
