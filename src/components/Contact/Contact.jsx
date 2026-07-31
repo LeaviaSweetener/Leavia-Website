@@ -15,6 +15,13 @@ const SUBJECT_OPTIONS = [
 
 const SUBJECT_VALUES = new Set(SUBJECT_OPTIONS.map(({ value }) => value))
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const createEmptyContactForm = () => ({
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+  contact_url_confirmation: '',
+})
 
 const EMAILJS_CONFIG = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -30,7 +37,7 @@ const EMAILJS_VARIABLES = [
 
 export default function Contact() {
   const { t, lang } = useLanguage()
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '', contact_url_confirmation: '' })
+  const [form, setForm] = useState(createEmptyContactForm)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
 
@@ -85,7 +92,7 @@ export default function Contact() {
     if (missingVariables.length > 0) {
       missingVariables.forEach(([name]) => console.warn(`[Contact] Missing ${name}; email was not sent.`))
       if (import.meta.env.DEV) {
-        setForm({ name: '', email: '', subject: '', message: '', contact_url_confirmation: '' })
+        setForm(createEmptyContactForm())
         setErrors({})
         setStatus('success')
         return
@@ -118,7 +125,7 @@ export default function Contact() {
         templateParams,
         { publicKey: EMAILJS_CONFIG.publicKey },
       )
-      setForm({ name: '', email: '', subject: '', message: '', contact_url_confirmation: '' })
+      setForm(createEmptyContactForm())
       setStatus('success')
     } catch (error) {
       console.error('[Contact] EmailJS send failed:', error)

@@ -14,6 +14,28 @@ import { localizeNumerals, observeLocalizedNumerals } from '../utils/localeNumbe
 
 const LanguageContext = createContext(null)
 const LANGUAGE_STORAGE_KEY = 'leavia-language'
+const LOCALIZED_DATA = {
+  en: {
+    benefitsData: enBenefitsData,
+    ingredientsData: enIngredientsData,
+    faqData: enFaqData,
+    testimonialsData: enTestimonialsData,
+    aboutTeam: enAboutTeam,
+    aboutTimeline: enAboutTimeline,
+    researchData: enResearchData,
+    productsData: enProductsData,
+  },
+  ar: {
+    benefitsData: arBenefitsData,
+    ingredientsData: arIngredientsData,
+    faqData: arFaqData,
+    testimonialsData: arTestimonialsData,
+    aboutTeam: arAboutTeam,
+    aboutTimeline: arAboutTimeline,
+    researchData: arResearchData,
+    productsData: arProductsData,
+  },
+}
 
 export function LanguageProvider({ children }) {
   const [lang, setLang] = useState(() => {
@@ -39,14 +61,7 @@ export function LanguageProvider({ children }) {
     toggleLang,
     t,
     formatNumerals,
-    benefitsData: lang === 'ar' ? arBenefitsData : enBenefitsData,
-    ingredientsData: lang === 'ar' ? arIngredientsData : enIngredientsData,
-    faqData: lang === 'ar' ? arFaqData : enFaqData,
-    testimonialsData: lang === 'ar' ? arTestimonialsData : enTestimonialsData,
-    aboutTeam: lang === 'ar' ? arAboutTeam : enAboutTeam,
-    aboutTimeline: lang === 'ar' ? arAboutTimeline : enAboutTimeline,
-    researchData: lang === 'ar' ? arResearchData : enResearchData,
-    productsData: lang === 'ar' ? arProductsData : enProductsData,
+    ...LOCALIZED_DATA[lang],
   }
 
   return (

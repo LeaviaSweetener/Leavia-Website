@@ -1,35 +1,45 @@
 import { Link } from 'react-router-dom'
 import { Mail, Smartphone } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import { CONTACT_DETAILS, getLocalizedLogoPath, ROUTES } from '../../config/site'
 import WhatsAppLink from '../shared/WhatsAppLink/WhatsAppLink'
 import './Footer.css'
 
+const FOOTER_LINK_GROUPS = [
+  {
+    headingKey: 'footer_col_product',
+    links: [
+      { labelKey: 'footer_link_product_details', path: ROUTES.product },
+      { labelKey: 'footer_link_research', path: ROUTES.research },
+      { labelKey: 'footer_link_shop', path: ROUTES.purchase },
+    ],
+  },
+  {
+    headingKey: 'footer_col_company',
+    links: [
+      { labelKey: 'footer_link_about', path: ROUTES.about },
+      { labelKey: 'footer_link_mission', path: `${ROUTES.about}#mission` },
+    ],
+  },
+  {
+    headingKey: 'footer_col_support',
+    links: [
+      { labelKey: 'footer_link_contact', path: ROUTES.contact },
+      { labelKey: 'footer_link_faq', path: `${ROUTES.home}#faq` },
+    ],
+  },
+]
+
+const FOOTER_CERTIFICATES = [
+  { labelKey: 'footer_cert_usda', certificate: 'fssc', ltrLabel: 'FSSC 22000' },
+  { labelKey: 'footer_cert_nongmo', certificate: 'cgmp' },
+  { labelKey: 'footer_cert_vegan', certificate: 'haccp' },
+  { labelKey: 'footer_cert_kosher', certificate: 'food' },
+  { labelKey: 'footer_cert_halal', certificate: 'halal' },
+]
+
 export default function Footer() {
   const { t, isAr } = useLanguage()
-
-  const LINKS = {
-    [t('footer_col_product')]: [
-      { labelKey: 'footer_link_product_details', path: '/product' },
-      { labelKey: 'footer_link_research', path: '/research' },
-      { labelKey: 'footer_link_shop', path: '/purchase' },
-    ],
-    [t('footer_col_company')]: [
-      { labelKey: 'footer_link_about', path: '/about' },
-      { labelKey: 'footer_link_mission', path: '/about#mission' },
-    ],
-    [t('footer_col_support')]: [
-      { labelKey: 'footer_link_contact', path: '/contact' },
-      { labelKey: 'footer_link_faq', path: '/#faq' },
-    ],
-  }
-
-  const CERTS = [
-    { labelKey: 'footer_cert_usda', certificate: 'fssc', ltrLabel: 'FSSC 22000' },
-    { labelKey: 'footer_cert_nongmo', certificate: 'cgmp' },
-    { labelKey: 'footer_cert_vegan', certificate: 'haccp' },
-    { labelKey: 'footer_cert_kosher', certificate: 'food' },
-    { labelKey: 'footer_cert_halal', certificate: 'halal' },
-  ]
 
   return (
     <footer className="footer">
@@ -39,7 +49,7 @@ export default function Footer() {
             {/* Brand column */}
             <div className="footer__brand">
               <Link
-                to="/"
+                to={ROUTES.home}
                 className="footer__logo"
                 aria-label={
                   isAr
@@ -50,11 +60,7 @@ export default function Footer() {
                 <span className="footer__localized-logo-frame">
                   <img
                     key={isAr ? 'footer-logo-ar' : 'footer-logo-en'}
-                    src={
-                      isAr
-                        ? '/logos/logo-ar-white.png'
-                        : '/logos/logo-en-white.png'
-                    }
+                    src={getLocalizedLogoPath(isAr)}
                     alt={isAr ? 'ليفيا' : 'LEAVIA'}
                     className="footer__localized-logo-image"
                   />
@@ -66,10 +72,10 @@ export default function Footer() {
               </p>
 
               <div className="footer__certifications">
-                {CERTS.map(({ labelKey, certificate, ltrLabel }) => (
+                {FOOTER_CERTIFICATES.map(({ labelKey, certificate, ltrLabel }) => (
                   <Link
                     key={certificate}
-                    to={`/research?certificate=${certificate}`}
+                    to={`${ROUTES.research}?certificate=${certificate}`}
                     className={`footer__cert ${ltrLabel ? 'footer__cert--ltr' : ''}`}
                     lang={ltrLabel ? 'en' : undefined}
                     dir={ltrLabel ? 'ltr' : undefined}
@@ -84,14 +90,14 @@ export default function Footer() {
               {/* Direct contact */}
               <div className="footer__social">
                 <a
-                  href="mailto:info@leaviasweetener.com"
+                  href={CONTACT_DETAILS.emailHref}
                   className="footer__social-link"
                   aria-label={isAr ? 'إرسال بريد إلكتروني إلى ليفيا' : 'Email LEAVIA'}
                 >
                   <Mail size={18} strokeWidth={1.8} aria-hidden="true" />
                 </a>
                 <a
-                  href="tel:0556090514"
+                  href={CONTACT_DETAILS.phoneHref}
                   className="footer__social-link"
                   aria-label={isAr ? 'الاتصال بليفيا' : 'Call LEAVIA'}
                 >
@@ -105,14 +111,14 @@ export default function Footer() {
             </div>
 
             {/* Navigation columns */}
-            {Object.entries(LINKS).map(
-              ([heading, links]) => (
+            {FOOTER_LINK_GROUPS.map(
+              ({ headingKey, links }) => (
                 <div
-                  key={heading}
+                  key={headingKey}
                   className="footer__col"
                 >
                   <h4 className="footer__heading">
-                    {heading}
+                    {t(headingKey)}
                   </h4>
 
                   <ul className="footer__links">

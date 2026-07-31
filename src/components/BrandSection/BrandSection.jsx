@@ -1,4 +1,5 @@
 import { useLanguage } from '../../context/LanguageContext'
+import { getLocalizedLogoPath } from '../../config/site'
 import './BrandSection.css'
 
 export default function BrandSection() {
@@ -39,7 +40,7 @@ export default function BrandSection() {
         <div className="brand__logo-mark">
           <img
             className={`brand__logo-image ${isAr ? 'brand__logo-image--ar' : ''}`}
-            src={isAr ? '/logos/logo-ar-transparent.png' : '/logos/logo-en-transparent.png'}
+            src={getLocalizedLogoPath(isAr, 'transparent')}
             alt={isAr ? 'ليفيا' : 'LEAVIA'}
           />
         </div>

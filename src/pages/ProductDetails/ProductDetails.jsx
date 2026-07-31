@@ -6,44 +6,12 @@ import NutritionTable from '../../components/shared/NutritionTable/NutritionTabl
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../context/LanguageContext'
 import { translations } from '../../i18n/translations'
+import { PRODUCT_PACKAGING } from '../../data/productPackaging'
+import { ROUTES } from '../../config/site'
 import { Leaf, PackageOpen, Scale, Sparkles, Weight } from 'lucide-react'
 import './ProductDetails.css'
 
 const Product3D = lazy(() => import('../../components/Product3D/Product3D'))
-
-const EN_PANEL = {
-  ingredientsLabel: 'Ingredients',
-  ingredients: 'Erythritol and Steviol Glycosides',
-  weightLabel: 'Net Weight',
-  weight: '350 g · 50 sachets × 7 g',
-  madeInLabel: 'Made in',
-  madeIn: 'China',
-  certLabel: 'Pack Mark',
-  certifications: ['Halal', 'Zero calories', '100% Natural'],
-  suitableLabel: 'Suitable For',
-  suitableFor: [
-    { label: 'Cooking',   sub: 'Heat Resistant' },
-    { label: 'Baking',    sub: 'Heat Resistant' },
-    { label: 'Beverages', sub: 'Hot & Cold' },
-  ],
-}
-
-const AR_PANEL = {
-  ingredientsLabel: 'المكونات',
-  ingredients: 'الإريثريتول وجليكوسيدات الستيفيول',
-  weightLabel: 'الوزن الصافي',
-  weight: '٣٥٠ جرامًا · ٥٠ ظرفًا × ٧ جرامات',
-  madeInLabel: 'بلد المنشأ',
-  madeIn: 'الصين',
-  certLabel: 'العلامة على العبوة',
-  certifications: ['حلال', 'صفر سعرة حرارية', 'طبيعي 100٪'],
-  suitableLabel: 'مناسب لـ',
-  suitableFor: [
-    { label: 'الطبخ',     sub: 'مقاوم للحرارة' },
-    { label: 'الخبز',     sub: 'مقاوم للحرارة' },
-    { label: 'المشروبات', sub: 'ساخن وبارد' },
-  ],
-}
 
 const SPEC_KEYS = [
   ['pd_spec_0_label', 'pd_spec_0_value'],
@@ -104,7 +72,7 @@ const QUICK_FACTS = [
 
 export default function ProductDetails() {
   const { t, isAr } = useLanguage()
-  const panel   = isAr ? AR_PANEL   : EN_PANEL
+  const panel = PRODUCT_PACKAGING[isAr ? 'ar' : 'en']
   const compareText = (key) => translations[isAr ? 'ar' : 'en'][key]
 
   return (
@@ -168,7 +136,7 @@ export default function ProductDetails() {
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <Link to="/purchase" className="btn btn--ghost btn--lg">
+                  <Link to={ROUTES.purchase} className="btn btn--ghost btn--lg">
                     {t('pd_btn_sizes')}
                   </Link>
                 </div>

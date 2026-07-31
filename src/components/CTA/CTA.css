@@ -231,7 +231,7 @@
 .cta__trust {
   font-size: 0.7rem;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--gold-warm);
 }
 
 @media (max-width: 600px) {

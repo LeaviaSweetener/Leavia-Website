@@ -4,31 +4,15 @@ import { useLanguage } from '../../context/LanguageContext'
 import { BadgeCheck, Coffee, Leaf, Sparkles } from 'lucide-react'
 import './ValueProp.css'
 
+const VALUE_PROPS = [
+  { Icon: Sparkles, titleKey: 'vp_prop_0_title', descKey: 'vp_prop_0_desc' },
+  { Icon: Leaf, titleKey: 'vp_prop_1_title', descKey: 'vp_prop_1_desc' },
+  { Icon: Coffee, titleKey: 'vp_prop_2_title', descKey: 'vp_prop_2_desc' },
+  { Icon: BadgeCheck, titleKey: 'vp_prop_3_title', descKey: 'vp_prop_3_desc' },
+]
+
 export default function ValueProp() {
   const { t } = useLanguage()
-
-  const PROPS = [
-    {
-      icon: <Sparkles />,
-      titleKey: 'vp_prop_0_title',
-      descKey: 'vp_prop_0_desc',
-    },
-    {
-      icon: <Leaf />,
-      titleKey: 'vp_prop_1_title',
-      descKey: 'vp_prop_1_desc',
-    },
-    {
-      icon: <Coffee />,
-      titleKey: 'vp_prop_2_title',
-      descKey: 'vp_prop_2_desc',
-    },
-    {
-      icon: <BadgeCheck />,
-      titleKey: 'vp_prop_3_title',
-      descKey: 'vp_prop_3_desc',
-    },
-  ]
 
   return (
     <section className="valueprop section">
@@ -41,13 +25,13 @@ export default function ValueProp() {
         />
 
         <div className="valueprop__grid">
-          {PROPS.map((prop, i) => (
+          {VALUE_PROPS.map(({ Icon, titleKey, descKey }, i) => (
             <ScrollReveal key={i} direction="up" delay={i * 0.15}>
               <div className="valueprop__card">
-                <div className="valueprop__icon">{prop.icon}</div>
+                <div className="valueprop__icon"><Icon /></div>
                 <div className="valueprop__content">
-                  <h3 className="valueprop__title">{t(prop.titleKey)}</h3>
-                  <p className="valueprop__description">{t(prop.descKey)}</p>
+                  <h3 className="valueprop__title">{t(titleKey)}</h3>
+                  <p className="valueprop__description">{t(descKey)}</p>
                 </div>
               </div>
             </ScrollReveal>
