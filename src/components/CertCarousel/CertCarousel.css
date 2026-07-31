@@ -652,6 +652,10 @@
 
   .cert-carousel__arrow--previous { inset-inline-start: calc(50% - 88px); }
   .cert-carousel__arrow--next { inset-inline-end: calc(50% - 88px); }
+
+  .cert-carousel__card-info {
+    transform: translateY(-0.75rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
