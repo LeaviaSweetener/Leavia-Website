@@ -12,11 +12,11 @@ import './Product3D.css'
    Set any face to null to use the built-in canvas artwork instead.
    ============================================================ */
 const CUBE_FACE_IMAGES = {
-  front:  '/mockups/FrontAr.png',
-  back:   '/mockups/FrontEn.png',
-  right:  '/mockups/detailsAr.png',
-  left:   '/mockups/detailsEn.png',
-  top:    '/product/top-of-product.png',
+  front:  '/mockups/FrontAr-1600.webp',
+  back:   '/mockups/FrontEn-1600.webp',
+  right:  '/mockups/detailsAr-1600.webp',
+  left:   '/mockups/detailsEn-1600.webp',
+  top:    '/product/top-of-product.webp',
   bottom: null,
 }
 
@@ -585,25 +585,16 @@ function useImageTexture(url) {
   useEffect(() => {
     if (!url) { setTex(null); return }
     let alive = true
+    let loadedTexture = null
 
     const img = new Image()
     img.crossOrigin = 'anonymous'
 
     img.onload = () => {
       if (!alive) return
-      // Flatten onto a white canvas so RGBA PNGs with transparent backgrounds
-      // never bleed the 3-D environment colour through the face.
-      const cv = document.createElement('canvas')
-      cv.width  = img.naturalWidth
-      cv.height = img.naturalHeight
-      const ctx = cv.getContext('2d')
-      ctx.imageSmoothingEnabled = true
-      ctx.imageSmoothingQuality  = 'high'
-      ctx.fillStyle = '#ffffff'
-      ctx.fillRect(0, 0, cv.width, cv.height)
-      ctx.drawImage(img, 0, 0)
-
-      const t = new THREE.CanvasTexture(cv)
+      // Optimized face assets are already opaque, so use them directly and
+      // avoid retaining a full-size duplicate canvas for every box face.
+      const t = new THREE.Texture(img)
       t.colorSpace    = THREE.SRGBColorSpace
       t.wrapS         = THREE.ClampToEdgeWrapping
       t.wrapT         = THREE.ClampToEdgeWrapping
@@ -614,13 +605,17 @@ function useImageTexture(url) {
       t.anisotropy    = 16
       t.generateMipmaps = true
       t.needsUpdate   = true
+      loadedTexture = t
       setTex(t)
     }
 
     img.onerror = () => { if (alive) setTex(null) }
     img.src = url
 
-    return () => { alive = false }
+    return () => {
+      alive = false
+      loadedTexture?.dispose()
+    }
   }, [url])
 
   return tex
@@ -635,11 +630,8 @@ function ProductBox({ mousePosition, onBoxClick }) {
   const pointerDown = useRef(null)
   const { gl } = useThree()
 
-  // Canvas fallback textures (always created; used when no image is supplied)
-  const frontCanvasTex = useMemo(() => createFrontTexture(), [])
-  const sideCanvasTex  = useMemo(() => createSideTexture(),  [])
+  // The top fallback is visible only while the matching image is loading.
   const topCanvasTex   = useMemo(() => createTopTexture(),   [])
-  const botCanvasTex   = useMemo(() => createBottomTexture(),[])
 
   // Image textures — each resolves to null when CUBE_FACE_IMAGES[face] is null
   const frontImgTex  = useImageTexture(CUBE_FACE_IMAGES.front)
@@ -647,15 +639,9 @@ function ProductBox({ mousePosition, onBoxClick }) {
   const rightImgTex  = useImageTexture(CUBE_FACE_IMAGES.right)
   const leftImgTex   = useImageTexture(CUBE_FACE_IMAGES.left)
   const topImgTex    = useImageTexture(CUBE_FACE_IMAGES.top)
-  const bottomImgTex = useImageTexture(CUBE_FACE_IMAGES.bottom)
 
-  // Resolve: image tex wins over canvas fallback
-  const frontTex  = frontImgTex  ?? frontCanvasTex
-  const backTex   = backImgTex   ?? frontCanvasTex  // back uses front canvas by default
-  const rightTex  = rightImgTex  ?? sideCanvasTex
-  const leftTex   = leftImgTex   ?? sideCanvasTex
+  // Resolve: image texture wins over the top canvas fallback.
   const topTex    = topImgTex    ?? topCanvasTex
-  const bottomTex = bottomImgTex ?? botCanvasTex
 
   // Real pack proportions: 7 cm wide x 6 cm high x 3 cm deep.
   // Scaled uniformly for the scene so the box keeps its physical aspect ratio.
@@ -683,18 +669,22 @@ function ProductBox({ mousePosition, onBoxClick }) {
       make(rightImgTex,  FACE_COLORS.right),
       make(leftImgTex,   FACE_COLORS.left),
       make(topTex,       FACE_COLORS.top),
-      make(bottomImgTex, FACE_COLORS.bottom),
+      make(null,         FACE_COLORS.bottom),
       make(frontImgTex,  FACE_COLORS.front),
       make(backImgTex,   FACE_COLORS.back),
     ]
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [frontImgTex, backImgTex, rightImgTex, leftImgTex, topTex, bottomImgTex])
+  }, [frontImgTex, backImgTex, rightImgTex, leftImgTex, topTex])
+
+  useEffect(() => () => topCanvasTex.dispose(), [topCanvasTex])
+  useEffect(() => () => boxGeo.dispose(), [boxGeo])
+  useEffect(() => () => mats.forEach((material) => material.dispose()), [mats])
 
   useFrame((_, delta) => {
     if (!groupRef.current) return
     autoRot.current += delta * 0.22
-    const tx = mousePosition.y * 0.30
-    const ty = autoRot.current + mousePosition.x * 0.45
+    const tx = mousePosition.current.y * 0.30
+    const ty = autoRot.current + mousePosition.current.x * 0.45
     groupRef.current.rotation.y += (ty - groupRef.current.rotation.y) * 0.06
     groupRef.current.rotation.x += (tx - groupRef.current.rotation.x) * 0.06
   })
@@ -879,9 +869,34 @@ export default function Product3D({
   const mousePosition = useSmoothMousePosition(0.04)
   const [isLoaded, setIsLoaded] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
+  const [isNearViewport, setIsNearViewport] = useState(false)
+  const [isPageVisible, setIsPageVisible] = useState(true)
+  const productRootRef = useRef(null)
   const { lang } = useLanguage()
   const isAr = lang === 'ar'
   const d = isAr ? AR_DATA : EN_DATA
+
+  useEffect(() => {
+    const element = productRootRef.current
+    if (!element || !('IntersectionObserver' in window)) {
+      setIsNearViewport(true)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsNearViewport(entry.isIntersecting),
+      { rootMargin: '300px 0px' },
+    )
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const handleVisibilityChange = () => setIsPageVisible(!document.hidden)
+    handleVisibilityChange()
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [])
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setModalOpen(false) }
@@ -902,11 +917,12 @@ export default function Product3D({
   }, [modalOpen])
 
   return (
-    <div className={`product3d ${className}`}>
+    <div ref={productRootRef} className={`product3d ${className}`}>
       {!isLoaded && <ProductLoader isAr={isAr} />}
       <Canvas
         shadows
         dpr={[2, 3]}
+        frameloop={isNearViewport && isPageVisible ? 'always' : 'demand'}
         gl={{
           antialias: true,
           alpha: true,

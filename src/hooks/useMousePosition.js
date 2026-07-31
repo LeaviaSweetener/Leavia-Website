@@ -25,9 +25,8 @@ export function useMousePosition() {
  * useSmoothMousePosition — Smooth lerped mouse position
  */
 export function useSmoothMousePosition(lerp = 0.05) {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const position = useRef({ x: 0, y: 0 })
   const target = useRef({ x: 0, y: 0 })
-  const current = useRef({ x: 0, y: 0 })
   const rafId = useRef(null)
 
   useEffect(() => {
@@ -39,9 +38,8 @@ export function useSmoothMousePosition(lerp = 0.05) {
     }
 
     const tick = () => {
-      current.current.x += (target.current.x - current.current.x) * lerp
-      current.current.y += (target.current.y - current.current.y) * lerp
-      setPosition({ x: current.current.x, y: current.current.y })
+      position.current.x += (target.current.x - position.current.x) * lerp
+      position.current.y += (target.current.y - position.current.y) * lerp
       rafId.current = requestAnimationFrame(tick)
     }
 

@@ -92,7 +92,7 @@
   content: '';
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(29, 120, 59, 0.055);
+  border: 0;
   border-radius: inherit;
   pointer-events: none;
   z-index: 3;
@@ -497,6 +497,10 @@
   .brand__inner::after {
     background:
       linear-gradient(180deg, transparent 20%, rgba(3, 31, 15, 0.12) 50%, rgba(3, 31, 15, 0.82) 100%);
+  }
+
+  .brand__identity {
+    transform: translateY(-0.75rem);
   }
 
   .brand__lifestyle {

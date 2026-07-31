@@ -44,6 +44,12 @@ export default function Navigation() {
     })
   }, [])
 
+  const handleMobileLanguageToggle = () => {
+    setMobileOpen(false)
+    document.body.style.overflow = ''
+    toggleLang()
+  }
+
   return (
     <>
       <nav className={`nav ${scrolled ? 'nav--scrolled' : ''} ${hidden ? 'nav--hidden' : ''}`}>
@@ -124,7 +130,7 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="nav__mobile-footer">
-            <button className="nav__mobile-lang" onClick={toggleLang}>
+            <button className="nav__mobile-lang" onClick={handleMobileLanguageToggle}>
               <Languages size={18} strokeWidth={1.8} aria-hidden="true" />
               <span>{lang === 'en' ? 'عربي' : 'English'}</span>
             </button>
