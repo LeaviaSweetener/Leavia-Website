@@ -48,7 +48,7 @@
 }
 
 .nav__logo-img {
-  height: 68px;
+  height: 64px;
   width: auto;
   object-fit: contain;
   transition: opacity 0.3s ease;
