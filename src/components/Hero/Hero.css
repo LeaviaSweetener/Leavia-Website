@@ -158,16 +158,16 @@
 
 .hero__headline-logo {
   display: block;
-  width: clamp(155px, 13vw, 215px);
+  width: clamp(165px, 14vw, 230px);
   height: auto;
-  max-height: 96px;
+  max-height: 104px;
   object-fit: contain;
   object-position: left center;
   margin-bottom: 0.7rem;
 }
 
 .hero__headline-logo--ar {
-  width: clamp(150px, 12vw, 205px);
+  width: clamp(165px, 13vw, 225px);
   object-position: right center;
   margin-left: auto;
 }

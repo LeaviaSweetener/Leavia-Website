@@ -118,8 +118,7 @@ export default function Footer() {
                   className="footer__col"
                 >
                   <h4 className="footer__heading">
-                    {t(headingKey)}
-                  </h4>
+                    {t(headingKey)}                  </h4>
 
                   <ul className="footer__links">
                     {links.map((link) => (
