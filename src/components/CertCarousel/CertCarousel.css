@@ -491,7 +491,7 @@
 
 .cert-carousel__zoom {
   position: absolute;
-  right: 0.75rem;
+  inset-inline-end: 0.75rem;
   bottom: 0.75rem;
   display: grid;
   place-items: center;
