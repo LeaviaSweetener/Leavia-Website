@@ -39,13 +39,11 @@ export default function About() {
             <ScrollReveal direction="right">
               <div className="about__mission-text">
                 <div className="about__purpose-block">
-                  <span className="about__eyebrow">{t('about_mission_overline')}</span>
                   <h2>{t('about_mission_title')}</h2>
                   <p>{t('about_mission_p1')}</p>
                 </div>
 
                 <div className="about__purpose-block">
-                  <span className="about__eyebrow">{t('about_vision_overline')}</span>
                   <h2>{t('about_vision_title')}</h2>
                   <p>{t('about_vision_p1')}</p>
                 </div>
