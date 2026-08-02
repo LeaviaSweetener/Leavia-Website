@@ -1,5 +1,6 @@
 .about {
   --section-heading-size: clamp(3rem, 7vw, 5.5rem);
+  --purpose-heading-size: clamp(2.75rem, 6.25vw, 5rem);
 }
 
 .about__hero {
@@ -88,17 +89,10 @@
   gap: 4rem;
 }
 
-.about__eyebrow {
-  color: var(--green-emerald);
-  font-size: var(--section-overline-size);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
 .about__purpose-block h2 {
-  margin: var(--space-5) 0 var(--space-6);
+  margin: 0 0 var(--space-6);
   color: var(--green-deep);
-  font-size: var(--section-heading-size);
+  font-size: var(--purpose-heading-size);
   font-weight: 700;
   letter-spacing: 0;
 }
@@ -424,10 +418,6 @@ html[dir='ltr'] .about__timeline-copy {
 
   .about__hero {
     min-height: 500px;
-  }
-
-  .about__purpose-block h2 {
-    font-size: var(--section-heading-size);
   }
 
   .about__purpose-block p {
