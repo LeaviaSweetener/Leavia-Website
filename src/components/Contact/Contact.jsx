@@ -205,12 +205,6 @@ export default function Contact() {
     const missingVariables = EMAILJS_VARIABLES.filter(([, value]) => !value)
     if (missingVariables.length > 0) {
       missingVariables.forEach(([name]) => console.warn(`[Contact] Missing ${name}; email was not sent.`))
-      if (import.meta.env.DEV) {
-        setForm(createEmptyContactForm())
-        setErrors({})
-        setStatus('success')
-        return
-      }
       setStatus('error')
       return
     }
@@ -233,12 +227,17 @@ export default function Contact() {
     setErrors({})
 
     try {
-      await emailjs.send(
+      const response = await emailjs.send(
         EMAILJS_CONFIG.serviceId,
         EMAILJS_CONFIG.templateId,
         templateParams,
         { publicKey: EMAILJS_CONFIG.publicKey },
       )
+
+      if (response.status !== 200) {
+        throw new Error(`Unexpected EmailJS response status: ${response.status}`)
+      }
+
       setForm(createEmptyContactForm())
       setStatus('success')
     } catch (error) {
